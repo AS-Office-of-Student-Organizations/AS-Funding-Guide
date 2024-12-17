@@ -7,7 +7,7 @@ function FundingGuide() {
 
   useEffect(() => {
     const fetchFundingGuide = async () => {
-      const querySnapshot = await getDocs(collection(db, "funding-step"));
+      const querySnapshot = await getDocs(collection(db, "fundingGuide"));
       console.log(querySnapshot);
       const items = querySnapshot.docs.map(doc => doc.data());
       setData(items);

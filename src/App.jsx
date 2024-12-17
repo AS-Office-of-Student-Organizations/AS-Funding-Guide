@@ -1,4 +1,4 @@
-import { useState } from 'react'
+/*import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -6,7 +6,6 @@ import FundingGuide from './FundingGuide.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
-
   return (
     <>
       <div>
@@ -32,6 +31,28 @@ function App() {
       </p>
     </>
   )
+}*/
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import FundingGuide from "./FundingGuide";
+import AdminLogin from "./AdminLogin";
+import AdminPanel from "./AdminPanel";
+import RequireAuth from "./RequireAuth";
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<FundingGuide />} />
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/admin" element={
+          <RequireAuth>
+            <AdminPanel />
+          </RequireAuth>
+          } />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
