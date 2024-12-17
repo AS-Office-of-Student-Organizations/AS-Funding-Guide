@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import { db } from "./firebase";
+import { collection, doc, getDocs, addDoc, deleteDoc } from "@firebase/firestore";
+import { db } from "./firebase.js";
 
 function AdminPanel() {
   const [data, setData] = useState([]);
   const [newItem, setNewItem] = useState({ content: "", description: ""});
 
-  useEffect(() => {
-    const fetchFundingGuide = async () => {
-      const querySnapshot = await getDocs(collection(db, "fundingGuide"));
-      const items = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setData(items);
-    };
+  const fetchFundingGuide = async () => {
+    const querySnapshot = await getDocs(collection(db, "fundingGuide"));
+    const items = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    setData(items);
+  };
+
+  useEffect(() => { 
     fetchFundingGuide();
   }, []);
 
@@ -26,6 +27,17 @@ function AdminPanel() {
     }
   };
 
+  const handleDeleteItem = async (id) => {
+    try {
+        console.log(id)
+        await deleteDoc(doc(db, "fundingGuide", id))
+        alert("Item deleted!")
+        fetchFundingGuide();
+    } catch(error) {
+        console.error("Error deleting item:", error)
+    }
+  };
+
   return (
     <div>
       <h1>Admin Panel</h1>
@@ -34,6 +46,7 @@ function AdminPanel() {
         <div key={index}>
           <h3>{item.content}</h3>
           <p>{item.description}</p>
+          <button onClick={() => handleDeleteItem(item.id)}>Delete Item</button>
         </div>
       ))}
 

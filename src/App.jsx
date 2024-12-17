@@ -34,23 +34,27 @@ function App() {
 }*/
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import FundingGuide from "./FundingGuide";
-import AdminLogin from "./AdminLogin";
-import AdminPanel from "./AdminPanel";
-import RequireAuth from "./RequireAuth";
+import FundingGuide from "./FundingGuide.jsx";
+import AdminLogin from "./AdminLogin.jsx";
+import AdminPanel from "./AdminPanel.jsx";
+import RequireAuth from "./RequireAuth.jsx";
+import NavBar from "./components/NavBar.jsx"
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<FundingGuide />} />
-        <Route path="/login" element={<AdminLogin />} />
-        <Route path="/admin" element={
-          <RequireAuth>
-            <AdminPanel />
-          </RequireAuth>
-          } />
-      </Routes>
+      <div>
+        <NavBar/>
+        <Routes>
+          <Route path="/" element={<FundingGuide />} />
+          <Route path="/login" element={<AdminLogin />} />
+          <Route path="/admin" element={
+            <RequireAuth>
+              <AdminPanel />
+            </RequireAuth>
+            } />
+        </Routes>
+      </div>
     </Router>
   );
 }
