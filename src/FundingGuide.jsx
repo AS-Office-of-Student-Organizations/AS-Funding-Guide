@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "@firebase/firestore";
 import { db } from "./firebase.js";
+import BigInfo from "./components/BigInfo.jsx"
+
+import "./styles/FundingGuide.css"
+import "./styles/global.css"
 
 function FundingGuide() {
   const [data, setData] = useState([]);
@@ -17,7 +21,8 @@ function FundingGuide() {
 
   return (
     <div>
-      <h1>Funding Guide</h1>
+      <h1>User-Friendly Funding Guide</h1>
+      <BigInfo/>
       {data.map((item, index) => (
         <div key={index}>
           <h3>{item.content}</h3>

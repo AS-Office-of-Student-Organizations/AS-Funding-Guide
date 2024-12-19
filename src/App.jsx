@@ -1,3 +1,33 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import FundingGuide from "./FundingGuide.jsx";
+import AdminLogin from "./AdminLogin.jsx";
+import AdminPanel from "./AdminPanel.jsx";
+import RequireAuth from "./RequireAuth.jsx";
+import NavBar from "./components/NavBar.jsx"
+import BigInfoEditor from "./components/BigInfoEditor.jsx";
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <NavBar/>
+        <Routes>
+          <Route path="/" element={<FundingGuide />} />
+          <Route path="/login" element={<AdminLogin />} />
+          <Route path="/admin" element={
+            <RequireAuth>
+              <AdminPanel />
+            </RequireAuth>
+            } />
+          <Route path="/test" element={<BigInfoEditor/>} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
 /*import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -32,31 +62,3 @@ function App() {
     </>
   )
 }*/
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import FundingGuide from "./FundingGuide.jsx";
-import AdminLogin from "./AdminLogin.jsx";
-import AdminPanel from "./AdminPanel.jsx";
-import RequireAuth from "./RequireAuth.jsx";
-import NavBar from "./components/NavBar.jsx"
-
-function App() {
-  return (
-    <Router>
-      <div>
-        <NavBar/>
-        <Routes>
-          <Route path="/" element={<FundingGuide />} />
-          <Route path="/login" element={<AdminLogin />} />
-          <Route path="/admin" element={
-            <RequireAuth>
-              <AdminPanel />
-            </RequireAuth>
-            } />
-        </Routes>
-      </div>
-    </Router>
-  );
-}
-
-export default App;

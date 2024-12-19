@@ -1,0 +1,18 @@
+@import url(vars.css);
+
+h1{
+    font-size: 4em;
+}
+
+.big-info{
+    text-align: left;
+    
+    h2 {
+        margin: 0;
+        color: var(--solid-main);
+    }
+    
+    p {
+        color: var(--solid-main);
+    }
+}
