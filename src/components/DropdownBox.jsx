@@ -26,7 +26,7 @@ const DropdownBox = ({ header, text }) => {
       >
         {header}
       </div>
-      <div className={`dropdown-content ${isOpen ? "open" : "closed"}`}>
+      <div className={`tiptap, dropdown-content ${isOpen ? "open" : "closed"}`}>
         {editor && <EditorContent editor={editor} />}
       </div>
     </div>

@@ -4,6 +4,7 @@ import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
+import { MenuBar, extensions } from "./TipTap";
 
 function BigInfoEditor() {
     const [data, setData] = useState([]);
@@ -91,36 +92,41 @@ function Box({ item, index, moveBox, handleDeleteBox, setData, data }) {
         },
     });
 
-    const editor = useEditor({
-        extensions: [StarterKit],
+    const contentEditor = useEditor({
+        extensions: extensions,
+        editable: true, 
+        content: data[index].content
+      });
+    
+
+    const descriptionEditor = useEditor({
+        extensions: extensions,
         editable: true, 
         content: data[index].description
       });
     
 
-    const handleContentChange = (e) => {
+    contentEditor.on('update', ({ editor }) => {
         const newData = [...data];
-        newData[index].content = e.target.value;
+        newData[index].content = editor.getText();
         setData(newData);
-    };
+      });
 
-    editor.on('update', ({ editor }) => {
+    descriptionEditor.on('update', ({ editor }) => {
         const newData = [...data];
         newData[index].description = editor.getHTML();
         setData(newData);
-      })
+      });
 
     
     
 
     return (
         <div ref={(node) => ref(drop(node))} className="box">
-            <textarea
-                value={item.content}
-                onChange={handleContentChange}
-                placeholder="Content"
-            />
-            {editor && <EditorContent editor={editor} />}
+            {contentEditor && 
+            <EditorContent editor={contentEditor} />}
+            {descriptionEditor && <MenuBar editor={descriptionEditor}/>}
+            {descriptionEditor && <EditorContent editor={descriptionEditor}/>}
             <button onClick={() => handleDeleteBox(index)}>Delete</button>
         </div>
     );
