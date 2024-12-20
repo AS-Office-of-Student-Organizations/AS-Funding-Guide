@@ -30,17 +30,29 @@ const Guide = () => {
   
     return (
         <div className="guide">
-          <GuideSideBar pages={pages} />
-          <Routes>
-            {pages.map((page, index) => (
-              <Route
-                key={index}
-                path={`/${page.pageName.toLowerCase().replace(/\s+/g, "-")}`}
-                element={<GuidePage content={page.pageContent} edit={false} />}
-              />
-            ))}
-            <Route path="*" element={<p>Page not found</p>} />
-          </Routes>
+            <div className="guide-left-column">
+                <GuideSideBar pages={pages} />
+            </div>
+            <Routes>
+                {pages.map((page, index) => (
+                <Route
+                    key={index}
+                    path={`/${page.pageName.toLowerCase().replace(/\s+/g, "-")}`}
+                    element={<GuidePage content={page.pageContent} edit={false} />}
+                />
+                ))}
+                <Route path="*" element={<p>Page not found</p>} />
+            </Routes>
+            <div className="guide-right-column">
+                <h2>Filler</h2>
+                <ul>
+                    <li>filler 1</li>
+                    <li>filler 2</li>
+                    <li>filler 3</li>
+                    <li>filler 4</li>
+                    <li>filler 5</li>
+                </ul>
+            </div>
         </div>
     );
   };

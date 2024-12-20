@@ -32,6 +32,7 @@
     border-radius: 10px;
     position:sticky;
     top: 1em;
+    z-index:2;
 
     .link {
         display:inline-block;
@@ -266,7 +267,7 @@
       input,
       select,
       textarea {
-        background: var(--gray-2);
+        background: var(--background-main-dark);
         border-radius: 0.5rem;
         border: none;
         color: var(--black);
@@ -334,23 +335,20 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
         gap: 0.25em;
       }
       
       .control-group {
         position:sticky;
-        top:3em;
-        align-items: flex-start;
-        background-color: var(--white);
-        display: flex;
-        flex-direction: column;
+        top:6.5em;
+        z-index: 2;
+        align-items: center;
+        background-color: var(--gray-3);
         gap: 0.5rem;
         padding: 0.5rem;
-      
-        .sticky {
-          position: sticky;
-          top: 0;
-        }
+        border-radius: 1em;
+
       }
       
       [data-node-view-wrapper] > .control-group {

@@ -6,8 +6,8 @@
 }
 
 
-.guide-sidebar {
-    min-width: 22%;
+.guide-left-column {
+    min-width: 14%;
     padding: 1em;
     margin-left: 5em;
     align-self: flex-start;
@@ -37,9 +37,65 @@
     a.active {
         text-decoration: underline;
     }
+
+    .delete-button {
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        cursor:pointer;
+        height:1em;
+        width: 1em;
+    }
+
+    button {
+        padding: 0.4em;
+        border-radius: 0.5em;
+        border-color: transparent;
+        cursor:pointer;
+        background-color:var(--background-main-dark);
+        font-size: 0.8em;
+    }
+
+    .sidebar-buttons{
+        margin-top:1.5em;
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        justify-content: space-around;
+    }
+
 }
 
-.guide-page {
+.guide-right-column {
+    min-width: 14%;
+    padding: 1em;
+    margin-right: 5em;
+    align-self: flex-start;
+    background-color: var(--background-main-dark);
+    border-radius: 1em;
+
+
+    top: 7em;
+
+
+    li {
+        list-style-type: none;
+        margin-top: 1.5em;
+        justify-content: flex-start;
+        display: flex;
+    } 
+
+    a {
+        color: var(--solid-main-light);
+        text-decoration: none;
+        font-size: 0.9em;
+    }
+
+    a:hover {
+        color: var(--solid-secondary);
+    }
+}
+
+.guide-page EditorContent {
     margin-top: 3em;
-    margin-right: 10em;
 }
