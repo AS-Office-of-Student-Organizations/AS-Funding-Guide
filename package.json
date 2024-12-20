@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.2.3",
     "@tiptap/extension-color": "^2.10.3",
+    "@tiptap/extension-link": "^2.10.4",
     "@tiptap/pm": "^2.10.3",
     "@tiptap/react": "^2.10.3",
     "@tiptap/starter-kit": "^2.10.3",

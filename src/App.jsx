@@ -5,6 +5,8 @@ import AdminPanel from "./AdminPanel.jsx";
 import RequireAuth from "./RequireAuth.jsx";
 import NavBar from "./components/NavBar.jsx"
 import BigInfoEditor from "./components/BigInfoEditor.jsx";
+import Guide from "./components/Guide.jsx";
+import AdminHome from "./components/AdminHome.jsx";
 
 function App() {
   return (
@@ -14,12 +16,11 @@ function App() {
         <Routes>
           <Route path="/" element={<FundingGuide />} />
           <Route path="/login" element={<AdminLogin />} />
-          <Route path="/admin" element={
-            <RequireAuth>
-              <AdminPanel />
-            </RequireAuth>
+          <Route path="/admin/*" element={
+              <AdminHome />
             } />
           <Route path="/test" element={<BigInfoEditor/>} />
+          <Route path="/guide/*" element={<Guide/>} />
         </Routes>
       </div>
     </Router>

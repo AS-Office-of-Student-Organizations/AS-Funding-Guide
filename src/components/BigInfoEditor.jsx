@@ -78,12 +78,12 @@ function BigInfoEditor() {
 
 function Box({ item, index, moveBox, handleDeleteBox, setData, data }) {
     const [, ref] = useDrag({
-        type: 'box',
+        type: 'box-editor',
         item: { index },
     });
 
     const [, drop] = useDrop({
-        accept: 'box',
+        accept: 'box-editor',
         hover: (draggedItem) => {
             if (draggedItem.index !== index) {
                 moveBox(draggedItem.index, index);
@@ -95,7 +95,7 @@ function Box({ item, index, moveBox, handleDeleteBox, setData, data }) {
     const contentEditor = useEditor({
         extensions: extensions,
         editable: true, 
-        content: data[index].content
+        content: "<h3>" + data[index].content + "</h3>"
       });
     
 
@@ -122,12 +122,16 @@ function Box({ item, index, moveBox, handleDeleteBox, setData, data }) {
     
 
     return (
-        <div ref={(node) => ref(drop(node))} className="box">
-            {contentEditor && 
-            <EditorContent editor={contentEditor} />}
-            {descriptionEditor && <MenuBar editor={descriptionEditor}/>}
-            {descriptionEditor && <EditorContent editor={descriptionEditor}/>}
-            <button onClick={() => handleDeleteBox(index)}>Delete</button>
+        <div ref={(node) => ref(drop(node))} className="box-editor">
+            <div className = "editor-header">
+                {contentEditor && 
+                <EditorContent className="content-editor" editor={contentEditor} />}
+                <button className='delete-button' onClick={() => handleDeleteBox(index)}>Delete</button>
+            </div>
+            <div className="description-editor">
+                {descriptionEditor && <MenuBar editor={descriptionEditor}/>}
+                {descriptionEditor && <EditorContent className="description-text" editor={descriptionEditor}/>}
+            </div>
         </div>
     );
 }

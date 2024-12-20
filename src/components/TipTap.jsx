@@ -1,15 +1,41 @@
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
-import { EditorProvider, useCurrentEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import React from 'react'
+import Link from '@tiptap/extension-link'
+import React, { useCallback } from 'react'
 
 
 const MenuBar = ({ editor }) => {
   if (!editor) {
     return null
   }
+
+  const setLink = useCallback(() => {
+    const previousUrl = editor.getAttributes('link').href
+    const url = window.prompt('URL', previousUrl)
+
+    // cancelled
+    if (url === null) {
+      return
+    }
+
+    // empty
+    if (url === '') {
+      editor.chain().focus().extendMarkRange('link').unsetLink()
+        .run()
+
+      return
+    }
+
+    // update link
+    try {
+      editor.chain().focus().extendMarkRange('link').setLink({ href: url })
+        .run()
+    } catch (e) {
+      alert(e.message)
+    }
+  }, [editor])
 
   return (
     <div className="control-group">
@@ -52,25 +78,6 @@ const MenuBar = ({ editor }) => {
           className={editor.isActive('strike') ? 'is-active' : ''}
         >
           Strike
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleCode().run()}
-          disabled={
-            !editor.can()
-              .chain()
-              .focus()
-              .toggleCode()
-              .run()
-          }
-          className={editor.isActive('code') ? 'is-active' : ''}
-        >
-          Code
-        </button>
-        <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-          Clear marks
-        </button>
-        <button onClick={() => editor.chain().focus().clearNodes().run()}>
-          Clear nodes
         </button>
         <button
           onClick={() => editor.chain().focus().setParagraph().run()}
@@ -124,25 +131,10 @@ const MenuBar = ({ editor }) => {
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={editor.isActive('orderedList') ? 'is-active' : ''}
         >
-          Ordered list
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          className={editor.isActive('codeBlock') ? 'is-active' : ''}
-        >
-          Code block
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          className={editor.isActive('blockquote') ? 'is-active' : ''}
-        >
-          Blockquote
+          1,2,3...
         </button>
         <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
           Horizontal rule
-        </button>
-        <button onClick={() => editor.chain().focus().setHardBreak().run()}>
-          Hard break
         </button>
         <button
           onClick={() => editor.chain().focus().undo().run()}
@@ -168,11 +160,18 @@ const MenuBar = ({ editor }) => {
         >
           Redo
         </button>
+        <button onClick={setLink} className={editor.isActive('link') ? 'is-active' : ''}>
+            Set link
+        </button>
+        <button onClick={() => editor.chain().focus().unsetLink().run()}
+        disabled={!editor.isActive('link')}>
+            Unset link
+        </button>
         <button
-          onClick={() => editor.chain().focus().setColor('#958DF1').run()}
-          className={editor.isActive('textStyle', { color: '#958DF1' }) ? 'is-active' : ''}
+          onClick={() => editor.chain().focus().setColor('#164bb4').run()}
+          className={editor.isActive('textStyle', { color: '#164bb4' }) ? 'is-active' : ''}
         >
-          Purple
+          Blue
         </button>
       </div>
     </div>
@@ -191,8 +190,69 @@ const extensions = [
       keepMarks: true,
       keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
     },
-  })
+  }),
+  Link.configure({
+    openOnClick: false,
+    autolink: true,
+    defaultProtocol: 'https',
+    protocols: ['http', 'https'],
+    isAllowedUri: (url, ctx) => {
+      try {
+        // construct URL
+        const parsedUrl = url.includes(':') ? new URL(url) : new URL(`${ctx.defaultProtocol}://${url}`)
+
+        // use default validation
+        if (!ctx.defaultValidate(parsedUrl.href)) {
+          return false
+        }
+
+        // disallowed protocols
+        const disallowedProtocols = ['ftp', 'file', 'mailto']
+        const protocol = parsedUrl.protocol.replace(':', '')
+
+        if (disallowedProtocols.includes(protocol)) {
+          return false
+        }
+
+        // only allow protocols specified in ctx.protocols
+        const allowedProtocols = ctx.protocols.map(p => (typeof p === 'string' ? p : p.scheme))
+
+        if (!allowedProtocols.includes(protocol)) {
+          return false
+        }
+
+        // disallowed domains
+        const disallowedDomains = ['example-phishing.com', 'malicious-site.net']
+        const domain = parsedUrl.hostname
+
+        if (disallowedDomains.includes(domain)) {
+          return false
+        }
+
+        // all checks have passed
+        return true
+      } catch (error) {
+        return false
+      }
+    },
+    shouldAutoLink: url => {
+      try {
+        // construct URL
+        const parsedUrl = url.includes(':') ? new URL(url) : new URL(`https://${url}`)
+
+        // only auto-link if the domain is not in the disallowed list
+        const disallowedDomains = ['example-no-autolink.com', 'another-no-autolink.com']
+        const domain = parsedUrl.hostname
+
+        return !disallowedDomains.includes(domain)
+      } catch (error) {
+        return false
+      }
+    },
+  }),
 ]
+
+
 
 
 

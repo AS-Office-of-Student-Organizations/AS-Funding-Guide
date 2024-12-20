@@ -1,18 +1,22 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const NavBar=()=>{
     return(
         <div className="nav-bar">
-            <span className="site-title">
-                Office of Student Organizations Resource Page
-            </span>
+            <h1 className="site-title">
+                    Office of Student Orgs
+            </h1>
+
             <div className="nav-list">
                 <span className="link">
-                    <Link to='/'>User-Friendly Funding Guide</Link>
+                    <NavLink to='/'>User-Friendly Funding Guide</NavLink>
                 </span>
                 <span className="link">
-                    <Link to='/Admin'>Admin</Link>
+                    <NavLink to="/guide">Guide</NavLink>
+                </span>
+                <span className="link">
+                    <NavLink to='/Admin'>Admin</NavLink>
                 </span>
                 <span className="link">
                     <a href="https://finance.ucsd.edu/">Official A.S Funding Website</a>

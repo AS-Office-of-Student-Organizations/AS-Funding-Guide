@@ -1,0 +1,45 @@
+.guide {
+    display: flex;
+    flex-direction: row;
+
+    gap: 2rem;
+}
+
+
+.guide-sidebar {
+    min-width: 22%;
+    padding: 1em;
+    margin-left: 5em;
+    align-self: flex-start;
+
+
+    position:sticky;
+    position: -webkit-sticky;
+    top: 7em;
+
+    li {
+        list-style-type: none;
+        margin-top: 1.5em;
+        justify-content:space-between;
+        display: flex;
+    } 
+
+    a {
+        color: var(--solid-main-light);
+        text-decoration: none;
+        font-size: 0.9em;
+    }
+
+    a:hover {
+        color: var(--solid-secondary);
+    }
+
+    a.active {
+        text-decoration: underline;
+    }
+}
+
+.guide-page {
+    margin-top: 3em;
+    margin-right: 10em;
+}
