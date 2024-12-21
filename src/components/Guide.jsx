@@ -5,6 +5,7 @@ import { collection, getDoc, doc, updateDoc } from "firebase/firestore";
 import GuideSideBar from "./GuideSideBar";
 import GuidePage from "./GuidePage.jsx";
 import "../styles/Guide.css";
+import {ToC} from "./TipTap.jsx";
 
 
 const Guide = () => {
@@ -45,16 +46,6 @@ const Guide = () => {
                     element={pages[0] && <Navigate to={pages[0].pageName.toLowerCase().replace(/\s+/g, "-")}/>}
                 />
             </Routes>
-            <div className="guide-right-column">
-                <h2>Filler</h2>
-                <ul>
-                    <li>filler 1</li>
-                    <li>filler 2</li>
-                    <li>filler 3</li>
-                    <li>filler 4</li>
-                    <li>filler 5</li>
-                </ul>
-            </div>
         </div>
     );
   };

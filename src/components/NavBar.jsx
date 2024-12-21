@@ -19,7 +19,7 @@ const NavBar=()=>{
                     <NavLink to='/admin'>Admin</NavLink>
                 </span>
                 <span className="link">
-                    <a href="https://finance.ucsd.edu/">Official A.S Funding Website</a>
+                    <a href="https://finance.ucsd.edu/" target="_blank">Official A.S Funding Website 🗗</a>
                 </span>
             </div>
         </div>

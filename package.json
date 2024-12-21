@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@radix-ui/react-navigation-menu": "^1.2.3",
+    "@tiptap-pro/extension-table-of-contents": "^2.17.0",
     "@tiptap/extension-color": "^2.10.3",
     "@tiptap/extension-link": "^2.10.4",
     "@tiptap/pm": "^2.10.3",

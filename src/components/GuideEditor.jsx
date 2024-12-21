@@ -16,8 +16,15 @@ const GuideEditor = () => {
 
     const handleAddPage = () => {
         let name = prompt("Enter page name:");
+        if (!name) return;
         setPages([...pages, {pageName: name, pageContent: "" }]);
     };
+
+    const handleAddHeader = () => {
+      let name = prompt("Enter header name:");
+      if (!name) return;
+      setPages([...pages, {pageName: name, pageContent: "" ,header: true}]);
+  };
 
     const handleDeletePage = (index) => {
         const newPages = pages.filter((_, i) => i !== index);
@@ -32,6 +39,15 @@ const GuideEditor = () => {
         } catch (error) {
             console.error("Error saving pages:", error);
         }
+    };
+
+    const handleEditPageName = (index) => {
+      const newName = prompt("Enter new page name:");
+      if (newName) {
+        const updatedPages = [...pages];
+        updatedPages[index].pageName = newName;
+        setPages(updatedPages);
+      }
     };
 
     const handleContentChange = (index, newContent) => {
@@ -77,20 +93,32 @@ const GuideEditor = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
+                            className = {page.header ? 'guide-sidebar-header' : '' }
                           >
+                            {page.header ? (
+                              page.pageName
+                            ): (
                             <Link
                               to={`/admin/guide/${page.pageName
                                 .toLowerCase()
                                 .replace(/\s+/g, "-")}`}
                             >
                               {page.pageName}
-                            </Link>
+                            </Link>)}
+                            <div>
                             <button
-                              className="delete-button"
+                              className="page-button"
+                              onClick={() => handleEditPageName(index)}
+                            >
+                              🖋️
+                            </button>
+                            <button
+                              className="page-button"
                               onClick={() => handleDeletePage(index)}
                             >
                               🗑️
                             </button>
+                            </div>
                           </li>
                         )}
                       </Draggable>
@@ -99,7 +127,10 @@ const GuideEditor = () => {
                   </ul>
                   <div className="sidebar-buttons">
                     <button className="create-page" onClick={handleAddPage}>
-                      Create
+                      + Page
+                    </button>
+                    <button className="create-header" onClick={handleAddHeader}>
+                      + Header
                     </button>
                     <button className="save-page" onClick={handleSave}>
                       Save
@@ -142,7 +173,7 @@ const GuideEditor = () => {
           </div>
           <Routes>
             {pages.map((page, index) => (
-              <Route
+              !page.header && <Route
                 key={index}
                 path={`/${page.pageName.toLowerCase().replace(/\s+/g, "-")}`}
                 element={

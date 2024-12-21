@@ -10,10 +10,14 @@ const GuideSideBar = ({pages}) => {
             PAGES
           </li>
           {pages.map((page, index) => (
-            <li key={index}>
+            <li key={index} className= {page.header ? 'guide-sidebar-header' : '' }>
+              {page.header ? (
+                page.pageName
+              ) :
+              (
               <NavLink to={`/guide/${page.pageName.toLowerCase().replace(/\s+/g, "-")}`}>
                 {page.pageName}
-              </NavLink>
+              </NavLink>)}
             </li>
           ))}
         </ul>

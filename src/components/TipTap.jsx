@@ -4,6 +4,8 @@ import TextStyle from '@tiptap/extension-text-style'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import React, { useCallback } from 'react'
+import { TextSelection } from '@tiptap/pm/state'
+
 
 
 const MenuBar = ({ editor }) => {
@@ -251,6 +253,68 @@ const extensions = [
     },
   }),
 ]
+
+export const ToCItem = ({ item, onItemClick }) => {
+  return (
+    <div className={`${item.isActive && !item.isScrolledOver ? 'is-active' : ''} ${item.isScrolledOver ? 'is-scrolled-over' : ''}`} style={{
+      '--level': 2,
+    }}>
+      <a href={`#${item.id}`} onClick={e => onItemClick(e, item.id)} data-item-index={item.itemIndex}>{item.level == 2 ? item.textContent : 'Introduction'}</a>
+    </div>
+  )
+}
+
+export const ToCEmptyState = () => {
+  return (
+    <div className="empty-state">
+      <p>There's nothing here...</p>
+    </div>
+  )
+}
+
+export const ToC = ({
+  items = [],
+  editor,
+}) => {
+  if (items.length === 0) {
+    return <ToCEmptyState />
+  }
+
+  const onItemClick = (e, id) => {
+    e.preventDefault()
+
+    if (editor) {
+      const element = editor.view.dom.querySelector(`[data-toc-id="${id}"`)
+      const pos = editor.view.posAtDOM(element, 0)
+
+      // set focus
+      const tr = editor.view.state.tr
+
+      tr.setSelection(new TextSelection(tr.doc.resolve(pos)))
+
+      editor.view.dispatch(tr)
+
+      editor.view.focus()
+
+      if (history.pushState) { // eslint-disable-line
+        history.pushState(null, null, `#${id}`) // eslint-disable-line
+      }
+
+      window.scrollTo({
+        top: element.getBoundingClientRect().top + window.scrollY - 100,
+        behavior: 'smooth',
+      })
+    }
+  }
+
+  return (
+    <>
+      {items.map((item, i) => (
+        item.level < 3 && <ToCItem onItemClick={onItemClick} key={item.id} item={item} index={i + 1} />
+      ))}
+    </>
+  )
+}
 
 
 
