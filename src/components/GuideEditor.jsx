@@ -66,8 +66,10 @@ const GuideEditor = () => {
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                 >
-                  <h2>Pages</h2>
                   <ul>
+                  <li className= 'guide-sidebar-header'>
+                    PAGES
+                  </li>
                     {pages.map((page, index) => (
                       <Draggable key={page.pageName} draggableId={page.pageName} index={index}>
                         {(provided) => (
@@ -77,7 +79,7 @@ const GuideEditor = () => {
                             {...provided.dragHandleProps}
                           >
                             <Link
-                              to={`/Admin/guide/${page.pageName
+                              to={`/admin/guide/${page.pageName
                                 .toLowerCase()
                                 .replace(/\s+/g, "-")}`}
                             >

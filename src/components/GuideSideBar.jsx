@@ -5,8 +5,10 @@ const GuideSideBar = ({pages}) => {
 
     return (
       <div className= "guide-sidebar">
-        <h2>Pages</h2>
         <ul>
+          <li className= 'guide-sidebar-header'>
+            PAGES
+          </li>
           {pages.map((page, index) => (
             <li key={index}>
               <NavLink to={`/guide/${page.pageName.toLowerCase().replace(/\s+/g, "-")}`}>

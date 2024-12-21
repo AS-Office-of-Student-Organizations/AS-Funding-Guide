@@ -1,15 +1,15 @@
 .guide {
     display: flex;
     flex-direction: row;
-
-    gap: 2rem;
 }
 
 
 .guide-left-column {
-    min-width: 14%;
-    padding: 1em;
+    min-width: 15em;
+    padding: 0;
     margin-left: 5em;
+    margin-right: 4em;
+    margin-top: 1em;
     align-self: flex-start;
 
 
@@ -17,25 +17,37 @@
     position: -webkit-sticky;
     top: 7em;
 
+
     li {
         list-style-type: none;
-        margin-top: 1.5em;
         justify-content:space-between;
         display: flex;
+        margin-top: 0.2em;
     } 
+
+    .guide-sidebar-header {
+        padding: 0.6em 1.4em 0.6em 1.4em;
+        font-size: 0.9em;
+        font-weight: bold;
+    }
 
     a {
         color: var(--solid-main-light);
         text-decoration: none;
         font-size: 0.9em;
+        min-width: 100%;
+        padding: 0.6em 1.4em 0.6em 1.4em;
+        border-radius: 1em;
     }
 
     a:hover {
-        color: var(--solid-secondary);
+        color: var(--solid-main-light);
+        background-color: var(--background-main-dark);
     }
 
     a.active {
-        text-decoration: underline;
+        font-weight: bold;
+        color: var(--solid-secondary);
     }
 
     .delete-button {
@@ -43,8 +55,12 @@
         box-shadow: none;
         border: none;
         cursor:pointer;
-        height:1em;
-        width: 1em;
+        padding: 0.5em;
+    }
+
+    .delete-button:hover {
+        background-color: var(--background-secondary-dark);
+        font-weight: bold;
     }
 
     button {
@@ -67,7 +83,8 @@
 }
 
 .guide-right-column {
-    min-width: 14%;
+    margin-top: 1em;   
+    min-width: 15em;
     padding: 1em;
     margin-right: 5em;
     align-self: flex-start;
@@ -96,6 +113,6 @@
     }
 }
 
-.guide-page EditorContent {
+.guide-page-display {
     margin-top: 3em;
 }

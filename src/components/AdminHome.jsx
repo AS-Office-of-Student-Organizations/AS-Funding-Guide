@@ -8,7 +8,7 @@ const AdminHome = () => {
                 <Route path="*" element={
                     <ul>
                     <li>
-                        <Link to="/Admin/guide">Guide</Link>
+                        <Link to="/admin/guide">Guide</Link>
                     </li>
                     </ul>
                     } />

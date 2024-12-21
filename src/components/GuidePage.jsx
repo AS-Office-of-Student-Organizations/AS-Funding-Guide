@@ -33,7 +33,7 @@ const GuidePage = ({ content, edit, onContentChange}) => {
 
   if(edit) {
      return (
-      <div className="guide-page">
+      <div className="guide-page-edit">
         <MenuBar editor={editor} />
         <EditorContent editor={editor} />
       </div>
@@ -41,7 +41,7 @@ const GuidePage = ({ content, edit, onContentChange}) => {
   }
   else {
       return (
-       <div className="guide-page">
+       <div className="guide-page-display">
          <EditorContent editor={editor} />
        </div>
       )

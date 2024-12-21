@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Route, Routes} from "react-router-dom";
+import { Link, Route, Routes, Navigate} from "react-router-dom";
 import { db } from "../firebase.js"; // Import your Firebase config
 import { collection, getDoc, doc, updateDoc } from "firebase/firestore";
 import GuideSideBar from "./GuideSideBar";
@@ -41,7 +41,9 @@ const Guide = () => {
                     element={<GuidePage content={page.pageContent} edit={false} />}
                 />
                 ))}
-                <Route path="*" element={<p>Page not found</p>} />
+                <Route path="/" 
+                    element={pages[0] && <Navigate to={pages[0].pageName.toLowerCase().replace(/\s+/g, "-")}/>}
+                />
             </Routes>
             <div className="guide-right-column">
                 <h2>Filler</h2>

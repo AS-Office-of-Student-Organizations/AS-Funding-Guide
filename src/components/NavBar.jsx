@@ -16,7 +16,7 @@ const NavBar=()=>{
                     <NavLink to="/guide">Guide</NavLink>
                 </span>
                 <span className="link">
-                    <NavLink to='/Admin'>Admin</NavLink>
+                    <NavLink to='/admin'>Admin</NavLink>
                 </span>
                 <span className="link">
                     <a href="https://finance.ucsd.edu/">Official A.S Funding Website</a>

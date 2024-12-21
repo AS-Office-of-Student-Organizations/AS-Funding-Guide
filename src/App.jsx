@@ -17,7 +17,9 @@ function App() {
           <Route path="/" element={<FundingGuide />} />
           <Route path="/login" element={<AdminLogin />} />
           <Route path="/admin/*" element={
+            <RequireAuth>
               <AdminHome />
+            </RequireAuth>
             } />
           <Route path="/test" element={<BigInfoEditor/>} />
           <Route path="/guide/*" element={<Guide/>} />
