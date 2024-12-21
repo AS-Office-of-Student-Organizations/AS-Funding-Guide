@@ -53,6 +53,9 @@
     background-color: var(--background-main);
     color: var(--solid-main);
     text-align:center;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
   
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -62,6 +65,21 @@
 
 body {
   overflow-y: scroll;
+  display:flex;
+  margin: 0 0.5em;
+  max-width: 1400px;
+}
+
+@media (max-width: 1400px) {
+  body {
+    margin:0 0.5em;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    margin:0;
+  }
 }
 
 .nav-bar {
@@ -70,7 +88,6 @@ body {
     justify-content: space-between;
     align-items:center;
     padding: 1em 1.4em 1em 1.4em;
-    margin: 0.5em 5em 0em 5em;
     border-radius: 2em;
     position:sticky;
     top: 0.5em;
@@ -174,11 +191,7 @@ body {
     }
 
     h1{
-      max-width: 60%;
-    }
-
-    h2{
-      max-width: 70%;
+      max-width: 8em;
     }
   
     h1 {
@@ -212,7 +225,6 @@ body {
 
     p{
       font-size: 1.05em;
-      max-width: 90%;
       margin-top: 1em;
       margin-bottom: 1em;
     }

@@ -10,16 +10,13 @@ const NavBar=()=>{
 
             <div className="nav-list">
                 <span className="link">
-                    <NavLink to='/'>User-Friendly Funding Guide</NavLink>
-                </span>
-                <span className="link">
                     <NavLink to="/guide">Guide</NavLink>
                 </span>
                 <span className="link">
                     <NavLink to='/admin'>Admin</NavLink>
                 </span>
                 <span className="link">
-                    <a href="https://finance.ucsd.edu/" target="_blank">Official A.S Funding Website 🗗</a>
+                    <a href="https://finance.ucsd.edu/" target="_blank">Funding Portal 🗗</a>
                 </span>
             </div>
         </div>

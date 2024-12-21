@@ -256,7 +256,7 @@ const extensions = [
 
 export const ToCItem = ({ item, onItemClick }) => {
   return (
-    <div className={`${item.isActive && !item.isScrolledOver ? 'is-active' : ''} ${item.isScrolledOver ? 'is-scrolled-over' : ''}`} style={{
+    <div className={`${item.isActive ? 'is-active' : ''} ${item.isScrolledOver ? 'is-scrolled-over' : ''}`} style={{
       '--level': 2,
     }}>
       <a href={`#${item.id}`} onClick={e => onItemClick(e, item.id)} data-item-index={item.itemIndex}>{item.level == 2 ? item.textContent : 'Introduction'}</a>

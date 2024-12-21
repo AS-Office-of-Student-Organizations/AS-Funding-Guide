@@ -1,18 +1,15 @@
 .guide {
     display: flex;
     flex-direction: row;
+    justify-content:space-between;
 }
 
 
 .guide-left-column {
-    min-width: 15em;
+    width: 15em;
     padding: 0;
-    margin-left: 5em;
-    margin-right: 4em;
     margin-top: 1em;
     align-self: flex-start;
-
-
     position:sticky;
     position: -webkit-sticky;
     top: 7em;
@@ -90,9 +87,7 @@
 
 .guide-right-column {
     margin-top: 1em;   
-    min-width: 15em;
     padding: 1em;
-    margin-right: 5em;
     align-self: flex-start;
     background-color: var(--background-right-sidebar);
     border-radius: 1em;
@@ -100,34 +95,29 @@
     position:sticky;
     position: -webkit-sticky;
     top: 7em;
-
-
+    width: 15em;
 
     li {
         list-style-type: none;
         margin-top: 1.5em;
-        justify-content: flex-start;
-        display: flex;
-    } 
-
-    a {
-        color: var(--solid-main-light);
-        text-decoration: none;
-        font-size: 0.9em;
-    }
-
-    a:hover {
-        color: var(--solid-secondary);
-    }
+    }   
 }
 
 .guide-page {
     display:flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.guide-page-display {
+.guide-page-display{
     margin-top: 3em;
+}
+
+.guide-page-display,
+.guide-page-edit {
+    padding: 0 4em;
+    width: 100%
 }
 
 .table-of-contents {
@@ -142,10 +132,6 @@
       border-radius: 0.25rem;
       padding-left: calc(0.875rem * (var(--level) - 1));
       transition: all 0.2s cubic-bezier(0.65,0.05,0.36,1);
-  
-      &:hover {
-        background-color: var(--gray-2);
-      }
     }
 
     .table-of-contents-header {
@@ -164,18 +150,37 @@
       color: var(--purple);
     }
   
-    .is-scrolled-over a {
+    /*.is-scrolled-over a {
       color: var(--gray-5);
-    }
+    }*/
   
     a {
       color: var(--solid-secondary);
       display: flex;
       gap: 0.25rem;
+      font-size: 0.9em;
       text-decoration: none;
       /*
       &::before {
         content:attr(data-item-index)".";
       }*/
     }
-  }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 1000px) {
+    .guide-right-column {
+        display: none;
+    }
+    .guide-left-column {
+        padding-left:0;
+        padding-right:0;
+    }
+    .guide-page-display,
+    .guide-page-edit {
+        padding: 0 2em;
+    }
+}
