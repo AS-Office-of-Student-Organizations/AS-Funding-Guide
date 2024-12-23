@@ -131,7 +131,8 @@
     width: 100%;
 }
 
-.guide-page-display{
+.guide-page-display,
+.guide-page-edit{
     margin-top: 3em;
 }
 

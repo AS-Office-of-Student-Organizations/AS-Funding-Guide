@@ -1,10 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import FundingGuide from "./FundingGuide.jsx";
 import AdminLogin from "./AdminLogin.jsx";
-import AdminPanel from "./AdminPanel.jsx";
 import RequireAuth from "./RequireAuth.jsx";
 import NavBar from "./components/NavBar.jsx"
-import BigInfoEditor from "./components/BigInfoEditor.jsx";
 import Guide from "./components/Guide.jsx";
 import AdminHome from "./components/AdminHome.jsx";
 
@@ -14,14 +11,13 @@ function App() {
       <div>
         <NavBar/>
         <Routes>
-          <Route path="/" element={<FundingGuide />} />
+          <Route path="/" element={<></>} />
           <Route path="/login" element={<AdminLogin />} />
           <Route path="/admin/*" element={
             <RequireAuth>
               <AdminHome />
             </RequireAuth>
             } />
-          <Route path="/test" element={<BigInfoEditor/>} />
           <Route path="/guide/*" element={<Guide/>} />
         </Routes>
       </div>
