@@ -96,16 +96,16 @@ body {
     0 0 0 2px rgba(255, 255, 255, 0),
     0.3em 0.3em 0.3em rgba(67, 71, 78, 0.6);
 
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+
     .link {
         display:inline-block;
     }
 
     a {
         text-decoration: none;
-        color: var(--solid-main-light);
-        font-weight:400;
-        padding: 1em 0.7em 1em 0.7em;
-        border-radius: 1em;
     }
 
     h1 {
@@ -114,18 +114,25 @@ body {
 
     }
 
-    a:hover {
+    .nav-list a{
+      color: var(--solid-main-light);
+      font-weight:400;
+      padding: 1em 0.7em 1em 0.7em;
+      border-radius: 1em;
+    }
+
+    .nav-list a:hover {
         background-color: var(--gray-2);
     }
 
-    a.active {
+    .nav-list a.active {
         font-weight: 600;
         color: var(--solid-secondary)
     }
     
 
-    .site-title{
-        font-size:1.5em;
+    .site-title a{
+        color: var(--solid-main)
     }
 
 }

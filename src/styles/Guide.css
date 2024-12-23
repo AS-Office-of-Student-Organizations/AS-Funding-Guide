@@ -6,7 +6,10 @@
 
 
 .guide-left-column {
-    width: 15em;
+    .guide-sidebar {
+        width: 15em;
+    }
+    
     padding: 0;
     margin-top: 1em;
     align-self: flex-start;
@@ -82,6 +85,24 @@
         flex-direction: row;
         gap: 1em;
         justify-content: space-around;
+    }
+
+    .sidebar-toggle {
+        display:none;
+    }
+
+    @media (max-width: 678px) {
+        .hidden {
+            display:none;
+        }
+        .sidebar-toggle {
+            display: flex;
+        }
+        .guide-sidebar {
+            position:fixed;
+            z-index:2;
+            background-color: white;
+        }
     }
 }
 

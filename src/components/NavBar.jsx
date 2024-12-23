@@ -5,7 +5,7 @@ const NavBar=()=>{
     return(
         <div className="nav-bar">
             <h1 className="site-title">
-                    Office of Student Orgs
+                    <NavLink to="/">Office of Student Orgs</NavLink>
             </h1>
 
             <div className="nav-list">
