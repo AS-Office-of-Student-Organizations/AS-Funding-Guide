@@ -12,8 +12,6 @@ const GuideEditor = () => {
     const [pages, setPages] = useState([]);
     const db = getFirestore();
 
-    
-
     const handleAddPage = () => {
         let name = prompt("Enter page name:");
         if (!name) return;
@@ -57,7 +55,7 @@ const GuideEditor = () => {
     };
     
     
-    const GuideSideBarEditor = ({ pages, onReorder, handleDeletePage, handleAddPage, handleSave }) => {
+    const GuideSideBarEditor = ({ pages }) => {
         const onDragEnd = (result) => {
           const { source, destination } = result;
       
@@ -70,74 +68,24 @@ const GuideEditor = () => {
           reorderedPages.splice(destination.index, 0, removed);
       
           // Update the pages state
-          onReorder(reorderedPages);
+          setPages(reorderedPages);
         };
       
         return (
           <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="sidebar">
               {(provided) => (
-                <div
-                  className="guide-sidebar"
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                >
-                  <ul>
-                  <li className= 'guide-sidebar-header'>
-                    PAGES
-                  </li>
-                    {pages.map((page, index) => (
-                      <Draggable key={page.pageName} draggableId={page.pageName} index={index}>
-                        {(provided) => (
-                          <li
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            className = {page.header ? 'guide-sidebar-header' : '' }
-                          >
-                            {page.header ? (
-                              page.pageName
-                            ): (
-                            <Link
-                              to={`/admin/guide/${page.pageName
-                                .toLowerCase()
-                                .replace(/\s+/g, "-")}`}
-                            >
-                              {page.pageName}
-                            </Link>)}
-                            <div>
-                            <button
-                              className="page-button"
-                              onClick={() => handleEditPageName(index)}
-                            >
-                              🖋️
-                            </button>
-                            <button
-                              className="page-button"
-                              onClick={() => handleDeletePage(index)}
-                            >
-                              🗑️
-                            </button>
-                            </div>
-                          </li>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </ul>
-                  <div className="sidebar-buttons">
-                    <button className="create-page" onClick={handleAddPage}>
-                      + Page
-                    </button>
-                    <button className="create-header" onClick={handleAddHeader}>
-                      + Header
-                    </button>
-                    <button className="save-page" onClick={handleSave}>
-                      Save
-                    </button>
-                  </div>
-                </div>
-              )}
+              <GuideSideBar
+                editMode={true}
+                pages={pages}
+                handleDeletePage={handleDeletePage}
+                handleAddPage={handleAddPage}
+                handleSave={handleSave}
+                handleEditPageName={handleEditPageName}
+                handleAddHeader={handleAddHeader}
+                provided={provided}
+              />
+              )} 
             </Droppable>
           </DragDropContext>
         );
@@ -165,10 +113,6 @@ const GuideEditor = () => {
           <div className="guide-left-column">
             <GuideSideBarEditor
               pages={pages}
-              onReorder={setPages}
-              handleDeletePage={handleDeletePage}
-              handleAddPage={handleAddPage}
-              handleSave={handleSave}
             />
           </div>
           <Routes>
@@ -189,16 +133,6 @@ const GuideEditor = () => {
             ))}
             <Route path="*" element={<p>Page not found</p>} />
           </Routes>
-          <div className="guide-right-column">
-            <h2>Filler</h2>
-            <ul>
-              <li>filler 1</li>
-              <li>filler 2</li>
-              <li>filler 3</li>
-              <li>filler 4</li>
-              <li>filler 5</li>
-            </ul>
-          </div>
         </div>
       );
   };
