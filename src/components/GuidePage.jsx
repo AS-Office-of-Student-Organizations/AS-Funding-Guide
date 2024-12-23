@@ -43,35 +43,19 @@ const GuidePage = ({ content, edit, onContentChange}) => {
     }
   }, [editor, onContentChange]);
 
-  if(edit) {
-     return (
-      <div className="guide-page">
-        <div className="guide-page-edit">
-          <MenuBar editor={editor} />
-          <EditorContent editor={editor} />
-        </div>
-        <div className="guide-right-column">
-          <div className="table-of-contents">
-              <MemorizedToC editor={editor} items={items} />
-          </div>
-        </div>
+  return (
+  <div className="guide-page">
+    <div className={edit ? "guide-page-edit" : "guide-page-display"}>
+      {edit ? <MenuBar editor={editor}/> : <></>}
+      <EditorContent editor={editor} />
+    </div>
+    <div className="guide-right-column">
+      <div className="table-of-contents">
+          <MemorizedToC editor={editor} items={items} />
       </div>
-     )
-  }
-  else {
-      return (
-        <div className="guide-page">
-          <div className="guide-page-display">
-            <EditorContent editor={editor} />
-          </div>
-          <div className="guide-right-column">
-            <div className="table-of-contents">
-                <MemorizedToC editor={editor} items={items} />
-            </div>
-          </div>
-        </div>
-      )
-  }
+    </div>
+  </div>
+  )
 
 }
 
