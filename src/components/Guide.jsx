@@ -41,7 +41,7 @@ const Guide = () => {
                 />
                 ))}
                 <Route path="/" 
-                    element={pages[1] && <Navigate to={pages[1].pageName.toLowerCase().replace(/\s+/g, "-")}/>}
+                    element={<Navigate to='introduction'/>}
                 />
             </Routes>
         </div>
@@ -49,3 +49,5 @@ const Guide = () => {
   };
   
   export default Guide;
+  // pages[1] &&  
+  // `/ ${pages[1].pageName.toLowerCase().replace(/\s+/g, "-")}`

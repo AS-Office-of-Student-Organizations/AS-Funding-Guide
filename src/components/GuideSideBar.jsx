@@ -82,7 +82,7 @@ const GuideSideBar = ({
           )}
       </div>
       <button className="sidebar-toggle" onClick={toggleSidebar}>
-          {isSidebarVisible ? '〈' : '〉'}
+          {isSidebarVisible ? '〈' : '☰'}
       </button>
     </div>
   );

@@ -19,7 +19,7 @@
 
     display:flex;
     flex-direction:row;
-    align-items: center;
+    align-items: flex-start;
 
 
     li {
@@ -28,7 +28,6 @@
         display: flex;
         margin-top: 0.2em;
         flex-grow:1;
-
     } 
 
     .guide-sidebar-header {
@@ -95,33 +94,38 @@
 .guide-sidebar {
     max-height: 70vh;
     overflow-y: auto;
+    flex-grow: 1;
 }
 
 @media (max-width: 1200px) {
-    .guide-sidebar{
+    .guide-left-column{
         width: 12em;
     }
 }
 
 .sidebar-toggle {
     display:none;
+    box-shadow: inset
+    0 0 0 2px rgba(255, 255, 255, 0),
+    0.3em 0.3em 0.3em rgba(67, 71, 78, 0.6);
 }
 
 @media (max-width: 1000px) {
     .guide-left-column.hidden {
-        transform: translateX(-12em);
+        transform: translateX(calc(-100% + 1.5em));
         transition: transform 0.3s ease-in-out;
     }
 
     .sidebar-toggle {
         display: flex;
-        background-color: var(--background-main-dark);
+        background-color: var(--background-secondary);
     }
 
     .guide-left-column {
         max-height: unset;
         position: fixed;
-        top: 5em;
+        width: 100vw;
+        top: 3em;
         left:0;
         height: calc(100vh - 5em);
         z-index:2;
