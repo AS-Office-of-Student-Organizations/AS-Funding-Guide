@@ -20,7 +20,7 @@
     
     ::-webkit-scrollbar-thumb {
       background-clip: padding-box;
-      background-color: rgba(0, 0, 0, 0.151);
+      background-color: rgba(0, 0, 0, 0.144);
       border: 4px solid rgba(0, 0, 0, 0);
       border-radius: 8px;
     }
@@ -42,6 +42,24 @@
     ::-webkit-scrollbar-corner {
       background-color: transparent;
     }
+}
+
+.scroll-when-hover {
+  ::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0);
+    border: 4px solid rgba(0, 0, 0, 0);
+    border-radius: 8px;
+  }
+}
+
+.scroll-when-hover:hover {
+  ::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0.151);
+    border: 4px solid rgba(0, 0, 0, 0);
+    border-radius: 8px;
+  }
 }
 
 :root {
@@ -134,13 +152,14 @@ body {
     .site-title a{
         color: var(--solid-main);
         padding: 0.3em 0.5em;
+        font-weight: 600;
     }
 }
 
 @media (max-width: 600px) {
   .nav-bar{
     top: 0em;
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.5em 0.3em;
     border-radius: 0;
     .dropdown {
       display: flex;
@@ -154,6 +173,10 @@ body {
         padding: 0.5em;
         border-radius: 0.4em;
       }
+    }
+
+    a.site-title {
+      padding: 0.2em;
     }
 
     .dropdown-card {

@@ -4,6 +4,7 @@ import RequireAuth from "./RequireAuth.jsx";
 import NavBar from "./components/NavBar.jsx"
 import Guide from "./components/Guide.jsx";
 import AdminHome from "./components/AdminHome.jsx";
+import Landing from "./components/Landing.jsx"
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <div>
         <NavBar/>
         <Routes>
-          <Route path="/" element={<></>} />
+          <Route path="/" element={<Landing/>} />
           <Route path="/login" element={<AdminLogin />} />
           <Route path="/admin/*" element={
             <RequireAuth>

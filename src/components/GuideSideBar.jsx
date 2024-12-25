@@ -19,7 +19,7 @@ const GuideSideBar = ({
   };
 
   return (
-    <div className={`guide-left-column ${isSidebarVisible ? '' : 'hidden'}`}>
+    <div className={`guide-left-column scroll-when-hover ${isSidebarVisible ? '' : 'hidden'}`}>
       <div
         className={`guide-sidebar `}
         ref={editMode ?  provided.innerRef : null} {...(editMode ? provided.droppableProps : {})}
@@ -54,7 +54,7 @@ const GuideSideBar = ({
             )}
           </Draggable>
         ) : (
-          <li key={index} className={page.header ? "guide-sidebar-header" : ""}>
+          <li key={index} onClick={() => toggleSidebar()} className={page.header ? "guide-sidebar-header" : ""}>
             {page.header ? (
               page.pageName
             ) : (

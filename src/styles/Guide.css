@@ -7,7 +7,7 @@
 
 .guide-left-column {
 
-    width: 15em;
+    width: 20em;
     
     padding: 0;
     align-self: flex-start;
@@ -127,7 +127,7 @@
         width: 100vw;
         top: 3em;
         left:0;
-        height: calc(100vh - 5em);
+        height: calc(100vh - 3em);
         z-index:2;
         border-radius: 0.5em;
         transform: translateX(0);
@@ -136,9 +136,10 @@
     }
 
     .guide-sidebar{
-        background-color: var(--background-main-dark);
+        background-color: var(--background-secondary);
+        border: 2px solid var(--background-secondary-dark);
         border-radius: 0.5em;
-        max-height: calc(100vh - 5em);
+        max-height: calc(100vh - 3em);
     }
 
 }
