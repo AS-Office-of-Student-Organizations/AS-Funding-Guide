@@ -19,12 +19,9 @@ const GuideSideBar = ({
   };
 
   return (
-    <div>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
-          {isSidebarVisible ? '<' : '>'}
-      </button>
+    <div className={`guide-left-column ${isSidebarVisible ? '' : 'hidden'}`}>
       <div
-        className={`guide-sidebar ${isSidebarVisible ? '' : 'hidden'}`}
+        className={`guide-sidebar `}
         ref={editMode ?  provided.innerRef : null} {...(editMode ? provided.droppableProps : {})}
       >
         <ul>
@@ -84,6 +81,9 @@ const GuideSideBar = ({
           </div> 
           )}
       </div>
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+          {isSidebarVisible ? '〈' : '〉'}
+      </button>
     </div>
   );
   

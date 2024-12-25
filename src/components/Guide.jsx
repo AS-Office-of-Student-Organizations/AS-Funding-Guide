@@ -9,7 +9,7 @@ import {ToC} from "./TipTap.jsx";
 
 
 const Guide = () => {
-    const [pages, setPages] = useState([]);
+    const [pages, setPages] = useState([]); // Initialize state for pages
   
     useEffect(() => {
       const fetchPages = async () => {
@@ -31,9 +31,7 @@ const Guide = () => {
   
     return (
         <div className="guide">
-            <div className="guide-left-column">
-                <GuideSideBar pages={pages} />
-            </div>
+            <GuideSideBar pages={pages} />
             <Routes>
                 {pages.map((page, index) => (
                 <Route
@@ -43,7 +41,7 @@ const Guide = () => {
                 />
                 ))}
                 <Route path="/" 
-                    element={pages[0] && <Navigate to={pages[0].pageName.toLowerCase().replace(/\s+/g, "-")}/>}
+                    element={pages[1] && <Navigate to={pages[1].pageName.toLowerCase().replace(/\s+/g, "-")}/>}
                 />
             </Routes>
         </div>

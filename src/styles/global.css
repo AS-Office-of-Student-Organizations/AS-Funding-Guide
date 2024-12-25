@@ -96,10 +96,6 @@ body {
     0 0 0 2px rgba(255, 255, 255, 0),
     0.3em 0.3em 0.3em rgba(67, 71, 78, 0.6);
 
-    @media (max-width: 600px) {
-      flex-direction: column;
-    }
-
     .link {
         display:inline-block;
     }
@@ -133,6 +129,18 @@ body {
 
     .site-title a{
         color: var(--solid-main)
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      top: 0em;
+      padding: 0.5em 1em 0.5em 1em;
+      border-radius: 0;
+
+      .nav-list a{
+        padding: 0.3em 0.3em 0.3em 0.3em;
+        border-radius: 0.5em;
+      }
     }
 
 }
