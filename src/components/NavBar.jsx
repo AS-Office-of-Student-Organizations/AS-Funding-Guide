@@ -26,7 +26,8 @@ const NavBar=()=>{
     return(
         <div className="nav-bar">
             <h1 className="site-title">
-                    <NavLink to="/">Office of Student Orgs</NavLink>
+                    <NavLink to="/">🛸AS Student Orgs</NavLink>
+
             </h1>
             <DropDownButton label={activeLinkName + '🡻'} data={navLinks}/>
             <div className="nav-list">

@@ -7,7 +7,7 @@
 
 .guide-left-column {
 
-    width: 20em;
+    width: 19em;
     
     padding: 0;
     align-self: flex-start;
@@ -15,6 +15,7 @@
     position: -webkit-sticky;
     top: 7em;
     margin-top: 2.8em;
+    margin-left: 1em;
     
 
     display:flex;
@@ -119,27 +120,35 @@
     .sidebar-toggle {
         display: flex;
         background-color: var(--background-secondary);
+        padding: 10em;
     }
 
     .guide-left-column {
         max-height: unset;
         position: fixed;
-        width: 100vw;
-        top: 3em;
+        width: 95vw;
+        top: 5em;
         left:0;
-        height: calc(100vh - 3em);
+        height: calc(100vh - 5em);
         z-index:2;
         border-radius: 0.5em;
         transform: translateX(0);
         transition: transform 0.3s ease-in-out;
-        margin-top: unset;
+        margin: unset;
     }
 
     .guide-sidebar{
         background-color: var(--background-secondary);
         border: 2px solid var(--background-secondary-dark);
         border-radius: 0.5em;
-        max-height: calc(100vh - 3em);
+        max-height: calc(100vh - 5em);
+    }
+}
+
+@media (max-width: 600px) {
+    .guide-left-column {
+        top: 3em;
+        height: calc(100vh - 3em)
     }
 
 }
