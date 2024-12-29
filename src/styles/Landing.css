@@ -78,17 +78,14 @@
   
   /* Table Styles */
 
-  .deadlines {
+  .deadlines, .deadlines-editor {
     text-align: left;
     gap: 1rem;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+    th {
     background-color: var(--background-main-dark);
     padding: 0.75rem 1.5rem;
     font-size: 0.75rem;
@@ -97,17 +94,21 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     white-space: nowrap;
-  }
-  
-  td {
-    padding: 1rem 1.5rem;
-    font-size: 0.875rem;
-    color: #111827;
-    border-bottom: 1px solid #e5e7eb;
-    white-space: nowrap;
-    b {
-        font-weight: 600;
     }
+    td {
+        padding: 1rem 1.5rem;
+        font-size: 0.875rem;
+        color: #111827;
+        border-bottom: 1px solid #e5e7eb;
+        white-space: nowrap;
+        b {
+            font-weight: 600;
+        }
+        div {
+            display:flex;
+            align-items:center;
+        }
+        }
   }
 
   @media (max-width: 786px) {

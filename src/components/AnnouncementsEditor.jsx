@@ -80,23 +80,33 @@ const AnnouncementsEditor = () => {
     };
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="announcements">
-            {(provided) => (
-            <Announcements
-                editMode={true}
-                announcements={announcements}
-                handleDeleteAnnouncement={handleDeleteAnnouncement}
-                handleAddAnnouncement={handleAddAnnouncement}
-                handleSave={handleSave}
-                handleEditTitle={handleEditTitle}
-                handleContentChange={handleContentChange}
-                provided={provided}
-            />
-            )} 
-            </Droppable>
-        </DragDropContext>
-        );
+        <div className='announcements-editor'>
+            <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable droppableId="announcements">
+                {(provided) => (
+                <Announcements
+                    editMode={true}
+                    announcements={announcements}
+                    handleDeleteAnnouncement={handleDeleteAnnouncement}
+                    handleAddAnnouncement={handleAddAnnouncement}
+                    handleSave={handleSave}
+                    handleEditTitle={handleEditTitle}
+                    handleContentChange={handleContentChange}
+                    provided={provided}
+                />
+                )} 
+                </Droppable>
+            </DragDropContext>
+            <div className='edit-buttons'>
+                <button onClick={handleAddAnnouncement}>
+                    + Announcement
+                </button>
+                <button onClick={handleSave}>
+                    Save
+                </button>
+            </div>
+        </div>
+    )
 }
 
 export default AnnouncementsEditor;

@@ -44,11 +44,9 @@ const AnnouncementContent = ({content, edit, onContentChange}) => {
 const Announcements = ({
         announcements, 
         editMode=false,
-        handleAddAnnouncement,
         handleDeleteAnnouncement,
         handleContentChange,
         handleEditTitle,
-        handleSave,
         provided,
         }) => {
     return (
@@ -92,16 +90,6 @@ const Announcements = ({
                         )
                 )}
             </div>
-            {editMode && 
-                <div className='edit-buttons'>
-                    <button onClick={handleAddAnnouncement}>
-                        + Announcement
-                    </button>
-                    <button onClick={handleSave}>
-                        Save
-                    </button>
-                </div>
-            }
         </div>
     )
 }

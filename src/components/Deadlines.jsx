@@ -1,15 +1,12 @@
 import React, {useState,useEffect} from "react"
 
-const Deadlines = ({deadlines}) => {
+const Deadlines = ({deadlines, edit=false}) => {
 
     const today = new Date();
     const filteredDeadlines = deadlines
         .filter(deadline => new Date(deadline.dueDate) > today)
         .slice(0,3);
-
-    console.log("help1" + filteredDeadlines);
-    console.log("help2" + deadlines);
-    console.log(deadlines);
+    
     return (
         <div className='deadlines'>
             <h2>Upcoming Funding Deadlines</h2>
