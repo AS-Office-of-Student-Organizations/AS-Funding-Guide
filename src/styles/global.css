@@ -329,7 +329,7 @@ body {
 }
 
   /* Base HTML and global element styles*/
-.description-editor, .guide-page-edit {
+.description-editor, .guide-page-edit, .announcements {
     
       *,
       *::before,
@@ -440,25 +440,27 @@ body {
         gap: 0.25em;
       }
       
-      .control-group {
-        position:sticky;
-        top:5.5em;
-        margin-right:2em;
-        margin-left: 2em;
-        z-index: 2;
-        align-items: center;
-        background-color: var(--gray-3);
-        gap: 0.5rem;
-        padding: 0.5rem;
-        border-radius: 1em;
-
-      }
+      
       
       [data-node-view-wrapper] > .control-group {
         padding: 0;
       }
-      
 
+}
+
+.guide-page-edit {
+    .control-group {
+      position:sticky;
+      top:5.5em;
+      margin-right:2em;
+      margin-left: 2em;
+      z-index: 2;
+      align-items: center;
+      background-color: var(--gray-3);
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 1em;
+    }
 }
 
 

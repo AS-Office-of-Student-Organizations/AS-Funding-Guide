@@ -167,7 +167,104 @@ const MenuBar = ({ editor }) => {
         </button>
         <button onClick={() => editor.chain().focus().unsetLink().run()}
         disabled={!editor.isActive('link')}>
-            unink
+            unlink
+        </button>
+        <button
+          onClick={() => editor.chain().focus().setColor('#164bb4').run()}
+          className={editor.isActive('textStyle', { color: '#164bb4' }) ? 'is-active' : ''}
+        >
+          blue
+        </button>
+      </div>
+    </div>
+  )
+}
+
+const SimpleMenuBar = ({ editor }) => {
+  if (!editor) {
+    return null
+  }
+
+  const setLink = useCallback(() => {
+    const previousUrl = editor.getAttributes('link').href
+    const url = window.prompt('URL', previousUrl)
+
+    // cancelled
+    if (url === null) {
+      return
+    }
+
+    // empty
+    if (url === '') {
+      editor.chain().focus().extendMarkRange('link').unsetLink()
+        .run()
+
+      return
+    }
+
+    // update link
+    try {
+      editor.chain().focus().extendMarkRange('link').setLink({ href: url })
+        .run()
+    } catch (e) {
+      alert(e.message)
+    }
+  }, [editor])
+
+  return (
+    <div className="control-group">
+      <div className="button-group">
+        <button
+          onClick={() => editor.chain().focus().toggleBold().run()}
+          disabled={
+            !editor.can()
+              .chain()
+              .focus()
+              .toggleBold()
+              .run()
+          }
+          className={editor.isActive('bold') ? 'is-active' : ''}
+        >
+          <b>B</b>
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleItalic().run()}
+          disabled={
+            !editor.can()
+              .chain()
+              .focus()
+              .toggleItalic()
+              .run()
+          }
+          className={editor.isActive('italic') ? 'is-active' : ''}
+        >
+          <i>I</i>
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleStrike().run()}
+          disabled={
+            !editor.can()
+              .chain()
+              .focus()
+              .toggleStrike()
+              .run()
+          }
+          className={editor.isActive('strike') ? 'is-active' : ''}
+        >
+          -
+        </button>
+        <button
+          onClick={() => editor.chain().focus().setParagraph().run()}
+          className={editor.isActive('paragraph') ? 'is-active' : ''}
+        >
+          P
+        </button>
+        <button onClick={setLink} className={editor.isActive('link') ? 'is-active' : ''}>
+            link
+        </button>
+        <button onClick={() => editor.chain().focus().unsetLink().run()}
+        disabled={!editor.isActive('link')}>
+            unlink
         </button>
         <button
           onClick={() => editor.chain().focus().setColor('#164bb4').run()}
@@ -186,11 +283,11 @@ const extensions = [
   StarterKit.configure({
     bulletList: {
       keepMarks: true,
-      keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+      keepAttributes: false, 
     },
     orderedList: {
       keepMarks: true,
-      keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+      keepAttributes: false, 
     },
   }),
   Link.configure({
@@ -320,4 +417,4 @@ export const ToC = ({
 
 
 
-export {MenuBar, extensions};
+export {MenuBar, SimpleMenuBar, extensions};
