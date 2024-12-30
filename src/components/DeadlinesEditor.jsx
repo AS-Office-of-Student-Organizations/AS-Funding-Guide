@@ -4,7 +4,7 @@ import { getDoc, doc, updateDoc} from "firebase/firestore";
 import { Draggable, DragDropContext, Droppable} from "react-beautiful-dnd";
 import { db } from "../firebase";
 import { parseDate, today } from "@internationalized/date";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4} from 'uuid';
 
 const DeadlinesEditor = () => {
     const [deadlines, setDeadlines] = useState([])
@@ -20,6 +20,7 @@ const DeadlinesEditor = () => {
                     periodStart: parseDate(deadline.periodStart),
                     periodEnd: parseDate(deadline.periodEnd),
                     dueDate: parseDate(deadline.dueDate),
+                    id: uuidv4(),
                 }));
                 setDeadlines(parsedDeadlines)
             } else {
@@ -36,7 +37,7 @@ const DeadlinesEditor = () => {
 
     const handleAddDeadline = () => {
         setDeadlines([...deadlines, 
-            {periodStart: today(), periodEnd: today(), dueDate: today()}]);
+            {periodStart: today(), periodEnd: today(), dueDate: today(), id: uuidv4}]);
     }
 
     const handleDateChange = (index, field, value) => {
@@ -82,8 +83,6 @@ const DeadlinesEditor = () => {
         // Update the pages state
         setDeadlines(reorderedDeadlines);
     };
-    
-    const uniqueId = `draggable-${uuidv4()}`;
 
     return (
         <div className='deadlines-editor'>
@@ -108,7 +107,7 @@ const DeadlinesEditor = () => {
                         ref={provided.innerRef} 
                         {...provided.droppableProps}>
                             {deadlines.map((deadline, index) => (
-                                <Draggable key={index} draggableId={uniqueId} index={index}>
+                                <Draggable key={deadline.id} draggableId={deadline.id} index={index}>
                                 {(provided) => (
                                 <tr key={index}
                                     ref={provided.innerRef}
@@ -139,6 +138,7 @@ const DeadlinesEditor = () => {
                                 )}
                                 </Draggable>
                             ))}
+                            {provided.placeholder}
                         </tbody>
                         )}
                     </Droppable>

@@ -89,6 +89,7 @@ const Announcements = ({
                             </div>)
                         )
                 )}
+                {editMode && provided.placeholder}
             </div>
         </div>
     )
