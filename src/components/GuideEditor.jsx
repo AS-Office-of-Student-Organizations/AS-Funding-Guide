@@ -3,7 +3,7 @@ import { Link, Route, Routes} from "react-router-dom";
 import { collection, doc, getDoc, updateDoc, getFirestore} from "firebase/firestore";
 import GuideSideBar from "./GuideSideBar";
 import GuidePage from "./GuidePage.jsx";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable} from "react-beautiful-dnd";
 import "../styles/Guide.css";
 
 
@@ -31,7 +31,7 @@ const GuideEditor = () => {
 
     const handleSave = async () => {
         try {
-            const docRef = doc(db, "guidePages", "pageArray");
+            const docRef = doc(db, "public", "guide");
             await updateDoc(docRef, { pages: pages });
             alert("Guide saved successfully!");
         } catch (error) {
@@ -94,7 +94,7 @@ const GuideEditor = () => {
     useEffect(() => {
         const fetchPages = async () => {
             try {
-                const docRef = doc(db, "guidePages", "pageArray"); // hard code for now
+                const docRef = doc(db, "public", "guide"); // hard code for now
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setPages(docSnap.data().pages);

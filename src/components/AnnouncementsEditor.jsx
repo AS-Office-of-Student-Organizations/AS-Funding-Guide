@@ -12,7 +12,7 @@ const AnnouncementsEditor = () => {
     useEffect(() => {
         const fetchAnnouncements = async () => {
         try {
-            const docRef = doc(db, "landingContent", "userFeed"); // hard code for now
+            const docRef = doc(db, "public", "landing"); // hard code for now
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 setAnnouncements(docSnap.data().announcements);
@@ -40,7 +40,7 @@ const AnnouncementsEditor = () => {
 
     const handleSave = async () => {
         try {
-            const docRef = doc(db, "landingContent", "userFeed");
+            const docRef = doc(db, "public", "landing");
             await updateDoc(docRef, { announcements: announcements });
             alert("Announcements saved successfully!");
         } catch (error) {

@@ -74,6 +74,7 @@
   
   .announcement p {
     color: #1e40af;
+    margin: 0;
   }
   
   /* Table Styles */
@@ -114,6 +115,15 @@
   @media (max-width: 786px) {
     .landing-body {
         flex-wrap:wrap;
+    }
+    .landing {
+        padding: 2em 1em;
+    }
+
+    .landing {
+        td {
+            font-size: 0.8rem;
+        }
     }
 
 

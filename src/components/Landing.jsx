@@ -12,7 +12,7 @@ const Landing = () => {
     useEffect(() => {
         const fetchFeed = async () => {
         try {
-            const docRef = doc(db, "landingContent", "userFeed"); // hard code for now
+            const docRef = doc(db, "public", "landing"); // hard code for now
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 setAnnouncements(docSnap.data().announcements);

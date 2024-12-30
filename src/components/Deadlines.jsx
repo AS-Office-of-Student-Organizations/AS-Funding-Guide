@@ -5,7 +5,7 @@ const Deadlines = ({deadlines, edit=false}) => {
     const today = new Date();
     const filteredDeadlines = deadlines
         .filter(deadline => new Date(deadline.dueDate) > today)
-        .slice(0,3);
+        .slice(0,5);
     
     return (
         <div className='deadlines'>
@@ -25,8 +25,8 @@ const Deadlines = ({deadlines, edit=false}) => {
                     <tbody>
                     {filteredDeadlines.map((deadline, index) => (
                         <tr key={index}>
-                            <td><b>{new Date(deadline.periodStart).toLocaleDateString()}</b> to <b>{new Date(deadline.periodEnd).toLocaleDateString()}</b></td>
-                            <td><b>{new Date(deadline.dueDate).toLocaleDateString()}</b></td>
+                            <td><b>{new Date(deadline.periodStart).toLocaleDateString('en-US', {timeZone: 'UTC'})}</b> to <b>{new Date(deadline.periodEnd).toLocaleDateString('en-US', {timeZone: 'UTC'})}</b></td>
+                            <td><b>{new Date(deadline.dueDate).toLocaleDateString('en-US', {timeZone: 'UTC'})}</b></td>
                         </tr>
                     ))}
                     </tbody>

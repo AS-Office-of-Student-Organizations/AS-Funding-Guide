@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, Route, Routes, Navigate} from "react-router-dom";
 import { db } from "../firebase.js"; // Import your Firebase config
-import { collection, getDoc, doc, updateDoc } from "firebase/firestore";
+import { getDoc, doc} from "firebase/firestore";
 import GuideSideBar from "./GuideSideBar";
 import GuidePage from "./GuidePage.jsx";
 import "../styles/Guide.css";
@@ -14,7 +14,7 @@ const Guide = () => {
     useEffect(() => {
       const fetchPages = async () => {
         try {
-            const docRef = doc(db, "guidePages", "pageArray"); // hard code for now
+            const docRef = doc(db, "public", "guide"); // hard code for now
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 setPages(docSnap.data().pages);

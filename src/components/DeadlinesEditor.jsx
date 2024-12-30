@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import DeadlineDatePicker from "./DeadlineDatePicker";
 import { getDoc, doc, updateDoc} from "firebase/firestore";
-import { DragDropContext, Droppable} from "react-beautiful-dnd";
+import { Draggable, DragDropContext, Droppable} from "react-beautiful-dnd";
 import { db } from "../firebase";
 import { parseDate, today } from "@internationalized/date";
+import { v4 as uuidv4 } from 'uuid';
 
 const DeadlinesEditor = () => {
     const [deadlines, setDeadlines] = useState([])
@@ -11,7 +12,7 @@ const DeadlinesEditor = () => {
     useEffect(() => {
         const fetchDeadlines = async () => {
         try {
-            const docRef = doc(db, "landingContent", "userFeed"); // hard code for now
+            const docRef = doc(db, "public", "landing"); // hard code for now
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 const fetchedDeadlines = docSnap.data().deadlines;
@@ -47,6 +48,7 @@ const DeadlinesEditor = () => {
     };
 
     const handleDeleteDeadline = (index) => {
+        console.log(index);
         const newDeadlines = deadlines.filter((_, i) => i !== index);
         setDeadlines(newDeadlines);
     }
@@ -58,7 +60,7 @@ const DeadlinesEditor = () => {
           dueDate: date.dueDate.toString(),
         }));
         try {
-            const docRef = doc(db, "landingContent", "userFeed");
+            const docRef = doc(db, "public", "landing");
             await updateDoc(docRef, { deadlines: formattedDates });
             alert("Deadlines saved successfully!");
         } catch (error) {
@@ -66,8 +68,22 @@ const DeadlinesEditor = () => {
         }
     };
 
-    console.log(deadlines);
+    const onDragEnd = (result) => {
+        const { source, destination } = result;
     
+        // If dropped outside the list or in the same position, do nothing
+        if (!destination || source.index === destination.index) return;
+    
+        // Reorder the pages array
+        const reorderedDeadlines = Array.from(deadlines);
+        const [removed] = reorderedDeadlines.splice(source.index, 1);
+        reorderedDeadlines.splice(destination.index, 0, removed);
+    
+        // Update the pages state
+        setDeadlines(reorderedDeadlines);
+    };
+    
+    const uniqueId = `draggable-${uuidv4()}`;
 
     return (
         <div className='deadlines-editor'>
@@ -85,33 +101,48 @@ const DeadlinesEditor = () => {
                             <th scope='col'>Test</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    {deadlines.map((deadline, index) => (
-                        <tr key={index}>
-                            <td>
-                                <div>
-                                <DeadlineDatePicker 
-                                    value={deadline.periodStart}
-                                    onChange={(value) => handleDateChange(index, 'periodStart', value)}
-                                /> to 
-                                <DeadlineDatePicker 
-                                    value={deadline.periodEnd}
-                                    onChange={(value) => handleDateChange(index, 'periodEnd', value)}
-                                />
-                                </div>
-                            </td>
-                            <td>
-                                <DeadlineDatePicker 
-                                    value={deadline.dueDate}
-                                    onChange={(value) => handleDateChange(index, 'dueDate', value)}
-                                />
-                            </td>
-                            <td>
-                                <button onClick={() => handleDeleteDeadline(index)}>Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
+                    <DragDropContext onDragEnd={onDragEnd}>
+                    <Droppable droppableId="announcements">
+                    {(provided) => (
+                        <tbody
+                        ref={provided.innerRef} 
+                        {...provided.droppableProps}>
+                            {deadlines.map((deadline, index) => (
+                                <Draggable key={index} draggableId={uniqueId} index={index}>
+                                {(provided) => (
+                                <tr key={index}
+                                    ref={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}>
+                                    <td>
+                                        <div>
+                                        <DeadlineDatePicker 
+                                            value={deadline.periodStart}
+                                            onChange={(value) => handleDateChange(index, 'periodStart', value)}
+                                        /> to 
+                                        <DeadlineDatePicker 
+                                            value={deadline.periodEnd}
+                                            onChange={(value) => handleDateChange(index, 'periodEnd', value)}
+                                        />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <DeadlineDatePicker 
+                                            value={deadline.dueDate}
+                                            onChange={(value) => handleDateChange(index, 'dueDate', value)}
+                                        />
+                                    </td>
+                                    <td>
+                                        <button className='deadline-button' onClick={() => handleDeleteDeadline(index)}>Delete</button>
+                                    </td>
+                                </tr>
+                                )}
+                                </Draggable>
+                            ))}
+                        </tbody>
+                        )}
+                    </Droppable>
+                </DragDropContext>
                 </table>
                 <div className='edit-buttons'>
                     <button className='edit-button' onClick={handleAddDeadline}>
