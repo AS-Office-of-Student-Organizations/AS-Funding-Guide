@@ -108,7 +108,7 @@
     display:none;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
     .guide-left-column.hidden {
         transform: translateX(calc(-100% + 1em)) translateY(-50%);
         transition: transform 0.3s ease-in-out;
