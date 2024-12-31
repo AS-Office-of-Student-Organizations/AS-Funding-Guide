@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import {NavLink, useLocation} from 'react-router-dom';
 import DropDownButton from "./DropDownButton";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ExternalLink } from "lucide-react";
 
 const NavBar=()=>{
     const [activeLinkName, setActiveLinkName] = useState('');
@@ -22,7 +22,7 @@ const NavBar=()=>{
     }, [location, links]);
 
     
-    const navLinks = [<NavLink to="/guide">Guide</NavLink>, <NavLink to='/admin'>Admin</NavLink>, <a href="https://finance.ucsd.edu/" target="_blank">Funding Portal 🗗</a>]
+    const navLinks = [<NavLink to="/guide">Guide</NavLink>, <NavLink to='/admin'>Admin</NavLink>, <a href="https://finance.ucsd.edu/" target="_blank">Funding Portal <ExternalLink/></a>]
 
     return(
         <div className="nav-bar">
@@ -52,7 +52,7 @@ const NavBar=()=>{
                     <NavLink to='/admin'>Admin</NavLink>
                 </span>
                 <span className="link">
-                    <a href="https://finance.ucsd.edu/" target="_blank">Funding Portal 🗗</a>
+                    <a href="https://finance.ucsd.edu/" target="_blank">Funding Portal <ExternalLink/></a>
                 </span>
             </div>
         </div>
