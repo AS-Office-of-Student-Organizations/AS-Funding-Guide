@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from "react"
+import { Calendar } from "lucide-react";
 
 const Deadlines = ({deadlines, edit=false}) => {
 
@@ -9,7 +10,10 @@ const Deadlines = ({deadlines, edit=false}) => {
     
     return (
         <div className='deadlines'>
-            <h2>Upcoming Funding Deadlines</h2>
+            <div className='section-header'>
+                <Calendar/>
+                <h2>Upcoming Funding Deadlines</h2>
+            </div>
             <div>
                 <table>
                     <thead>

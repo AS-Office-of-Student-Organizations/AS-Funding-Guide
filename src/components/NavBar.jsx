@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import {NavLink, useLocation} from 'react-router-dom';
 import DropDownButton from "./DropDownButton";
+import { ChevronDown } from "lucide-react";
 
 const NavBar=()=>{
     const [activeLinkName, setActiveLinkName] = useState('');
@@ -34,9 +35,15 @@ const NavBar=()=>{
                         </h1>
                         <p className="subtitle">Office of Student Organizations</p>
                     </div>
+                    <div className="title-text-mobile">
+                        <h1 className="title">
+                                ASUCSD
+                        </h1>
+                        <p className="subtitle">Student Orgs</p>
+                    </div>
                 </header>
             </NavLink>
-            <DropDownButton label={activeLinkName + '🡻'} data={navLinks}/>
+            <DropDownButton label={<div className='nav-dropdown-content'>{activeLinkName}<ChevronDown/></div>} data={navLinks}/>
             <div className="nav-list">
                 <span className="link">
                     <NavLink to="/guide">Guide</NavLink>

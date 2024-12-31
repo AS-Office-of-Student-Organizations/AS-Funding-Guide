@@ -106,41 +106,49 @@
 
 .sidebar-toggle {
     display:none;
-    box-shadow: inset
-    0 0 0 2px rgba(255, 255, 255, 0),
-    0.3em 0.3em 0.3em rgba(67, 71, 78, 0.6);
 }
 
 @media (max-width: 1000px) {
     .guide-left-column.hidden {
-        transform: translateX(calc(-100% + 1.5em));
+        transform: translateX(calc(-100% + 1em)) translateY(-50%);
         transition: transform 0.3s ease-in-out;
+        background-color: var(--background-main-dark);
     }
 
-    .sidebar-toggle {
+    button.sidebar-toggle {
         display: flex;
-        background-color: var(--background-secondary);
-        padding: 10em;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: transparent;
+        border-radius: 0;
+        width: 3em;
+        padding: 0;
+    }
+
+    .lucide-chevron-right, .lucide-menu, .lucide-chevron-left{
+        margin-right:-0.35em;
     }
 
     .guide-left-column {
-        max-height: unset;
-        position: fixed;
+        position: sticky;
         width: 95vw;
-        top: 5em;
+        top: 50%;
         left:0;
-        height: calc(100vh - 5em);
+        max-height: calc(100vh - 5em);
         z-index:2;
         border-radius: 0.5em;
-        transform: translateX(0);
+        background-color: var(--background-secondary);
+        transform: translateX(0) translateY(-50%);
         transition: transform 0.3s ease-in-out;
         margin: unset;
+        padding-left:0;
+        padding-right:0;
+        margin-right: -95vw;
+        align-items: stretch;
     }
 
     .guide-sidebar{
-        background-color: var(--background-secondary);
-        border: 2px solid var(--background-secondary-dark);
-        border-radius: 0.5em;
         max-height: calc(100vh - 5em);
     }
 }
@@ -148,7 +156,16 @@
 @media (max-width: 600px) {
     .guide-left-column {
         top: 3em;
-        height: calc(100vh - 3em)
+        max-height: calc(100vh - 2em);
+        transform: translateX(0);
+    }
+
+    .guide-left-column.hidden {
+        transform: translateX(calc(-100% + 1em));
+    }
+
+    .guide-sidebar{
+        max-height: calc(100vh - 2em);
     }
 
 }
@@ -244,12 +261,11 @@
     .guide-right-column {
         display: none;
     }
-    .guide-left-column {
-        padding-left:0;
-        padding-right:0;
-    }
     .guide-page-display,
     .guide-page-edit {
         padding: 0 2em;
     }
 }
+
+
+

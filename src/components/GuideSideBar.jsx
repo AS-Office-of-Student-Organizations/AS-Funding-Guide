@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
 import { Draggable } from "react-beautiful-dnd";
+import { Menu, ChevronLeft, ChevronRight } from "lucide-react";
 
 const GuideSideBar = ({
   pages, 
@@ -81,8 +82,8 @@ const GuideSideBar = ({
           </div> 
           )}
       </div>
-      <button className="sidebar-toggle" onClick={toggleSidebar}>
-          {isSidebarVisible ? '〈' : '☰'}
+      <button className={`sidebar-toggle ${isSidebarVisible ? "extended" : "contracted"}`}  onClick={toggleSidebar}>
+          {isSidebarVisible ? <ChevronLeft/> : <Menu/>}
       </button>
     </div>
   );

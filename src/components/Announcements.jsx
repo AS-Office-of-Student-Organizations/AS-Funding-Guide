@@ -2,6 +2,7 @@ import React, {useState,useEffect} from "react"
 import { extensions, SimpleMenuBar } from './TipTap';
 import { useEditor, EditorContent } from "@tiptap/react";
 import { Draggable } from "react-beautiful-dnd";
+import {Bell} from "lucide-react";
 
 
 const AnnouncementContent = ({content, edit, onContentChange}) => {
@@ -51,7 +52,10 @@ const Announcements = ({
         }) => {
     return (
         <div className='announcements'>
-            <h2>Announcements</h2>
+            <div className='section-header'>
+                <Bell/>
+                <h2>Announcements</h2>
+            </div>
             <div ref={editMode ?  provided.innerRef : null} {...(editMode ? provided.droppableProps : {})}>
                 {
                     announcements.map((announcement, index) => (

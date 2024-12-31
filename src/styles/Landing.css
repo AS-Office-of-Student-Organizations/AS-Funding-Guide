@@ -13,6 +13,7 @@
     font-weight: bold;
     color: #111827;
     margin-bottom: 0.5rem;
+    line-height:1.2em;
   }
   
   .header p {
@@ -23,6 +24,15 @@
     display: flex;
     flex-direction: row;
     gap: 1em;
+  }
+
+  .section-header {
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
   }
   
   .landing-section {
@@ -41,7 +51,6 @@
     font-size: 1.25rem;
     font-weight: 600;
     gap: 0.5rem;
-    margin-bottom: 1rem;
   }
   
   /* Announcements Styles */
@@ -125,6 +134,10 @@
             font-size: 0.8rem;
         }
     }
+    .landing-section {
+        width: 100%;
+    }
+    
 
 
   }
