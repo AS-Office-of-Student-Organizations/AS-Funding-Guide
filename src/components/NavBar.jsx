@@ -28,7 +28,7 @@ const NavBar=()=>{
         <div className="nav-bar">
             <NavLink to="/" className="title-link">
                 <header>
-                    <img className="title-logo" alt="Associated Students Logo" src="/public/logo_simplified.png"></img>
+                    <img className="title-logo" alt="Associated Students Logo" src="/logo_simplified.png"></img>
                     <div className="title-text">
                         <h1 className="title">
                                 Associated Students
