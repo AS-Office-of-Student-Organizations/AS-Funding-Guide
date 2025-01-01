@@ -7,8 +7,20 @@ import { DragDropContext, Droppable} from "react-beautiful-dnd";
 import "../styles/Guide.css";
 
 
-
 const GuideEditor = () => {
+    const GuideEditorLanding = () => {
+      return (
+        <div>
+          <h1>Funding Guide Editor Rules</h1>
+          <ul>
+            <li>All pages must start with an h1, and only include one h1</li>
+            <li>Introduction page cannot be deleted. If it is, make it again.</li>
+            <li><b>PRESS SAVE AFTER MAKING CHANGES</b></li>
+          </ul>
+        </div>
+      )
+    };
+
     const [pages, setPages] = useState([]);
     const db = getFirestore();
 
@@ -131,7 +143,7 @@ const GuideEditor = () => {
                 }
               />
             ))}
-            <Route path="*" element={<p>Page not found</p>} />
+            <Route path="*" element={<GuideEditorLanding/>} />
           </Routes>
         </div>
       );
