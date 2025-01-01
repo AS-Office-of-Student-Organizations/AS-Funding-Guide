@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Draggable } from "react-beautiful-dnd";
-import { Menu, ChevronLeft, ChevronRight } from "lucide-react";
+import { Menu, ChevronLeft } from "lucide-react";
+import PropTypes from 'prop-types';
 
 const GuideSideBar = ({
   pages, 
@@ -32,7 +33,9 @@ const GuideSideBar = ({
                 {(provided) => (
                   <li
                     ref={provided.innerRef}
+                    // eslint-disable-next-line react/prop-types
                     {...provided.draggableProps}
+                    // eslint-disable-next-line react/prop-types
                     {...provided.dragHandleProps}
                     className={page.header ? "guide-sidebar-header" : ""}
                   >
@@ -66,7 +69,10 @@ const GuideSideBar = ({
           </li>
         )
       )}
-      {editMode && provided.placeholder}
+      {
+      // eslint-disable-next-line react/prop-types
+      editMode && provided.placeholder
+      }
       </ul>
         {editMode && (
           <div className="sidebar-buttons">
@@ -91,3 +97,23 @@ const GuideSideBar = ({
   };
 
 export default GuideSideBar;
+
+
+GuideSideBar.propTypes = {
+  pages: PropTypes.arrayOf(
+      PropTypes.shape({
+      pageName: PropTypes.string.isRequired,   
+      pageContent: PropTypes.string.isRequired, 
+      })
+  ).isRequired,
+  editMode: PropTypes.bool,
+  handleAddPage: PropTypes.func,
+  handleAddHeader: PropTypes.func,
+  handleDeletePage: PropTypes.func,
+  handleEditPageName: PropTypes.func,
+  handleSave: PropTypes.func,
+  provided: PropTypes.shape({
+    innerRef: PropTypes.func, 
+    droppableProps: PropTypes.object, 
+  }),
+}
