@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const DropDownCard = ({ data = [], setOpen }) => (
     <div className="dropdown-card">
       <ul>
@@ -11,3 +13,8 @@ const DropDownCard = ({ data = [], setOpen }) => (
   );
   
 export default DropDownCard;
+
+DropDownCard.propTypes = {
+  data: PropTypes.array,
+  setOpen: PropTypes.func.isRequired,
+};
