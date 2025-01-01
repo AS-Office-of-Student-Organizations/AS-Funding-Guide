@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import { useState, useEffect} from "react";
 import {NavLink, useLocation} from 'react-router-dom';
 import DropDownButton from "./DropDownButton";
 import { ChevronDown, ExternalLink } from "lucide-react";
@@ -7,22 +7,27 @@ const NavBar=()=>{
     const [activeLinkName, setActiveLinkName] = useState('');
     const location = useLocation();
 
-    const links = [
-        { to: '/guide', name: 'Guide' },
-        { to: '/admin', name: 'Admin' },
-    ];
+    
 
     useEffect(() => {
+        const links = [
+            { to: '/guide', name: 'Guide' },
+            { to: '/admin', name: 'Admin' },
+        ];
         const activeLink = links.find(link => location.pathname.includes(link.to));
         if (activeLink) {
             setActiveLinkName(activeLink.name);
         } else {
              setActiveLinkName(''); // Optionally clear if no link matches
         }
-    }, [location, links]);
+    }, [location]);
 
     
-    const navLinks = [<NavLink to="/guide">Guide</NavLink>, <NavLink to='/admin'>Admin</NavLink>, <a href="https://finance.ucsd.edu/" target="_blank">Funding Portal <ExternalLink/></a>]
+    const navLinks = [
+        <NavLink to="/guide" key='0'>Guide</NavLink>, 
+        <NavLink to='/admin'key='1'>Admin</NavLink>, 
+        <a href="https://finance.ucsd.edu/" key='2' target="_blank">Funding Portal <ExternalLink/></a>
+        ]
 
     return(
         <div className="nav-bar">

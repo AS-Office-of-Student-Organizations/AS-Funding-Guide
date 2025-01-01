@@ -2,11 +2,11 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import { extensions, MenuBar, ToC } from "./TipTap";
 import React, { useEffect, useState} from "react";
 import { getHierarchicalIndexes, TableOfContents } from '@tiptap-pro/extension-table-of-contents';
+import PropTypes from 'prop-types';
 
 const MemorizedToC = React.memo(ToC)
 
 const GuidePage = ({ content, edit, onContentChange}) => {
-
   
   const [items, setItems] = useState([])
 
@@ -60,3 +60,9 @@ const GuidePage = ({ content, edit, onContentChange}) => {
 }
 
 export default GuidePage;
+
+GuidePage.propTypes = {
+  content: PropTypes.string.isRequired,
+  edit: PropTypes.bool.isRequired,
+  onContentChange: PropTypes.func,
+}

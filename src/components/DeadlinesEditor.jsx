@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import DeadlineDatePicker from "./DeadlineDatePicker";
 import { getDoc, doc, updateDoc} from "firebase/firestore";
 import { Draggable, DragDropContext, Droppable} from "react-beautiful-dnd";

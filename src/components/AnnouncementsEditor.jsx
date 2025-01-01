@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import {useState,useEffect} from "react";
 import { db } from "../firebase.js"; // Import your Firebase config
 import { getDoc, doc, updateDoc} from "firebase/firestore";
 import { DragDropContext, Droppable} from "react-beautiful-dnd";

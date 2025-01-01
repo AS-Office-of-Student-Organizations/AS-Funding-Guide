@@ -1,6 +1,6 @@
 import Announcements from "./Announcements";
 import Deadlines from "./Deadlines";
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import { db } from "../firebase.js"; // Import your Firebase config
 import { getDoc, doc} from "firebase/firestore";
 import "../styles/Landing.css"

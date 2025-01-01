@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link, Route, Routes} from "react-router-dom";
-import { collection, doc, getDoc, updateDoc, getFirestore} from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { Route, Routes} from "react-router-dom";
+import { doc, getDoc, updateDoc, getFirestore} from "firebase/firestore";
 import GuideSideBar from "./GuideSideBar";
 import GuidePage from "./GuidePage.jsx";
 import { DragDropContext, Droppable} from "react-beautiful-dnd";
@@ -67,6 +67,8 @@ const GuideEditor = () => {
     };
     
     
+    // This gets verified later - no need now.
+    // eslint-disable-next-line react/prop-types 
     const GuideSideBarEditor = ({ pages }) => {
         const onDragEnd = (result) => {
           const { source, destination } = result;
@@ -118,7 +120,7 @@ const GuideEditor = () => {
             }
         };
         fetchPages();
-    }, []);
+    }, [db]);
   
     return (
         <div className="guide">

@@ -1,7 +1,7 @@
-import React, {useState,useEffect} from "react"
 import { Calendar } from "lucide-react";
+import PropTypes from "prop-types";
 
-const Deadlines = ({deadlines, edit=false}) => {
+const Deadlines = ({deadlines}) => {
 
     const today = new Date();
     const filteredDeadlines = deadlines
@@ -41,3 +41,13 @@ const Deadlines = ({deadlines, edit=false}) => {
 }
 
 export default Deadlines;
+
+Deadlines.propTypes = {
+    deadlines: PropTypes.arrayOf(
+        PropTypes.shape({
+        periodStart: PropTypes.string.isRequired,   
+        periodEnd: PropTypes.string.isRequired, 
+        dueDate: PropTypes.string.isRequired,
+        })
+    ).isRequired,
+}

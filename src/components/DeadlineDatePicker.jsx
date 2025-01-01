@@ -1,5 +1,5 @@
-import {Button, Calendar, CalendarCell, CalendarGrid, DateInput, DatePicker, DateSegment, Dialog, Group, Heading, Label, Popover} from 'react-aria-components';
-import { parseDate } from '@internationalized/date';
+import {Button, Calendar, CalendarCell, CalendarGrid, DateInput, DatePicker, DateSegment, Dialog, Group, Heading, Popover} from 'react-aria-components';
+import PropTypes from 'prop-types';
 
 const DeadlineDatePicker = ({value, onChange}) => {
     
@@ -30,3 +30,8 @@ const DeadlineDatePicker = ({value, onChange}) => {
 }
 
 export default DeadlineDatePicker
+
+DeadlineDatePicker.propTypes = {
+    value: PropTypes.string,    
+    onChange: PropTypes.func,    
+};

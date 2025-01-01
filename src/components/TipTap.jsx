@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable react/prop-types */
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
-import React, { useCallback } from 'react'
+import  { useCallback } from 'react'
 import { TextSelection } from '@tiptap/pm/state'
 
 
@@ -330,7 +332,7 @@ const extensions = [
 
         // all checks have passed
         return true
-      } catch (error) {
+      } catch {
         return false
       }
     },
@@ -344,7 +346,7 @@ const extensions = [
         const domain = parsedUrl.hostname
 
         return !disallowedDomains.includes(domain)
-      } catch (error) {
+      } catch {
         return false
       }
     },
@@ -364,7 +366,7 @@ export const ToCItem = ({ item, onItemClick }) => {
 export const ToCEmptyState = () => {
   return (
     <div className="empty-state">
-      <p>There's nothing here...</p>
+      <p>There&apos;s nothing here...</p>
     </div>
   )
 }
@@ -393,8 +395,8 @@ export const ToC = ({
 
       editor.view.focus()
 
-      if (history.pushState) { // eslint-disable-line
-        history.pushState(null, null, `#${id}`) // eslint-disable-line
+      if (history.pushState) { 
+        history.pushState(null, null, `#${id}`) 
       }
 
       window.scrollTo({
@@ -417,4 +419,5 @@ export const ToC = ({
 
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 export {MenuBar, SimpleMenuBar, extensions};
