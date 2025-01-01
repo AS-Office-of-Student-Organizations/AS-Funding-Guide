@@ -1,5 +1,6 @@
-import React, {useState, useEffect, useRef} from "react";
+import {useState, useEffect, useRef} from "react";
 import DropDownCard from "./DropDownCard";
+import PropTypes from 'prop-types';
 
 const DropDownButton = ({
     label,
@@ -28,3 +29,8 @@ const DropDownButton = ({
 }
 
 export default DropDownButton;
+
+DropDownButton.propTypes = {
+    label: PropTypes.string.isRequired,
+    data: PropTypes.array.isRequired,
+}
