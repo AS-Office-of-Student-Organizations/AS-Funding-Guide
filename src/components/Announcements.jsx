@@ -1,8 +1,9 @@
-import React, {useState,useEffect} from "react"
+import  {useEffect} from "react"
 import { extensions, SimpleMenuBar } from './TipTap';
 import { useEditor, EditorContent } from "@tiptap/react";
 import { Draggable } from "react-beautiful-dnd";
 import {Bell} from "lucide-react";
+import PropTypes from 'prop-types';
 
 
 const AnnouncementContent = ({content, edit, onContentChange}) => {
@@ -64,7 +65,9 @@ const Announcements = ({
                                     {(provided) => (
                                     <div
                                         ref={provided.innerRef}
+                                        // eslint-disable-next-line react/prop-types
                                         {...provided.draggableProps}
+                                        // eslint-disable-next-line react/prop-types
                                         {...provided.dragHandleProps}
                                         className='announcement'
                                     >
@@ -93,10 +96,36 @@ const Announcements = ({
                             </div>)
                         )
                 )}
-                {editMode && provided.placeholder}
+                {
+                // eslint-disable-next-line react/prop-types
+                editMode && provided.placeholder
+                }
             </div>
         </div>
     )
 }
 
 export default Announcements;
+
+AnnouncementContent.propTypes = {
+    content: PropTypes.string.isRequired,
+    edit: PropTypes.bool.isRequired,    
+    onContentChange: PropTypes.func,    
+};
+
+Announcements.propTypes = {
+    announcements: PropTypes.arrayOf(
+        PropTypes.shape({
+        title: PropTypes.string.isRequired,   
+        content: PropTypes.string.isRequired, 
+        })
+    ).isRequired, 
+    editMode: PropTypes.bool,                
+    handleDeleteAnnouncement: PropTypes.func, 
+    handleContentChange: PropTypes.func,     
+    handleEditTitle: PropTypes.func,    
+    provided: PropTypes.shape({
+        innerRef: PropTypes.func, 
+        droppableProps: PropTypes.object, 
+    }),                       
+};
