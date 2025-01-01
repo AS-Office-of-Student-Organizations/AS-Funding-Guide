@@ -13,7 +13,7 @@ function AdminLogin() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/admin");
-    } catch (error) {
+    } catch {
       alert("Login failed. Please check your credentials.");
     }
   };
