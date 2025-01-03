@@ -1,5 +1,6 @@
 @import url(vars.css);
 
+/* Global Styles */
 * {
     padding:0;
     margin:0;
@@ -10,7 +11,7 @@
       width: 14px;
     }
     
-    
+    /* Custom Global Scoll Bar */
     ::-webkit-scrollbar-track {
       background-clip: padding-box;
       background-color: transparent;
@@ -101,6 +102,8 @@ body {
   }
 }
 
+
+/* Styles for Navigation Bar */
 .nav-bar {
     background-color: var(--background-secondary);
     display: flex;
@@ -281,6 +284,8 @@ body {
 }
 
 
+/*Styles for Tiptap Text Editor*/
+
 .tiptap {
     :first-child {
       margin-top: 0;
@@ -392,7 +397,7 @@ body {
   }
 
 
-.box-editor, .guide {
+.guide {
     text-align: left;
 }
 
@@ -499,7 +504,6 @@ body {
         cursor: pointer;
       }
       
-    
       .button-group {
         display: flex;
         flex-wrap: wrap;
@@ -508,22 +512,18 @@ body {
         gap: 0.25em;
       }
       
-      
-      
       [data-node-view-wrapper] > .control-group {
         padding: 0;
       }
 
 }
 
-
+/* Styles for Date Picker in Deadlines Editor */
 .react-aria-DatePicker {
   color: var(--solid-main);
   background-color: var(--background-main);
   display: flex;
 
-  
-  
   .react-aria-Group {
     display: flex;
     width: fit-content;
@@ -629,5 +629,4 @@ body {
     display:flex;
     flex-direction:row;
   }
-  
 }
