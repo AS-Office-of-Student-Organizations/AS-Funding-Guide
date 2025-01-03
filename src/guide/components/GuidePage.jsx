@@ -1,5 +1,5 @@
 import { EditorContent, useEditor } from "@tiptap/react";
-import { extensions, MenuBar, ToC } from "../../components/TipTap";
+import { extensions, MenuBar, ToC } from "@/components/TipTap";
 import React, { useEffect, useState} from "react";
 import { getHierarchicalIndexes, TableOfContents } from '@tiptap-pro/extension-table-of-contents';
 import PropTypes from 'prop-types';
