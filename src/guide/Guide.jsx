@@ -1,10 +1,10 @@
 import  { useEffect, useState } from "react";
 import { Route, Routes, Navigate} from "react-router-dom";
-import { db } from "../firebase.js"; // Import your Firebase config
+import { db } from "@/components/firebase.jsx"; 
 import { getDoc, doc} from "firebase/firestore";
-import GuideSideBar from "./GuideSideBar";
-import GuidePage from "./GuidePage.jsx";
-import "../styles/Guide.css";
+import GuideSideBar from "./components/GuideSideBar.jsx";
+import GuidePage from "./components/GuidePage.jsx";
+import "./Guide.css";
 
 
 const Guide = () => {

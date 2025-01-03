@@ -1,9 +1,9 @@
-import Announcements from "./Announcements";
-import Deadlines from "./Deadlines";
+import Announcements from "./components/Announcements.jsx";
+import Deadlines from "./components/Deadlines.jsx";
+import { db } from "@/components/firebase.jsx"; 
 import {useState, useEffect} from "react";
-import { db } from "../firebase.js"; // Import your Firebase config
 import { getDoc, doc} from "firebase/firestore";
-import "../styles/Landing.css"
+import "./Landing.css"
 
 const Landing = () => {
     const [announcements, setAnnouncements] = useState([]); 

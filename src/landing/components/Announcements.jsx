@@ -1,5 +1,5 @@
 import  {useEffect} from "react"
-import { extensions, SimpleMenuBar } from './TipTap';
+import { extensions, SimpleMenuBar } from '@/components/TipTap';
 import { useEditor, EditorContent } from "@tiptap/react";
 import { Draggable } from "react-beautiful-dnd";
 import {Bell} from "lucide-react";

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Route, Routes} from "react-router-dom";
 import { doc, getDoc, updateDoc, getFirestore} from "firebase/firestore";
-import GuideSideBar from "./GuideSideBar";
-import GuidePage from "./GuidePage.jsx";
+import GuideSideBar from "@/guide/components/GuideSideBar.jsx";
+import GuidePage from "@/guide/components/GuidePage.jsx";
 import { DragDropContext, Droppable} from "react-beautiful-dnd";
-import "../styles/Guide.css";
+import "./Guide.css";
 
 
 const GuideEditor = () => {
@@ -124,11 +124,9 @@ const GuideEditor = () => {
   
     return (
         <div className="guide">
-          <div className="guide-left-column">
-            <GuideSideBarEditor
-              pages={pages}
-            />
-          </div>
+          <GuideSideBarEditor
+            pages={pages}
+          />
           <Routes>
             {pages.map((page, index) => (
               !page.header && <Route

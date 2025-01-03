@@ -3,9 +3,19 @@ import PropTypes from "prop-types";
 
 const Deadlines = ({deadlines}) => {
 
+    function parseLocalDate(dateString) {
+        const [year, month, day] = dateString.split("-").map(Number);
+        return new Date(year, month - 1, day); // Months are 0-based in JavaScript
+    }
+
     const today = new Date();
+    today.setHours(0,0,0,0)
+
     const filteredDeadlines = deadlines
-        .filter(deadline => new Date(deadline.dueDate) > today)
+        .filter(deadline => {
+            const dueDate = parseLocalDate(deadline.dueDate);
+            return dueDate >= today;
+        })
         .slice(0,5);
     
     return (
