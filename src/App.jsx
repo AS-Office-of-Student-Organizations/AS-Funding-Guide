@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AdminLogin from "./AdminLogin.jsx";
-import RequireAuth from "./RequireAuth.jsx";
-import NavBar from "./components/NavBar.jsx"
-import Guide from "./components/Guide.jsx";
-import AdminHome from "./components/AdminHome.jsx";
-import Landing from "./components/Landing.jsx"
+import AdminLogin from "@/admin/AdminLogin.jsx";
+import RequireAuth from "@/components/RequireAuth.jsx";
+import NavBar from "@/components/NavBar.jsx"
+import Guide from "@/guide/Guide.jsx";
+import AdminHome from "@/admin/AdminHome.jsx";
+import Landing from "@/landing/Landing.jsx"
 
 function App() {
   return (

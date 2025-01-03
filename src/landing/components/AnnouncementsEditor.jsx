@@ -1,9 +1,8 @@
 import {useState,useEffect} from "react";
-import { db } from "../firebase.js"; // Import your Firebase config
+import { db } from "@/components/firebase.jsx"; // Import your Firebase config
 import { getDoc, doc, updateDoc} from "firebase/firestore";
 import { DragDropContext, Droppable} from "react-beautiful-dnd";
-import "../styles/Landing.css"
-import Announcements from "./Announcements.jsx";
+import Announcements from "@/landing/components/Announcements.jsx";
 
 const AnnouncementsEditor = () => {
 

@@ -1,7 +1,7 @@
 import { Routes, Route, Link } from "react-router-dom"
-import GuideEditor from "./GuideEditor";
-import AnnouncementsEditor from "./AnnouncementsEditor";
-import DeadlinesEditor from "./DeadlinesEditor";
+import GuideEditor from "@/guide/GuideEditor";
+import AnnouncementsEditor from "@/landing/components/AnnouncementsEditor";
+import DeadlinesEditor from "@/landing/components/DeadlinesEditor";
 
 const AdminHome = () => {
     return (
