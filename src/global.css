@@ -516,21 +516,6 @@ body {
 
 }
 
-.guide-page-edit {
-    .control-group {
-      position:sticky;
-      top:5.5em;
-      margin-right:2em;
-      margin-left: 2em;
-      z-index: 2;
-      align-items: center;
-      background-color: var(--gray-3);
-      gap: 0.5rem;
-      padding: 0.5rem;
-      border-radius: 1em;
-    }
-}
-
 
 .react-aria-DatePicker {
   color: var(--solid-main);

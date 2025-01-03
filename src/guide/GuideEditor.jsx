@@ -124,11 +124,9 @@ const GuideEditor = () => {
   
     return (
         <div className="guide">
-          <div className="guide-left-column">
-            <GuideSideBarEditor
-              pages={pages}
-            />
-          </div>
+          <GuideSideBarEditor
+            pages={pages}
+          />
           <Routes>
             {pages.map((page, index) => (
               !page.header && <Route
