@@ -112,9 +112,7 @@ body {
     padding: 1em 1.4em 1em 1.4em;
     border-radius: 2em;
     z-index:2;
-    box-shadow: inset
-    0 0 0 2px rgba(255, 255, 255, 0),
-    0.3em 0.3em 0.3em rgba(67, 71, 78, 0.6);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.267);
 
     .link {
         display:inline-block;
