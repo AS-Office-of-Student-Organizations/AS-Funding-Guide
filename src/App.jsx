@@ -8,9 +8,9 @@ import Landing from "@/landing/Landing.jsx"
 import React from "react";
 import Chatbot from "react-chatbot-kit";
 
-import config from "./config";
-import MessageParser from "./MessageParser";
-import ActionProvider from "./ActionProvider";
+import config from "./chatbot/config";
+import MessageParser from "./chatbot/MessageParser";
+import ActionProvider from "./chatbot/ActionProvider";
 
 function App() {
   return (
