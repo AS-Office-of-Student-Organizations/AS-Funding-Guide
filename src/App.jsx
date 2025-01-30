@@ -5,6 +5,12 @@ import NavBar from "@/components/NavBar.jsx"
 import Guide from "@/guide/Guide.jsx";
 import AdminHome from "@/admin/AdminHome.jsx";
 import Landing from "@/landing/Landing.jsx"
+import React from "react";
+import Chatbot from "react-chatbot-kit";
+
+import config from "./config";
+import MessageParser from "./MessageParser";
+import ActionProvider from "./ActionProvider";
 
 function App() {
   return (
@@ -22,6 +28,13 @@ function App() {
           <Route path="/guide/*" element={<Guide/>} />
         </Routes>
       </div>
+      <div className="App">
+      <Chatbot
+        config={config}
+        messageParser={MessageParser}
+        actionProvider={ActionProvider}
+      />
+    </div>
     </Router>
   );
 }
