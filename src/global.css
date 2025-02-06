@@ -628,3 +628,15 @@ body {
     flex-direction:row;
   }
 }
+
+.react-chatbot-kit-chat-container {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 40px;
+  bottom: 55px;
+  z-index: 9999;
+  box-shadow: 5px 5px 13px rgba(91, 81, 81, 0.4);
+  border-radius: 5px;
+}
