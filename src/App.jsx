@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar.jsx"
 import Guide from "@/guide/Guide.jsx";
 import AdminHome from "@/admin/AdminHome.jsx";
 import Landing from "@/landing/Landing.jsx"
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/guide/*" element={<Guide/>} />
         </Routes>
       </div>
+      <Footer/>
     </Router>
   );
 }

@@ -628,3 +628,52 @@ body {
     flex-direction:row;
   }
 }
+
+.footer {
+  border-top: 1px solid var(--solid-secondary);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    text-align: left;
+    gap: 2rem;
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .footer-section a {
+    color: var(--solid-main-light);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+  
+  .footer-section a:hover {
+    text-decoration:underline;
+  }
+  
+  .discord-logo {
+    width: auto;
+    height: 1rem;
+    filter: brightness(1) invert(.3) sepia(.9) hue-rotate(170deg) saturate(400%);
+    transform: translateY(0.1rem);
+  }
+
+  .lucide {
+    height: 1.3rem;
+    transform: translateY(0.3rem) translateX(-0.1rem);
+    margin-right: 0.1rem;
+  }
+
+
+}
+
