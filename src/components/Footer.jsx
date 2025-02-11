@@ -1,4 +1,4 @@
-import { Mail, CircleDollarSign, Users, Building2, MessageSquareText, Library, Pen, Github } from 'lucide-react';
+import { Mail, CircleDollarSign, Users, Building2, MessageSquareText, Library, Pen, Github, Calendar } from 'lucide-react';
 
 
 const Footer = () => {
@@ -11,6 +11,9 @@ const Footer = () => {
           <a href="https://discord.gg/Wv4Et7w7Qy" target="_blank" rel="noopener noreferrer">
             <img className="discord-logo" alt="Discord Logo" src="/discord-mark-black.png"></img> Join our Discord!
           </a>
+          <a href="http://calendly.com/avpstudentorgs" target="_blank" rel="noopener noreferrer">
+            <Calendar/>Schedule a Meeting
+          </a>
         </div>
 
         <div className="footer-section">
@@ -19,7 +22,7 @@ const Footer = () => {
             <Users/>Center for Student Involvement
           </a>
           <a href="https://slbo.ucsd.edu/fund-management/team/index.html" target="_blank" rel="noopener noreferrer">
-            <CircleDollarSign/> Find Your SLBO Fund Manager
+            <CircleDollarSign/>Find Your SLBO Fund Manager
           </a>
           <a href="https://universitycenters.ucsd.edu/" target="_blank" rel="noopener noreferrer">
             <Building2/>University Centers

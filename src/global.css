@@ -669,9 +669,12 @@ body {
   
   .discord-logo {
     width: auto;
-    height: 0.9rem;
+    height: 1.2rem;
+    padding: 0.15rem 0rem;
     filter: brightness(1) invert(.3) sepia(.9) hue-rotate(170deg) saturate(400%);
-    transform: translateY(0.1rem);
+    transform: translateY(0.25rem);
+    margin-right: 0.16rem;
+    margin-bottom: 0;
   }
 
   .lucide {
