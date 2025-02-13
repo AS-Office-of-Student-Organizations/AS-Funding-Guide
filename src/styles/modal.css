@@ -19,17 +19,42 @@
   padding: 2rem;
   position: relative;
   width: 100%;
-  max-width: 440px;
+  max-width: 400px;
   margin: 1rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   animation: slideIn 0.3s ease-out;
   transform-origin: center center;
+  z-index: 1001;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.modal-content button[type="submit"] {
+  margin-top: 1rem;
 }
 
 .modal-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   background: transparent;
   border: none;
   color: #666;
@@ -68,9 +93,6 @@
 }
 
 /* Ensure the modal content is above the overlay */
-.modal-content {
-  z-index: 1001;
-}
 
 /* Add smooth transition for closing */
 .modal-overlay.closing {
