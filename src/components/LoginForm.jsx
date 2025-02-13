@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth"
+import "./LoginForm.css"
 
 const LoginForm = ({ onClose }) => {
   const [email, setEmail] = useState("")
@@ -15,7 +16,6 @@ const LoginForm = ({ onClose }) => {
   const [error, setError] = useState(null)
   const [isSignUp, setIsSignUp] = useState(false)
 
-  // List of valid UCSD email domains
   const validDomains = ["ucsd.edu", "health.ucsd.edu", "sdsc.edu", "scripps.edu", "eng.ucsd.edu"]
 
   const isValidUCSDEmail = (email) => {
@@ -88,16 +88,11 @@ const LoginForm = ({ onClose }) => {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-bold text-center mb-6 text-[#0d2a58]">{isSignUp ? "Sign Up" : "Log In"}</h2>
+    <div className="login-form-container">
+      <h2 className="login-title">{isSignUp ? "Sign Up" : "Log In"}</h2>
 
-      {/* Updated Google Sign-in Button */}
-      <button
-        type="button"
-        onClick={handleGoogleSignIn}
-        className="w-full mb-4 py-2 px-4 border border-gray-300 rounded-md flex items-center justify-center space-x-2 hover:bg-gray-50 transition-colors text-sm"
-      >
-        <svg className="w-4 h-4" viewBox="0 0 24 24">
+      <button type="button" onClick={handleGoogleSignIn} className="google-sign-in-button">
+        <svg className="google-icon" viewBox="0 0 24 24">
           <path
             fill="#4285F4"
             d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -118,20 +113,13 @@ const LoginForm = ({ onClose }) => {
         <span>Sign in with Google</span>
       </button>
 
-      <div className="relative mb-4">
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-gray-300"></div>
-        </div>
-        <div className="relative flex justify-center text-sm">
-          <span className="px-2 bg-white text-gray-500">Or continue with email</span>
-        </div>
+      <div className="separator">
+        <span>Or continue with email</span>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col mb-4">
-          <label htmlFor="email" className="mb-1 text-sm font-medium text-gray-700">
-            Email
-          </label>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
@@ -139,32 +127,25 @@ const LoginForm = ({ onClose }) => {
             onChange={(e) => setEmail(e.target.value.toLowerCase())}
             placeholder="your.name@ucsd.edu"
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <div className="flex flex-col mb-6">
-          <label htmlFor="password" className="mb-1 text-sm font-medium text-gray-700">
-            Password
-          </label>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
-        <button
-          type="submit"
-          className="w-full py-2 px-4 bg-[#0d2a58] text-white rounded-md hover:bg-[#164bb4] transition-colors mb-4"
-        >
+        {error && <p className="error-message">{error}</p>}
+        <button type="submit" className="submit-button">
           {isSignUp ? "Sign Up" : "Log In"}
         </button>
-        <p className="text-center text-sm text-gray-600">
+        <p className="toggle-form">
           {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
-          <button type="button" onClick={() => setIsSignUp(!isSignUp)} className="text-[#164bb4] hover:underline">
+          <button type="button" onClick={() => setIsSignUp(!isSignUp)} className="toggle-button">
             {isSignUp ? "Log In" : "Sign Up"}
           </button>
         </p>
