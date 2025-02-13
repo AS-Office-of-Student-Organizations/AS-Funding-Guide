@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import PropTypes from "prop-types"
+import { X } from "lucide-react"
 import "../styles/modal.css"
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -22,8 +23,8 @@ const Modal = ({ isOpen, onClose, children }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose} aria-label="Close">
-          &times;
+        <button onClick={onClose} className="modal-close" aria-label="Close">
+          <X size={24} />
         </button>
         {children}
       </div>

@@ -1,78 +1,103 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: slideIn 0.3s ease-out;
+  transform-origin: center center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  border-radius: 50%;
+}
+
+.modal-close:hover {
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .modal-content {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    position: relative;
-    max-width: 90%;
-    width: 400px;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-    transform: scale(0.9);
-    transition: all 0.3s ease-in-out;
+  to {
+    opacity: 1;
   }
-  
-  .modal-overlay.active .modal-content {
-    transform: scale(1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
   }
-  
-  .modal-close {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    border: none;
-    background: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #666;
-    transition: color 0.2s ease-in-out;
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
-  
-  .modal-close:hover {
-    color: #333;
+}
+
+/* Ensure the modal content is above the overlay */
+.modal-content {
+  z-index: 1001;
+}
+
+/* Add smooth transition for closing */
+.modal-overlay.closing {
+  animation: fadeOut 0.2s ease-in forwards;
+}
+
+.modal-overlay.closing .modal-content {
+  animation: slideOut 0.2s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  to {
+    opacity: 0;
   }
-  
-  @keyframes slideIn {
-    from {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
-  
-  .modal-overlay {
-    animation: fadeIn 0.3s ease-out;
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
   }
-  
-  .modal-content {
-    animation: slideIn 0.3s ease-out;
-  }
-  
-  
+}
+

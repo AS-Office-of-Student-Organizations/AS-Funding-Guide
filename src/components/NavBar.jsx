@@ -5,10 +5,13 @@ import { NavLink, useLocation } from "react-router-dom"
 import DropDownButton from "./DropDownButton"
 import { ChevronDown, ExternalLink } from "lucide-react"
 import Modal from "./Modal"
+import LoginForm from "./LoginForm"
+import { auth } from "./firebase"
+import { onAuthStateChanged, signOut } from "firebase/auth"
 
-const NavBar = () => {
+const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
   const [activeLinkName, setActiveLinkName] = useState("")
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [user, setUser] = useState(null)
   const location = useLocation()
 
   useEffect(() => {
@@ -17,22 +20,44 @@ const NavBar = () => {
     if (activeLink) {
       setActiveLinkName(activeLink.name)
     } else {
-      setActiveLinkName("") // Optionally clear if no link matches
+      setActiveLinkName("")
     }
   }, [location])
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
+
+    return () => unsubscribe()
+  }, [])
+
   const handleLoginClick = (e) => {
     e.preventDefault()
-    setIsModalOpen(true)
+    setIsLoginModalOpen(true)
+  }
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth)
+    } catch (error) {
+      console.error("Error signing out: ", error)
+    }
   }
 
   const navLinks = [
     <NavLink to="/guide" key="0">
       Guide
     </NavLink>,
-    <a href="#" onClick={handleLoginClick} key="1">
-      Log In
-    </a>,
+    user ? (
+      <a href="#" onClick={handleLogout} key="1">
+        Log Out
+      </a>
+    ) : (
+      <a href="#" onClick={handleLoginClick} key="1">
+        Log In
+      </a>
+    ),
     <a href="https://finance.ucsd.edu/" key="2" target="_blank" rel="noopener noreferrer">
       Funding Portal <ExternalLink />
     </a>,
@@ -68,9 +93,15 @@ const NavBar = () => {
             <NavLink to="/guide">Guide</NavLink>
           </span>
           <span className="link">
-            <a href="#" onClick={handleLoginClick}>
-              Log In
-            </a>
+            {user ? (
+              <a href="#" onClick={handleLogout}>
+                Log Out
+              </a>
+            ) : (
+              <a href="#" onClick={handleLoginClick}>
+                Log In
+              </a>
+            )}
           </span>
           <span className="link">
             <a href="https://finance.ucsd.edu/" target="_blank" rel="noopener noreferrer">
@@ -79,9 +110,9 @@ const NavBar = () => {
           </span>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2>Log In</h2>
-        {/* Add your login form or content here */}
+      <Modal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)}>
+        <h2 className="text-2xl font-bold mb-4"></h2>
+        <LoginForm onClose={() => setIsLoginModalOpen(false)} />
       </Modal>
     </>
   )
