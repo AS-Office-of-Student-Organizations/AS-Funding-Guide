@@ -631,7 +631,7 @@ body {
 
 .footer {
   border-top: 1px solid var(--solid-secondary);
-  padding: 4rem 0;
+  padding: 4rem 1rem;
   margin-top: 3rem;
   
   .footer-content {
@@ -682,7 +682,55 @@ body {
     transform: translateY(0.3rem) translateX(-0.18rem);
     margin-right: 0.1rem;
   }
+}
 
+@media (max-width: 768px) {
+  .footer {
+    .footer-content {
+      font-size: 0.8rem;
+    }
 
+    .discord-logo {
+      height: 1rem;
+      transform: translateY(0.25rem);
+      margin-right: 0.17rem;
+    }
+
+    .lucide {
+      height: 1rem;
+      width: auto;
+      transform: translateY(0.25rem) translateX(-0.03rem);
+      margin-right: 0.27rem;
+    }
+
+    .footer-section h3 {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .footer {
+    .footer-content {
+      font-size: 0.6rem;
+    }
+
+    .discord-logo {
+      height: 1rem;
+      transform: translateY(0.25rem);
+      margin-right: 0.20rem;
+    }
+
+    .lucide {
+      height: 0.95rem;
+      width: auto;
+      transform: translateY(0.25rem) translateX(-0.03rem);
+      margin-right: 0.27rem;
+    }
+
+    .footer-section h3 {
+      font-size: 0.6rem;
+    }
+  }
 }
 
