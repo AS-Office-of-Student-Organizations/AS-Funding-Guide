@@ -128,14 +128,28 @@
     .landing {
         padding: 2em 1em;
     }
-
-    .landing {
-        td {
-            font-size: 0.8rem;
-        }
-    }
     .landing-section {
         width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .landing {
+      padding: 2em 0.75em;
+    }
+    .landing-section {
+      padding: 1em;
+    }
+    .landing {
+      .deadlines {
+        th {
+          padding: 0.5rem 1rem;
+        }
+        td{
+          font-size: 0.8rem;
+          padding: 1rem 1rem;
+        }
+      }
     }
   }
   

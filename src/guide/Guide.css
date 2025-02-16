@@ -126,7 +126,7 @@
     }
 
     .lucide-chevron-right, .lucide-menu, .lucide-chevron-left{
-        margin-right:-0.35em;
+        margin-right: -0.35em;
     }
 
     .guide-left-column {
@@ -150,6 +150,7 @@
     .guide-sidebar{
         max-height: calc(100vh - 5em);
     }
+
 }
 
 @media (max-width: 600px) {
@@ -160,11 +161,20 @@
     }
 
     .guide-left-column.hidden {
-        transform: translateX(calc(-100% + 1em));
+        transform: translateX(calc(-100% + 0.8em));
     }
 
     .guide-sidebar{
         max-height: calc(100vh - 2em);
+    }
+
+    .lucide-menu {
+        height: 0.8rem;
+        width: auto;
+    }
+
+    .lucide-chevron-right, .lucide-menu, .lucide-chevron-left{
+        margin-right: -0.15em;
     }
 
 }
