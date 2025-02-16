@@ -709,7 +709,7 @@ body {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
   .footer {
     .footer-content {
       font-size: 0.6rem;
