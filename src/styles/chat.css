@@ -44,6 +44,7 @@
 
 /* Override react-chatbot-kit styles to match your theme */
 .react-chatbot-kit-chat-container {
+  width: 275px !important;
   height: 500px !important;
   margin: 0 !important;
   border-radius: 16px;
