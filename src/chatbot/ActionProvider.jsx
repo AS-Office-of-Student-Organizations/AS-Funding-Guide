@@ -1,4 +1,19 @@
+import js from "@eslint/js";
 import { getAuth } from "firebase/auth";
+
+/**
+ * Format for messages sent to the server:
+ * It's a json with email question and conversation_history
+ * Conversation history is an array of messages, each message is an object
+ * with the following fields:
+ * message: the message text, type: 'user' or 'bot', 'id': rnaodm id
+ * and it may have the state loading for bot messages (which can be ignored)
+ * and the delay field which should also be ignored.
+ * 
+ * Format for response from the server:
+ * It's a json with a response field which is the bot's response.
+ */
+
 
 class ActionProvider {
   constructor(
@@ -38,8 +53,18 @@ class ActionProvider {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`, // 🔹 Include Firebase token
         },
-        body: JSON.stringify({ question: message }),
+        body: JSON.stringify({ 
+          question: message,
+          email: user.email,
+          conversation_history: this.stateRef.messages,
+        }),
       });
+
+      console.log(JSON.stringify({
+        question: message,
+        email: user.email,
+        conversation_history: this.stateRef.messages
+      }));
 
       if (!response.ok) {
         throw new Error("Server error");
