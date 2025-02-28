@@ -6,7 +6,7 @@ import Guide from "@/guide/Guide.jsx";
 import AdminHome from "@/admin/AdminHome.jsx";
 import Landing from "@/landing/Landing.jsx"
 import Footer from "./components/Footer";
-
+// Ethan was here
 function App() {
   return (
     <Router>
