@@ -1,9 +1,9 @@
 # Project Goals
 
-1) An improvement to the funding guide displayed at [https://finance.ucsd.edu/Home/FundingGuide](finance.ucsd.edu) with **clarity** and **usability** at the forefront of the design
+1) An improvement to the funding guide displayed at [https://finance.ucsd.edu/Home/FundingGuide](finance.ucsd.edu) with **clarity** and **usability** at the forefront of the design 
 2) Features to edit and change this funding guide for future AVPs
-3) Applications of machine learning (or API calls to current existing LLMs) for personal career goals
-4) Display & insights integrations with data collected from the A.S Attendance Verification Form
+4) Applications of machine learning (or API calls to current existing LLMs) for personal career goals
+5) Display & insights integrations with data collected from the A.S Attendance Verification Form
 
 ## Further Details
 While I have authority to make edits to the official funding guide, I cannot get rid of usually-unnecessary but situationally relevant information as it must be a "legal document". I'd like to address that by having
@@ -12,9 +12,9 @@ an "unofficial" but relevant and useful site that can serve the needs of student
 ## Some Feature Brainstorm
 
 * Funding Guide Display
-  1) Display relevant points of A.S funding guide in a concise manner, linking explanations for caveats (MVP)
-  2) FAQ page (Extension 1)
-  3) RAG with funding guide + other specific training materials for complex queries from student orgs (Extension 2)
+  1) COMPLETE | Display relevant points of A.S funding guide in a concise manner, linking explanations for caveats (MVP)
+  2) COMPLETE | FAQ page (Extension 1)
+  3) IN PROGRESS | RAG with funding guide + other specific training materials for complex queries from student orgs (Extension 2)
 
 * Event Planning
   1) Basic event planning checklist with flowchart style logic (MVP)

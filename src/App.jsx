@@ -15,6 +15,7 @@ import Chatbot from "react-chatbot-kit"
 import config from "./chatbot/config"
 import MessageParser from "./chatbot/MessageParser"
 import ActionProvider from "./chatbot/ActionProvider"
+import Footer from "./components/Footer";
 
 function App() {
   const [isChatOpen, setIsChatOpen] = useState(false)
@@ -63,6 +64,7 @@ function App() {
       <button className="chat-toggle-button" onClick={toggleChat} aria-label="Toggle chat">
         <MessageCircle className="h-4 w-4" />
       </button>
+      <Footer/>
     </Router>
   )
 }
