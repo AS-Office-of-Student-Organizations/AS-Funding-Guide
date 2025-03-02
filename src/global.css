@@ -642,6 +642,7 @@ body {
   z-index: 9999;
   box-shadow: 5px 5px 13px rgba(91, 81, 81, 0.4);
   border-radius: 10px;
+}
 
 .footer {
   border-top: 1px solid var(--solid-secondary);
