@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { signInWithEmailAndPassword } from "@firebase/auth";
-import { auth } from "@/components/firebase.jsx";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { signInWithEmailAndPassword } from '@firebase/auth';
+import { auth } from '@/components/firebase.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function AdminLogin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = async e => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/admin");
+      navigate('/admin');
     } catch {
-      alert("Login failed. Please check your credentials.");
+      alert('Login failed. Please check your credentials.');
     }
   };
 
@@ -25,13 +25,13 @@ function AdminLogin() {
         type="email"
         placeholder="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
       />
       <button type="submit">Login</button>
     </form>

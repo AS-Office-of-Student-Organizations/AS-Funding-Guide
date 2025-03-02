@@ -119,4 +119,3 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
 }
 
 export default NavBar
-

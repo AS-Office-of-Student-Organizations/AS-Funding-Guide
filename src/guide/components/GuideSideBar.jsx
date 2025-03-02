@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Draggable } from "react-beautiful-dnd";
-import { Menu, ChevronLeft } from "lucide-react";
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Draggable } from 'react-beautiful-dnd';
+import { Menu, ChevronLeft } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const GuideSideBar = ({
-  pages, 
+  pages,
   editMode = false,
   handleAddPage,
   handleAddHeader,
@@ -24,25 +24,28 @@ const GuideSideBar = ({
     <div className={`guide-left-column scroll-when-hover ${isSidebarVisible ? '' : 'hidden'}`}>
       <div
         className={`guide-sidebar `}
-        ref={editMode ?  provided.innerRef : null} {...(editMode ? provided.droppableProps : {})}
+        ref={editMode ? provided.innerRef : null}
+        {...(editMode ? provided.droppableProps : {})}
       >
         <ul>
-          {pages.map((page, index) => 
+          {pages.map((page, index) =>
             editMode ? (
               <Draggable key={page.pageName} draggableId={page.pageName} index={index}>
-                {(provided) => (
+                {provided => (
                   <li
                     ref={provided.innerRef}
                     // eslint-disable-next-line react/prop-types
                     {...provided.draggableProps}
                     // eslint-disable-next-line react/prop-types
                     {...provided.dragHandleProps}
-                    className={page.header ? "guide-sidebar-header" : ""}
+                    className={page.header ? 'guide-sidebar-header' : ''}
                   >
                     {page.header ? (
                       page.pageName
                     ) : (
-                      <NavLink to={`/admin/guide/${page.pageName.toLowerCase().replace(/\s+/g, "-")}`}>
+                      <NavLink
+                        to={`/admin/guide/${page.pageName.toLowerCase().replace(/\s+/g, '-')}`}
+                      >
                         {page.pageName}
                       </NavLink>
                     )}
@@ -55,25 +58,29 @@ const GuideSideBar = ({
                       </button>
                     </div>
                   </li>
-            )}
-          </Draggable>
-        ) : (
-          <li key={index} onClick={() => toggleSidebar()} className={page.header ? "guide-sidebar-header" : ""}>
-            {page.header ? (
-              page.pageName
+                )}
+              </Draggable>
             ) : (
-              <NavLink to={`/guide/${page.pageName.toLowerCase().replace(/\s+/g, "-")}`}>
-                {page.pageName}
-              </NavLink>
-            )}
-          </li>
-        )
-      )}
-      {
-      // eslint-disable-next-line react/prop-types
-      editMode && provided.placeholder
-      }
-      </ul>
+              <li
+                key={index}
+                onClick={() => toggleSidebar()}
+                className={page.header ? 'guide-sidebar-header' : ''}
+              >
+                {page.header ? (
+                  page.pageName
+                ) : (
+                  <NavLink to={`/guide/${page.pageName.toLowerCase().replace(/\s+/g, '-')}`}>
+                    {page.pageName}
+                  </NavLink>
+                )}
+              </li>
+            )
+          )}
+          {
+            // eslint-disable-next-line react/prop-types
+            editMode && provided.placeholder
+          }
+        </ul>
         {editMode && (
           <div className="sidebar-buttons">
             <button className="create-page" onClick={handleAddPage}>
@@ -85,26 +92,27 @@ const GuideSideBar = ({
             <button className="save-page" onClick={handleSave}>
               Save
             </button>
-          </div> 
-          )}
+          </div>
+        )}
       </div>
-      <button className={`sidebar-toggle ${isSidebarVisible ? "extended" : "contracted"}`}  onClick={toggleSidebar}>
-          {isSidebarVisible ? <ChevronLeft/> : <Menu/>}
+      <button
+        className={`sidebar-toggle ${isSidebarVisible ? 'extended' : 'contracted'}`}
+        onClick={toggleSidebar}
+      >
+        {isSidebarVisible ? <ChevronLeft /> : <Menu />}
       </button>
     </div>
   );
-  
-  };
+};
 
 export default GuideSideBar;
 
-
 GuideSideBar.propTypes = {
   pages: PropTypes.arrayOf(
-      PropTypes.shape({
-      pageName: PropTypes.string.isRequired,   
-      pageContent: PropTypes.string.isRequired, 
-      })
+    PropTypes.shape({
+      pageName: PropTypes.string.isRequired,
+      pageContent: PropTypes.string.isRequired,
+    })
   ).isRequired,
   editMode: PropTypes.bool,
   handleAddPage: PropTypes.func,
@@ -113,7 +121,7 @@ GuideSideBar.propTypes = {
   handleEditPageName: PropTypes.func,
   handleSave: PropTypes.func,
   provided: PropTypes.shape({
-    innerRef: PropTypes.func, 
-    droppableProps: PropTypes.object, 
+    innerRef: PropTypes.func,
+    droppableProps: PropTypes.object,
   }),
-}
+};
