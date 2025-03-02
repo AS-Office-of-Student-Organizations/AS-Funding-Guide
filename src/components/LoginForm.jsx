@@ -1,95 +1,95 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { auth } from "./firebase"
+import { useState } from 'react';
+import { auth } from './firebase';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-} from "firebase/auth"
-import "./LoginForm.css"
+} from 'firebase/auth';
+import './LoginForm.css';
 
 const LoginForm = ({ onClose }) => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState(null)
-  const [isSignUp, setIsSignUp] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [isSignUp, setIsSignUp] = useState(false);
 
-  const validDomains = ["ucsd.edu", "health.ucsd.edu", "sdsc.edu", "scripps.edu", "eng.ucsd.edu"]
+  const validDomains = ['ucsd.edu', 'health.ucsd.edu', 'sdsc.edu', 'scripps.edu', 'eng.ucsd.edu'];
 
-  const isValidUCSDEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) return false
-    const domain = email.split("@")[1]
-    return validDomains.includes(domain)
-  }
+  const isValidUCSDEmail = email => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return false;
+    const domain = email.split('@')[1];
+    return validDomains.includes(domain);
+  };
 
   const handleGoogleSignIn = async () => {
-    const provider = new GoogleAuthProvider()
+    const provider = new GoogleAuthProvider();
     provider.setCustomParameters({
-      prompt: "select_account",
-    })
+      prompt: 'select_account',
+    });
 
     try {
-      const result = await signInWithPopup(auth, provider)
-      const userEmail = result.user.email
+      const result = await signInWithPopup(auth, provider);
+      const userEmail = result.user.email;
 
       if (!isValidUCSDEmail(userEmail)) {
-        await auth.signOut()
-        setError("Please use your UCSD email address to sign in.")
-        return
+        await auth.signOut();
+        setError('Please use your UCSD email address to sign in.');
+        return;
       }
 
-      onClose()
+      onClose();
     } catch (error) {
-      console.error("Google sign-in error:", error)
-      setError("An error occurred during Google sign-in. Please try again.")
+      console.error('Google sign-in error:', error);
+      setError('An error occurred during Google sign-in. Please try again.');
     }
-  }
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError(null)
+  const handleSubmit = async e => {
+    e.preventDefault();
+    setError(null);
 
     if (!isValidUCSDEmail(email)) {
-      setError("Please use a valid UCSD email address (e.g., @ucsd.edu, @health.ucsd.edu)")
-      return
+      setError('Please use a valid UCSD email address (e.g., @ucsd.edu, @health.ucsd.edu)');
+      return;
     }
 
     try {
       if (isSignUp) {
-        await createUserWithEmailAndPassword(auth, email, password)
+        await createUserWithEmailAndPassword(auth, email, password);
       } else {
-        await signInWithEmailAndPassword(auth, email, password)
+        await signInWithEmailAndPassword(auth, email, password);
       }
-      onClose()
+      onClose();
     } catch (error) {
       switch (error.code) {
-        case "auth/email-already-in-use":
-          setError("This email is already registered. Please log in instead.")
-          break
-        case "auth/invalid-email":
-          setError("Invalid email format.")
-          break
-        case "auth/weak-password":
-          setError("Password should be at least 6 characters long.")
-          break
-        case "auth/user-not-found":
-          setError("No account found with this email.")
-          break
-        case "auth/wrong-password":
-          setError("Incorrect password.")
-          break
+        case 'auth/email-already-in-use':
+          setError('This email is already registered. Please log in instead.');
+          break;
+        case 'auth/invalid-email':
+          setError('Invalid email format.');
+          break;
+        case 'auth/weak-password':
+          setError('Password should be at least 6 characters long.');
+          break;
+        case 'auth/user-not-found':
+          setError('No account found with this email.');
+          break;
+        case 'auth/wrong-password':
+          setError('Incorrect password.');
+          break;
         default:
-          setError("An error occurred. Please try again.")
+          setError('An error occurred. Please try again.');
       }
     }
-  }
+  };
 
   return (
     <div className="login-form-container">
-      <h2 className="login-title">{isSignUp ? "Sign Up" : "Log In"}</h2>
+      <h2 className="login-title">{isSignUp ? 'Sign Up' : 'Log In'}</h2>
 
       <button type="button" onClick={handleGoogleSignIn} className="google-sign-in-button">
         <svg className="google-icon" viewBox="0 0 24 24">
@@ -124,7 +124,7 @@ const LoginForm = ({ onClose }) => {
             type="email"
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value.toLowerCase())}
+            onChange={e => setEmail(e.target.value.toLowerCase())}
             placeholder="your.name@ucsd.edu"
             required
           />
@@ -135,24 +135,23 @@ const LoginForm = ({ onClose }) => {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             required
           />
         </div>
         {error && <p className="error-message">{error}</p>}
         <button type="submit" className="submit-button">
-          {isSignUp ? "Sign Up" : "Log In"}
+          {isSignUp ? 'Sign Up' : 'Log In'}
         </button>
         <p className="toggle-form">
-          {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+          {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
           <button type="button" onClick={() => setIsSignUp(!isSignUp)} className="toggle-button">
-            {isSignUp ? "Log In" : "Sign Up"}
+            {isSignUp ? 'Log In' : 'Sign Up'}
           </button>
         </p>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default LoginForm
-
+export default LoginForm;

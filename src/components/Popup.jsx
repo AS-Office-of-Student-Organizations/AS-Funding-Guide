@@ -1,7 +1,7 @@
-import { X } from "lucide-react"
+import { X } from 'lucide-react';
 
 const Popup = ({ isOpen, onClose, children }) => {
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -16,8 +16,7 @@ const Popup = ({ isOpen, onClose, children }) => {
         {children}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Popup
-
+export default Popup;
