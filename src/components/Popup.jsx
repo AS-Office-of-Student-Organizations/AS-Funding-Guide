@@ -1,4 +1,4 @@
-import { X, ChevronDown } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 
 const Popup = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null
@@ -11,7 +11,7 @@ const Popup = ({ isOpen, onClose, children }) => {
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 transition-transform duration-300"
           aria-label="Close"
         >
-          {isOpen ? <ChevronDown size={24} /> : <X size={24} />}
+          <ChevronDown size={24} />
         </button>
         {children}
       </div>
