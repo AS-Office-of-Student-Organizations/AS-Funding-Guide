@@ -16,7 +16,18 @@
 .chat-popup.open {
   opacity: 1;
   visibility: visible;
-  animation: scaleIn 0.3s ease-out;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .chat-toggle-button {
@@ -55,6 +66,7 @@
   margin: 0 !important;
   border-radius: 16px;
   overflow: hidden;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .react-chatbot-kit-chat-inner-container {
@@ -203,7 +215,7 @@
   background-repeat: no-repeat;
 }
 
-.react-chatbot-kit-user-avatar-icon{
+.react-chatbot-kit-user-avatar-icon {
   position: absolute;
   width: 5%;
   height: 5%;
@@ -284,18 +296,6 @@
     width: 100% !important;
     max-width: none;
     height: calc(100vh - 140px) !important;
-  }
-}
-
-/* Animation */
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
