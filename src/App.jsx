@@ -74,7 +74,7 @@ function App() {
         )}
       </div>
       <button className="chat-toggle-button" onClick={toggleChat} aria-label="Toggle chat">
-        {isChatOpen ? <ChevronDown className="h-4 w-4" /> : <MessageCircle className="h-4 w-4" />}
+        {isChatOpen ? <ChevronDown className="chat-toggle-icon" /> : <MessageCircle className="chat-toggle-icon" />}
       </button>
       <Footer />
     </Router>
