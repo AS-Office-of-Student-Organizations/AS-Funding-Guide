@@ -1,5 +1,3 @@
-'use client';
-
 import { createChatBotMessage } from 'react-chatbot-kit';
 import { CornerDownLeft } from 'lucide-react';
 
