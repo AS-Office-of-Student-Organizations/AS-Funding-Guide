@@ -149,7 +149,7 @@
 
 /* Add separator between input and send button */
 .react-chatbot-kit-chat-input-form::after {
-  content: "|";
+  content: '|';
   position: absolute;
   right: 62px;
   top: 50%;
@@ -247,20 +247,20 @@
 }
 
 .react-chatbot-kit-chat-bot-avatar-container::before {
-  content: "";
-  position: absolute;
+  content: '';
+  position: relative;
   width: 40px;
   height: 40px;
-  background-image: url("../../public/AS_Logo_StudentOrgs.png");
+  background-image: url('../../public/AS_Logo_StudentOrgs.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .react-chatbot-kit-user-avatar-icon {
-  position: absolute;
-  width: 5%;
-  height: 5%;
+  position: relative;
+  width: 50%;
+  height: 50%;
 }
 .react-chatbot-kit-user-avatar-container {
   width: 36px;
@@ -345,4 +345,3 @@
 .react-chatbot-kit-chat-bot-avatar-container > div:not(.loading) {
   display: none;
 }
-
