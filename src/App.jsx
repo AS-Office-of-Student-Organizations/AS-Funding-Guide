@@ -2,7 +2,7 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { MessageCircle, ChevronDown } from "lucide-react"
+import { MessageCircle, ChevronDown, CornerDownLeft } from "lucide-react"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "./components/firebase"
 import AdminLogin from "@/admin/AdminLogin.jsx"
@@ -16,13 +16,12 @@ import config from "./chatbot/config"
 import MessageParser from "./chatbot/MessageParser"
 import ActionProvider from "./chatbot/ActionProvider"
 import Footer from "./components/Footer"
-import SendButton from "./chatbot/SendButton"
 
-// Define BotAvatar component
-const BotAvatar = () => (
-  <div className="react-chatbot-kit-chat-bot-avatar-container">
-    <span>AS</span>
-  </div>
+// Define custom send button component directly in App.jsx
+const CustomSendButton = (props) => (
+  <button className="react-chatbot-kit-chat-btn-send" onClick={props.onClick} aria-label="Send message">
+    <CornerDownLeft size={24} strokeWidth={2.5} color="white" />
+  </button>
 )
 
 function App() {
@@ -70,10 +69,7 @@ function App() {
             config={config}
             messageParser={MessageParser}
             actionProvider={ActionProvider}
-            customComponents={{
-              botAvatar: BotAvatar,
-              sendButton: SendButton,
-            }}
+            customComponents={{ sendButton: CustomSendButton }}
           />
         )}
       </div>
