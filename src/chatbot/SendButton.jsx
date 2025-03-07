@@ -1,4 +1,3 @@
-"use client"
 import { CornerDownLeft } from "lucide-react"
 
 const SendButton = (props) => {
