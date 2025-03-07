@@ -16,6 +16,14 @@ import config from "./chatbot/config"
 import MessageParser from "./chatbot/MessageParser"
 import ActionProvider from "./chatbot/ActionProvider"
 import Footer from "./components/Footer"
+import SendButton from "./chatbot/SendButton"
+
+// Define BotAvatar component
+const BotAvatar = () => (
+  <div className="react-chatbot-kit-chat-bot-avatar-container">
+    <span>AS</span>
+  </div>
+)
 
 function App() {
   const [isChatOpen, setIsChatOpen] = useState(false)
@@ -58,7 +66,15 @@ function App() {
       </div>
       <div className={`chat-popup ${isChatOpen ? "open" : ""}`}>
         {isChatOpen && user && (
-          <Chatbot config={config} messageParser={MessageParser} actionProvider={ActionProvider} />
+          <Chatbot
+            config={config}
+            messageParser={MessageParser}
+            actionProvider={ActionProvider}
+            customComponents={{
+              botAvatar: BotAvatar,
+              sendButton: SendButton,
+            }}
+          />
         )}
       </div>
       <button className="chat-toggle-button" onClick={toggleChat} aria-label="Toggle chat">
