@@ -13,6 +13,7 @@ const GuideSideBar = ({
   handleEditPageName,
   handleSave,
   provided,
+  isGuide = true, // So faq can be different
 }) => {
   const [isSidebarVisible, setSidebarVisible] = useState(false);
 
@@ -44,7 +45,11 @@ const GuideSideBar = ({
                       page.pageName
                     ) : (
                       <NavLink
-                        to={`/admin/guide/${page.pageName.toLowerCase().replace(/\s+/g, '-')}`}
+                        to={
+                          isGuide
+                            ? `/admin/guide/${page.pageName.toLowerCase().replace(/\s+/g, '-')}`
+                            : `/admin/faq/${page.pageName.toLowerCase().replace(/\s+/g, '-')}`
+                        }
                       >
                         {page.pageName}
                       </NavLink>
