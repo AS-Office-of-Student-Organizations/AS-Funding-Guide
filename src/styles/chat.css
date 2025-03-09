@@ -183,7 +183,7 @@
   
 }
 .react-chatbot-kit-chat-btn-send svg {
-  display: block !important;
+  display: none !important;
   width: 24px !important;
   height: 24px !important;
   stroke: white !important;
