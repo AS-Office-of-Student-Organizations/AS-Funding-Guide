@@ -11,8 +11,8 @@
   border-radius: 16px;
   box-shadow: var(--shadow);
   overflow: hidden;
-  width: 400px;
-  height: 650px;
+  width: 32.5%;
+  height: 60%;
 }
 
 .chat-popup.open {
