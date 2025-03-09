@@ -18,7 +18,7 @@ const config = {
       </div>
     ),
     // Define the send button directly in the config
-    sendButton: props => (
+    sendButton: (props) => (
       <button
         className="react-chatbot-kit-chat-btn-send"
         onClick={props.onClick}
