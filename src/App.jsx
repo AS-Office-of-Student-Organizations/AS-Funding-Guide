@@ -2,7 +2,7 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { MessageCircle, ChevronDown, CornerDownLeft } from "lucide-react"
+import { MessageCircle, ChevronDown } from "lucide-react"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "./components/firebase"
 import AdminLogin from "@/admin/AdminLogin.jsx"
@@ -11,18 +11,8 @@ import NavBar from "@/components/NavBar.jsx"
 import Guide from "@/guide/Guide.jsx"
 import AdminHome from "@/admin/AdminHome.jsx"
 import Landing from "@/landing/Landing.jsx"
-import Chatbot from "react-chatbot-kit"
-import config from "./chatbot/config"
-import MessageParser from "./chatbot/MessageParser"
-import ActionProvider from "./chatbot/ActionProvider"
+import CustomChatbot from "./chatbot/CustomChatbot"
 import Footer from "./components/Footer"
-
-// Define custom send button component directly in App.jsx
-const CustomSendButton = (props) => (
-  <button className="react-chatbot-kit-chat-btn-send" onClick={props.onClick} aria-label="Send message">
-    <CornerDownLeft size={24} strokeWidth={2.5} color="white" />
-  </button>
-)
 
 function App() {
   const [isChatOpen, setIsChatOpen] = useState(false)
@@ -64,14 +54,7 @@ function App() {
         </Routes>
       </div>
       <div className={`chat-popup ${isChatOpen ? "open" : ""}`}>
-        {isChatOpen && user && (
-          <Chatbot
-            config={config}
-            messageParser={MessageParser}
-            actionProvider={ActionProvider}
-            customComponents={{ sendButton: CustomSendButton }}
-          />
-        )}
+        {isChatOpen && user && <CustomChatbot user={user} />}
       </div>
       <button className="chat-toggle-button" onClick={toggleChat} aria-label="Toggle chat">
         {isChatOpen ? <ChevronDown className="chat-toggle-icon" /> : <MessageCircle className="chat-toggle-icon" />}
