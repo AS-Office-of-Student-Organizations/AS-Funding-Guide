@@ -12,8 +12,9 @@ const HiddenGuide = () => {
       <div>
         <h1>Hidden Guide Rules</h1>
         <ul>
-          <li>These are Q&A for the chatbot to use as training</li>
-          <li>If you make changes to policy, update the relevang questions</li>
+          <li>These are Q&A for the chatbot to use as context</li>
+          <li>If you make changes to policy, update the relevant questions</li>
+          <li>These info are private, but it is still public API access.</li>
           <li>
             <b>PRESS SAVE AFTER MAKING CHANGES</b>
           </li>
