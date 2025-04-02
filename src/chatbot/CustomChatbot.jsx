@@ -129,6 +129,7 @@ const CustomChatbot = ({ user }) => {
           type="text"
           value={input}
           onChange={e => setInput(e.target.value)}
+          autoComplete="new-password"
           placeholder={isProcessing ? 'Please wait...' : 'Type a message...'}
           disabled={isProcessing}
           className={`chatbot-input ${isProcessing ? 'disabled' : ''}`}
