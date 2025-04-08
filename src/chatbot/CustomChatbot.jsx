@@ -6,7 +6,13 @@ import ChatMessage from './ChatMessage';
 
 const CustomChatbot = ({ user }) => {
   const [messages, setMessages] = useState([
-    { id: 'welcome', role: 'bot', content: "Hi! I'm A.S.", createdAt: new Date() },
+    {
+      id: 'welcome',
+      role: 'bot',
+      content:
+        "Hi! I'm the A.S Office of Student Organizations chatbot, here to help your organization with everything A.S Funding! I'll do my best to assist with any questions.",
+      createdAt: new Date(),
+    },
   ]);
   const [input, setInput] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -56,7 +62,6 @@ const CustomChatbot = ({ user }) => {
         },
         body: JSON.stringify({
           question: userMessage.content,
-          email: user.email,
           conversation_history: messages.map(msg => ({
             message: msg.content,
             type: msg.role === 'user' ? 'user' : 'bot',
@@ -66,7 +71,18 @@ const CustomChatbot = ({ user }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Server error');
+        if (response.status === 429) {
+          throw new Error(
+            "Sorry, you've reached the daily limit for messages. Please try again tomorrow."
+          );
+        }
+        if (response.status === 422) {
+          throw new Error(
+            'Sorry, your message was too long. Please try again with a shorter message.'
+          );
+        }
+
+        throw new Error('Sorry, authentication failed or something went wrong.');
       }
 
       const data = await response.json();
@@ -85,7 +101,7 @@ const CustomChatbot = ({ user }) => {
       const errorMessage = {
         id: Date.now().toString(),
         role: 'bot',
-        content: 'Sorry, authentication failed or something went wrong.',
+        content: error.message,
         createdAt: new Date(),
         isError: true,
       };
