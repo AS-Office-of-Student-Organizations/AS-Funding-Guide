@@ -25,3 +25,4 @@ dist-ssr
 .env
 
 src/guide/components/AS_Funding_Guide.pdf
+*.pdf

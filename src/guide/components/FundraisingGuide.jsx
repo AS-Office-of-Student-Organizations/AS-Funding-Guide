@@ -13,7 +13,7 @@ const FundraisingGuide = () => {
   const [loading, setLoading] = useState(true)
   const [pdfPages, setPdfPages] = useState([])
   const bookRef = useRef(null)
-  const pdfUrl = "/AS_Funding_Guide.pdf" // Update this with your actual PDF path
+  const pdfUrl = "/fundraising-guide.pdf" // Update this with your actual PDF path
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages)
