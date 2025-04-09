@@ -13,6 +13,7 @@ import AdminHome from "@/admin/AdminHome.jsx"
 import Landing from "@/landing/Landing.jsx"
 import CustomChatbot from "./chatbot/CustomChatbot"
 import Footer from "./components/Footer"
+import FundraisingGuide from "@/guide/components/FundraisingGuide"
 
 function App() {
   const [isChatOpen, setIsChatOpen] = useState(false)
@@ -51,6 +52,7 @@ function App() {
             }
           />
           <Route path="/guide/*" element={<Guide />} />
+          <Route path="/fundraising" element={<FundraisingGuide />} />
         </Routes>
       </div>
       <div className={`chat-popup ${isChatOpen ? "open" : ""}`}>
@@ -65,4 +67,3 @@ function App() {
 }
 
 export default App
-

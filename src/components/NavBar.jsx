@@ -15,7 +15,7 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
   const location = useLocation();
 
   useEffect(() => {
-    const links = [{ to: '/guide', name: 'Guide' }];
+    const links = [{ to: '/guide', name: 'Guide' }, { to: '/fundraising', name: 'Fundraising' }];
     const activeLink = links.find(link => location.pathname.includes(link.to));
     if (activeLink) {
       setActiveLinkName(activeLink.name);
@@ -48,6 +48,9 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
   const navLinks = [
     <NavLink to="/guide" key="0">
       Guide
+    </NavLink>,
+    <NavLink to="/fundraising" key="3" target="_blank">
+      Fundraising
     </NavLink>,
     user ? (
       <a href="#" onClick={handleLogout} key="1">
@@ -91,6 +94,11 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
         <div className="nav-list">
           <span className="link">
             <NavLink to="/guide">Guide</NavLink>
+          </span>
+          <span className="link">
+            <NavLink to="/fundraising">
+              Fundraising
+            </NavLink>
           </span>
           <span className="link">
             {user ? (

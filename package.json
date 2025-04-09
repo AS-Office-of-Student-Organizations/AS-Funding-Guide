@@ -31,6 +31,8 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.3.1",
+    "react-pageflip": "^2.0.3",
+    "react-pdf": "^9.2.1",
     "react-router-dom": "^7.0.2"
   },
   "devDependencies": {
