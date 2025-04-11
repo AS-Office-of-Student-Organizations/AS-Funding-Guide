@@ -5,6 +5,8 @@ import { db } from '@/components/firebase.jsx';
 import { useState, useEffect } from 'react';
 import { getDoc, doc } from 'firebase/firestore';
 import './Landing.css';
+import EventFeed from './components/EventFeed.jsx';
+import AttendanceLeaderboard from './components/AttendanceLeaderboard.jsx';
 
 const Landing = () => {
   const [announcements, setAnnouncements] = useState([]);
@@ -43,14 +45,24 @@ const Landing = () => {
         <h1>A.S Office of Student Organizations</h1>
         <p>A resource for student organization funding at UC San Diego</p>
       </div>
-      <div className="landing-body">
+      <div className="landing-container">
+        <Stats stats={stats} />
+      </div>
+      <div className="landing-container">
         <div className="landing-section">
           <Announcements announcements={announcements} />
         </div>
         <div className="landing-section">
           <Deadlines deadlines={deadlines} />
         </div>
-        <Stats stats={stats} />
+      </div>
+      <div className="landing-container">
+        <div className="landing-section">
+          <EventFeed stats={stats} />
+        </div>
+        <div className="landing-section">
+          <AttendanceLeaderboard stats={stats} />
+        </div>
       </div>
     </div>
   );

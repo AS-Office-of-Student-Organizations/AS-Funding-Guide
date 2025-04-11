@@ -1,44 +1,52 @@
 import PropTypes from 'prop-types';
+import { ChartNoAxesColumn } from 'lucide-react';
 
 const Stats = ({ stats }) => {
   if (!stats) {
     return <div className="stats">Loading...</div>;
   }
 
-  const renderValue = value => {
-    if (value === null || value === undefined) {
-      return 'N/A';
-    }
+  const statsUpperList = [
+    { key: 'numAttendees', label: 'Total Student Attendees', prefix: '', postfix: '+' },
+    { key: 'numUniqueAttendees', label: 'Unique Students Served', prefix: '', postfix: '+' },
+  ];
 
-    if (typeof value === 'object') {
-      return (
-        <div className="nested-stats">
-          {Object.entries(value).map(([nestedKey, nestedValue]) => (
-            <div key={nestedKey} className="nested-stat-item">
-              <h4>{nestedKey}</h4>
-              <div>
-                {typeof nestedValue === 'object' ? JSON.stringify(nestedValue) : nestedValue}
-              </div>
-            </div>
-          ))}
-        </div>
-      );
-    }
-
-    return <p>{value}</p>;
-  };
+  const statsLowerList = [
+    { key: 'numEvents', label: 'Events Funded', prefix: '', postfix: '+' },
+    { key: 'numOrgs', label: 'Organizations Funded', prefix: '', postfix: '+' },
+    { key: 'numAllocated', label: 'Total Funds Allocated', prefix: '$', postfix: '+' },
+  ];
 
   return (
     <div className="stats">
-      <h2>Stats</h2>
-      <div className="stats-grid">
-        {Object.entries(stats).map(([key, value]) => (
-          <div key={key} className="stat-item">
-            <h3>{key}</h3>
-            {renderValue(value)}
+      <div className="stats-container">
+        {statsUpperList.map(item => (
+          <div className="statistic" key={item.key}>
+            <h3>
+              {item.prefix}
+              {stats[item.key].toLocaleString()}
+              {item.postfix}
+            </h3>
+            <p>{item.label}</p>
           </div>
         ))}
       </div>
+      <div className="stats-container">
+        {statsLowerList.map(item => (
+          <div className="statistic" key={item.key}>
+            <h3>
+              {item.prefix}
+              {stats[item.key].toLocaleString()}
+              {item.postfix}
+            </h3>
+            <p>{item.label}</p>
+          </div>
+        ))}
+      </div>
+      <i className="stats-caption">
+        Numbers are from 2024-2025 academic year and only take into account events that have already
+        occured.
+      </i>
     </div>
   );
 };
