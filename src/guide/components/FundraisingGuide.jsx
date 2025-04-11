@@ -1,40 +1,128 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
-import HTMLFlipBook from "react-pageflip"
-import { Document, Page, pdfjs } from "react-pdf"
-import { Loader2 } from "lucide-react"
-
-// Set the worker source for react-pdf
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
+import { useState, useEffect } from "react"
+import { Loader2, AlertTriangle } from "lucide-react"
+import { usePdfFileCheck } from "./pdfUtils.jsx"
+import FallbackPdfViewer from "./FallbackPdfViewer"
+import EmergencyPdfViewer from "./EmergencyPdfViewer"
 
 const FundraisingGuide = () => {
-  const [numPages, setNumPages] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [pdfPages, setPdfPages] = useState([])
-  const bookRef = useRef(null)
-  const pdfUrl = "/fundraising-guide.pdf" // Update this with your actual PDF path
+  const [pdfError, setPdfError] = useState(null)
+  const [viewerFailed, setViewerFailed] = useState(false)
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages)
-    setLoading(false)
+  // Try different paths for the PDF file
+  const [pdfPath, setPdfPath] = useState("/fundraising-guide.pdf")
+  const alternativePaths = [
+    "/fundraising-guide.pdf",
+    "/public/fundraising-guide.pdf",
+    "/assets/fundraising-guide.pdf",
+    "/documents/fundraising-guide.pdf",
+    "/files/fundraising-guide.pdf",
+    "/guide/fundraising-guide.pdf",
+  ]
 
-    // Create an array of page numbers
-    const pages = Array.from(new Array(numPages), (_, index) => index + 1)
-    setPdfPages(pages)
+  // Use the custom hook for file checking with improved validation
+  const {
+    fileExists,
+    fileInfo,
+    isValidPdf,
+    validationDetails,
+    error: fileError,
+    loading: fileLoading,
+  } = usePdfFileCheck(pdfPath)
+
+  // Set a short timeout to hide the loading indicator
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  // If we're still checking if the file exists, show loading
+  if (fileLoading) {
+    return (
+      <div className="fundraising-guide-container">
+        <header className="fundraising-header">
+          <h1>Fundraising Guide</h1>
+        </header>
+        <div className="pdf-viewer-container">
+          <div className="loading-container">
+            <Loader2 className="animate-spin" size={48} />
+            <p>Checking PDF file...</p>
+          </div>
+        </div>
+      </div>
+    )
   }
 
-  // Handle window resize to adjust the book size
-  useEffect(() => {
-    const handleResize = () => {
-      if (bookRef.current) {
-        bookRef.current.updateSize()
-      }
-    }
+  // If the file doesn't exist or is not a valid PDF, show error with troubleshooting info
+  if (fileExists === false || (isValidPdf === false && validationDetails?.includes("text/html"))) {
+    return (
+      <div className="fundraising-guide-container">
+        <header className="fundraising-header">
+          <h1>Fundraising Guide</h1>
+        </header>
+        <div className="pdf-viewer-container">
+          <div className="error-container">
+            <AlertTriangle size={48} className="mb-4" />
+            <p className="error-message">HTML Content Detected Instead of PDF</p>
+            <p>
+              The server is returning HTML content instead of a PDF file at: <code>{pdfPath}</code>
+            </p>
+            <div className="troubleshooting-tips">
+              <h3>How to Fix This:</h3>
+              <ol className="text-left">
+                <li>
+                  <strong>Upload the PDF file:</strong> Make sure you've uploaded the PDF file to your server.
+                </li>
+                <li>
+                  <strong>Check the location:</strong> The PDF should be in the <code>public</code> folder at the root
+                  of your project.
+                </li>
+                <li>
+                  <strong>Try a different path:</strong> If you've placed the PDF in a different folder, try one of
+                  these paths:
+                  <ul className="path-list">
+                    {alternativePaths.map((path, index) => (
+                      <li key={index}>
+                        <button
+                          onClick={() => setPdfPath(path)}
+                          className={`path-button ${path === pdfPath ? "active" : ""}`}
+                        >
+                          {path}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+                <li>
+                  <strong>Upload the PDF manually:</strong> If you're using a hosting service, try uploading the PDF
+                  through their file manager.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+  // If the PDF viewer failed, show the fallback
+  if (viewerFailed) {
+    return (
+      <div className="fundraising-guide-container">
+        <header className="fundraising-header">
+          <h1>Fundraising Guide</h1>
+        </header>
+        <div className="pdf-viewer-container">
+          <FallbackPdfViewer pdfUrl={pdfPath} error={pdfError || fileError} />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="fundraising-guide-container">
@@ -46,29 +134,52 @@ const FundraisingGuide = () => {
         {loading ? (
           <div className="loading-container">
             <Loader2 className="animate-spin" size={48} />
-            <p>Loading PDF...</p>
+            <p>Loading PDF viewer...</p>
           </div>
         ) : (
-          <HTMLFlipBook
-            width={550}
-            height={733}
-            size="stretch"
-            minWidth={300}
-            maxWidth={1000}
-            minHeight={400}
-            maxHeight={1533}
-            showCover={true}
-            ref={bookRef}
-            className="pdf-flipbook"
-          >
-            {pdfPages.map((pageNumber) => (
-              <div key={pageNumber} className="pdf-page">
-                <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
-                  <Page pageNumber={pageNumber} width={550} renderTextLayer={false} renderAnnotationLayer={false} />
-                </Document>
-              </div>
-            ))}
-          </HTMLFlipBook>
+          <EmergencyPdfViewer pdfUrl={pdfPath} />
+        )}
+      </div>
+
+      <div className="debug-info">
+        <h3>PDF Debugging Information</h3>
+        <p>
+          <strong>Current PDF Path:</strong> {pdfPath}
+        </p>
+        <p>
+          <strong>File exists:</strong> {fileExists !== null ? String(fileExists) : "Checking..."}
+        </p>
+        <p>
+          <strong>Valid PDF:</strong> {isValidPdf !== null ? String(isValidPdf) : "Checking..."}
+        </p>
+        {validationDetails && (
+          <p>
+            <strong>Validation details:</strong> {validationDetails}
+          </p>
+        )}
+        {fileInfo && (
+          <>
+            <p>
+              <strong>Content Type:</strong> {fileInfo.contentType || "Not specified"}
+            </p>
+            <p>
+              <strong>Size:</strong>{" "}
+              {fileInfo.contentLength ? `${Math.round(fileInfo.contentLength / 1024)} KB` : "Unknown"}
+            </p>
+            <p>
+              <strong>Last Modified:</strong> {fileInfo.lastModified || "Unknown"}
+            </p>
+          </>
+        )}
+        {pdfError && (
+          <p>
+            <strong>Error:</strong> {pdfError}
+          </p>
+        )}
+        {fileError && (
+          <p>
+            <strong>File Error:</strong> {fileError}
+          </p>
         )}
       </div>
     </div>
