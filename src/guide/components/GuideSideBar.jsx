@@ -129,4 +129,5 @@ GuideSideBar.propTypes = {
     innerRef: PropTypes.func,
     droppableProps: PropTypes.object,
   }),
+  isGuide: PropTypes.bool,
 };
