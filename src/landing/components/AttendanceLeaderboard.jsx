@@ -1,4 +1,5 @@
 import { PersonStanding } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 const AttendanceLeaderboard = ({ stats }) => {
   if (!stats) {
@@ -33,6 +34,18 @@ const AttendanceLeaderboard = ({ stats }) => {
       </div>
     </div>
   );
+};
+
+AttendanceLeaderboard.propTypes = {
+  stats: PropTypes.shape({
+    attendanceLeaderboard: PropTypes.arrayOf(
+      PropTypes.shape({
+        event: PropTypes.string.isRequired,
+        attendance: PropTypes.number.isRequired,
+        org: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+  }),
 };
 
 export default AttendanceLeaderboard;

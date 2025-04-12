@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { ChartNoAxesColumn } from 'lucide-react';
 
 const Stats = ({ stats }) => {
   if (!stats) {
