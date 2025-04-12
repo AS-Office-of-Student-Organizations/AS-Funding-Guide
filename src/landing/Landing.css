@@ -26,6 +26,7 @@
   gap: 1em;
   margin-bottom: 1rem;
   justify-content: center;
+  align-items:stretch;
 }
 
 .section-header {
@@ -42,6 +43,10 @@
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   padding: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .section-icon {
@@ -95,20 +100,12 @@ h2 {
   margin-bottom: 1rem;
   align-items: center;
   border-radius: 0.5rem;
-  padding: 1.5rem;
+  margin: 1.5rem 0;
   h2 {
     color: var(--solid-main);
     font-size: 1.5rem;
     font-weight: 600;
   }
-}
-
-.stats-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
 }
 
 .statistic {
@@ -117,7 +114,7 @@ h2 {
   text-align: left;
   margin: 0rem 3rem;
   h3 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
     color: var(--solid-secondary);
     line-height: 1.2em;
@@ -131,7 +128,6 @@ h2 {
 .stats-container {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
 }
 
 .stats-caption {
@@ -186,14 +182,16 @@ h2 {
 }
 
 .event-feed {
-  max-height: 500px; /* Adjust based on your design */
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  max-height: 22em;
 }
 
 .events-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  overflow-y: auto;
 }
 
 .event-card {
@@ -260,12 +258,34 @@ h2 {
   }
 }
 
-@media (max-width: 786px) {
+@media (max-width: 1200px) {
   .landing-container {
     flex-wrap: wrap;
   }
+  
+}
+
+@media (max-width: 1024px) {
+  .statistic {
+    margin: 0rem 1rem;
+  }
+}
+
+@media (max-width: 786px) {
   .landing {
     padding: 2em 1em;
+  }
+  .statistic {
+    margin: 0rem 0.5rem;
+  }
+  .statistic h3 {
+    font-size: 2rem;
+  }
+  .statistic p {
+    font-size: 0.875rem;
+  }
+  .stats-caption {
+    font-size: 0.75rem;
   }
   .landing-section {
     width: 100%;
@@ -273,6 +293,27 @@ h2 {
 }
 
 @media (max-width: 480px) {
+  .header {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+  .stats-container {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .statistic {
+    margin: 0rem 0.5rem;
+  }
+  .statistic h3 {
+    font-size: 1.5rem;
+  }
+  .statistic p {
+    font-size: 0.75rem;
+  }
+  .stats-caption {
+    font-size: 0.6rem;
+  }
   .landing {
     padding: 2em 0.75em;
   }

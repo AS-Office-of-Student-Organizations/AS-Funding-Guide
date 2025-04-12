@@ -24,7 +24,7 @@ const Stats = ({ stats }) => {
           <div className="statistic" key={item.key}>
             <h3>
               {item.prefix}
-              {stats[item.key].toLocaleString()}
+              {Math.round(stats[item.key]).toLocaleString()}
               {item.postfix}
             </h3>
             <p>{item.label}</p>
@@ -36,7 +36,7 @@ const Stats = ({ stats }) => {
           <div className="statistic" key={item.key}>
             <h3>
               {item.prefix}
-              {stats[item.key].toLocaleString()}
+              {Math.round(stats[item.key]).toLocaleString()}
               {item.postfix}
             </h3>
             <p>{item.label}</p>
