@@ -21,10 +21,12 @@ const AttendanceLeaderboard = ({ stats }) => {
             </div>
             <div className="attendance-card">
               <div className="event-attendance-container">
-                <h3>{event.event}</h3>
+                <h3 title={event.event}>{event.event}</h3>
                 <p className="attendance-count">{event.attendance}</p>
               </div>
-              <p className="org-detail">{event.org}</p>
+              <p title={event.org} className="org-detail">
+                {event.org}
+              </p>
             </div>
           </div>
         ))}
