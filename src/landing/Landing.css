@@ -141,17 +141,89 @@ h2 {
   align-self: right;
 }
 
-.attendance-card {
-  h3 {
-    text-align: left;
-  }
-}
-
-.attendance-details {
+.attendance-card-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  .attendance-rank {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+    color: var(--gray-3);
+  }
+  .attendance-card {
+    flex-direction:column;
+    width: 100%;
+  }
+  h3 {
+    text-align: left;
+    color: var(--solid-secondary);
+    margin-right: 3rem;
+  }
+  .event-attendance-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  margin-bottom: 1rem;
 }
+
+.org-detail {
+  font-size: 0.875rem;
+  color: var(--solid-secondary-light);
+  text-align: left;
+}
+
+.venue-text {
+  font-size: 0.8rem;
+  color: var(--solid-main-light);
+  text-align: left;
+}
+
+.event-title {
+  color: var(--solid-secondary);
+}
+
+.event-feed {
+  max-height: 500px; /* Adjust based on your design */
+  overflow-y: auto;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-card {
+  transition: background-color 0.2s;
+  text-align: left;
+}
+
+.event-title,
+.org-detail,
+.venue-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  color: var(--background-main-dark)
+  text-align: center;
+}
+
+.empty-icon {
+  margin-bottom: 12px;
+  color: var(--solid-secondary-light);
+}
+
 /* Table Styles */
 
 .deadlines,

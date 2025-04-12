@@ -45,7 +45,7 @@ const Stats = ({ stats }) => {
       </div>
       <i className="stats-caption">
         Numbers are from 2024-2025 academic year and only take into account events that have already
-        occured.
+        occurred
       </i>
     </div>
   );

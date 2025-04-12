@@ -52,11 +52,11 @@ const Landing = () => {
         <div className="landing-section">
           <Announcements announcements={announcements} />
         </div>
+      </div>
+      <div className="landing-container">
         <div className="landing-section">
           <Deadlines deadlines={deadlines} />
         </div>
-      </div>
-      <div className="landing-container">
         <div className="landing-section">
           <EventFeed stats={stats} />
         </div>

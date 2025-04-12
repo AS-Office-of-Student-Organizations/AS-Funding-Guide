@@ -15,11 +15,16 @@ const AttendanceLeaderboard = ({ stats }) => {
       </div>
       <div className="attendance-list">
         {events.map((event, index) => (
-          <div key={index} className="attendance-card">
-            <h3>{event.event}</h3>
-            <div className="attendance-details">
+          <div key={index} className="attendance-card-container">
+            <div className="attendance-rank" data-rank={index + 1}>
+              {index + 1}
+            </div>
+            <div className="attendance-card">
+              <div className="event-attendance-container">
+                <h3>{event.event}</h3>
+                <p className="attendance-count">{event.attendance}</p>
+              </div>
               <p className="org-detail">{event.org}</p>
-              <p className="attendance-count">{event.attendance}</p>
             </div>
           </div>
         ))}
