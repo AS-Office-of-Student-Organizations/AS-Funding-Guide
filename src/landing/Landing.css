@@ -5,7 +5,7 @@
 
 .header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .header h1 {
@@ -20,10 +20,13 @@
   color: #6b7280;
 }
 
-.landing-body {
+.landing-container {
   display: flex;
   flex-direction: row;
   gap: 1em;
+  margin-bottom: 1rem;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .section-header {
@@ -40,6 +43,10 @@
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   padding: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .section-icon {
@@ -86,6 +93,141 @@ h2 {
   margin: 0;
 }
 
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  h2 {
+    color: var(--solid-main);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+.statistic {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  text-align: left;
+  margin: 0rem 3rem;
+  h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--solid-secondary);
+    line-height: 1.2em;
+  }
+  p {
+    font-size: 1rem;
+    color: var(--solid-secondary-light);
+  }
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.stats-caption {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+  align-self: right;
+}
+
+.attendance-card-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  .attendance-rank {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+    color: var(--gray-3);
+  }
+  .attendance-card {
+    flex-direction: column;
+    width: 90%;
+  }
+  h3 {
+    text-align: left;
+    color: var(--solid-secondary);
+    margin-right: 3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .event-attendance-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  margin-bottom: 1rem;
+}
+
+.org-detail {
+  font-size: 0.875rem;
+  color: var(--solid-secondary-light);
+  text-align: left;
+}
+
+.venue-text {
+  font-size: 0.8rem;
+  color: var(--solid-main-light);
+  text-align: left;
+}
+
+.event-title {
+  color: var(--solid-secondary);
+}
+
+.event-feed {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  max-height: 22em;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.event-card {
+  transition: background-color 0.2s;
+  text-align: left;
+  border-top: 1px solid var(--background-main-dark);
+  border-bottom: 1px solid var(--background-main-dark);
+  padding: 0.25rem 0rem;
+}
+
+.event-title,
+.org-detail,
+.venue-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  color: var(--background-main-dark);
+  text-align: center;
+}
+
+.empty-icon {
+  margin-bottom: 12px;
+  color: var(--solid-secondary-light);
+}
+
 /* Table Styles */
 
 .deadlines,
@@ -122,12 +264,33 @@ h2 {
   }
 }
 
-@media (max-width: 786px) {
-  .landing-body {
+@media (max-width: 1200px) {
+  .landing-container {
     flex-wrap: wrap;
   }
+}
+
+@media (max-width: 1024px) {
+  .statistic {
+    margin: 0rem 1rem;
+  }
+}
+
+@media (max-width: 786px) {
   .landing {
     padding: 2em 1em;
+  }
+  .statistic {
+    margin: 0rem 0.5rem;
+  }
+  .statistic h3 {
+    font-size: 2rem;
+  }
+  .statistic p {
+    font-size: 0.875rem;
+  }
+  .stats-caption {
+    font-size: 0.75rem;
   }
   .landing-section {
     width: 100%;
@@ -135,6 +298,27 @@ h2 {
 }
 
 @media (max-width: 480px) {
+  .header {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+  .stats-container {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .statistic {
+    margin: 0rem 0.5rem;
+  }
+  .statistic h3 {
+    font-size: 1.5rem;
+  }
+  .statistic p {
+    font-size: 0.75rem;
+  }
+  .stats-caption {
+    font-size: 0.6rem;
+  }
   .landing {
     padding: 2em 0.75em;
   }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Draggable } from 'react-beautiful-dnd';
-import { Menu, ChevronLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const GuideSideBar = ({
@@ -104,7 +104,7 @@ const GuideSideBar = ({
         className={`sidebar-toggle ${isSidebarVisible ? 'extended' : 'contracted'}`}
         onClick={toggleSidebar}
       >
-        {isSidebarVisible ? <ChevronLeft /> : <Menu />}
+        {isSidebarVisible ? <ChevronLeft /> : <ChevronRight />}
       </button>
     </div>
   );
@@ -129,4 +129,5 @@ GuideSideBar.propTypes = {
     innerRef: PropTypes.func,
     droppableProps: PropTypes.object,
   }),
+  isGuide: PropTypes.bool,
 };
