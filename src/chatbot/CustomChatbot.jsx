@@ -54,7 +54,7 @@ const CustomChatbot = ({ user }) => {
     try {
       const token = await user.getIdToken();
 
-      const response = await fetch('http://127.0.0.1:8000/query', {
+      const response = await fetch('http://chatbot.as-funding-chatbot.org/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
