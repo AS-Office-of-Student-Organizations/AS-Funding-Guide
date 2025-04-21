@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@firebase/auth": "^1.10.0",
     "@internationalized/date": "^3.6.0",
     "@radix-ui/react-navigation-menu": "^1.2.3",
     "@react-aria/datepicker": "^3.12.0",

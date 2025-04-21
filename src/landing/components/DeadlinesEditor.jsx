@@ -47,7 +47,6 @@ const DeadlinesEditor = () => {
   };
 
   const handleDeleteDeadline = index => {
-    console.log(index);
     const newDeadlines = deadlines.filter((_, i) => i !== index);
     setDeadlines(newDeadlines);
   };

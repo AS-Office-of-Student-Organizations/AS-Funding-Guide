@@ -159,7 +159,7 @@
   }
 
   .guide-left-column.hidden {
-    transform: translateX(calc(-100% + 0.8em));
+    transform: translateX(calc(-100% + 1em));
   }
 
   .guide-sidebar {
@@ -174,7 +174,7 @@
   .lucide-chevron-right,
   .lucide-menu,
   .lucide-chevron-left {
-    margin-right: -0.15em;
+    margin-right: -0.4em;
   }
 }
 
