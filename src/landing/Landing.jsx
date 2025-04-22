@@ -1,43 +1,17 @@
 import Announcements from './components/Announcements.jsx';
 import Deadlines from './components/Deadlines.jsx';
 import Stats from './components/Stats.jsx';
-import { db } from '@/components/firebase.jsx';
-import { useState, useEffect } from 'react';
-import { getDoc, doc } from 'firebase/firestore';
+import { useDoc } from '@/data/useDocs.jsx';
 import './Landing.css';
 import EventFeed from './components/EventFeed.jsx';
 import AttendanceLeaderboard from './components/AttendanceLeaderboard.jsx';
 
 const Landing = () => {
-  const [announcements, setAnnouncements] = useState([]);
-  const [deadlines, setDeadlines] = useState([]);
-  const [stats, setStats] = useState(undefined);
+  const landingDoc = useDoc('landing');
+  const stats = useDoc('stats-2024-2025');
 
-  useEffect(() => {
-    const fetchFeed = async () => {
-      try {
-        const docRef = doc(db, 'public', 'landing'); // hard code for now
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setAnnouncements(docSnap.data().announcements);
-          setDeadlines(docSnap.data().deadlines);
-        } else {
-          console.error('no such document!');
-        }
-        const docRef2 = doc(db, 'public', 'stats-2024-2025');
-        const docSnap2 = await getDoc(docRef2);
-        if (docSnap2.exists()) {
-          setStats(docSnap2.data());
-        } else {
-          console.error('no such document!');
-        }
-      } catch (error) {
-        console.error('Error fetching pages:', error);
-      }
-    };
-
-    fetchFeed();
-  }, []);
+  const announcements = landingDoc?.announcements || [];
+  const deadlines = landingDoc?.deadlines || [];
 
   return (
     <div className="landing">

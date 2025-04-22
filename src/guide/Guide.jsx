@@ -1,31 +1,12 @@
-import { useEffect, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { db } from '@/components/firebase.jsx';
-import { getDoc, doc } from 'firebase/firestore';
 import GuideSideBar from './components/GuideSideBar.jsx';
 import GuidePage from './components/GuidePage.jsx';
 import './Guide.css';
+import { useDoc } from '@/data/useDocs.jsx';
 
 const Guide = () => {
-  const [pages, setPages] = useState([]); // Initialize state for pages
-
-  useEffect(() => {
-    const fetchPages = async () => {
-      try {
-        const docRef = doc(db, 'public', 'guide'); // hard code for now
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setPages(docSnap.data().pages);
-        } else {
-          console.error('no such document!');
-        }
-      } catch (error) {
-        console.error('Error fetching pages:', error);
-      }
-    };
-
-    fetchPages();
-  }, []);
+  const guideDoc = useDoc('guide');
+  const pages = guideDoc?.pages || [];
 
   return (
     <div className="guide">

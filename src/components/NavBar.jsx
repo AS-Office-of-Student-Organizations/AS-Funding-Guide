@@ -6,7 +6,7 @@ import DropDownButton from './DropDownButton';
 import { ChevronDown, ExternalLink } from 'lucide-react';
 import Modal from './Modal';
 import LoginForm from './LoginForm';
-import { auth } from './firebase';
+import { auth } from '../data/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {

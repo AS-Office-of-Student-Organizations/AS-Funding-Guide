@@ -1,6 +1,6 @@
 'use client';
 
-import { auth } from './firebase';
+import { auth } from '../data/firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import './LoginForm.css';
 import { useState } from 'react';

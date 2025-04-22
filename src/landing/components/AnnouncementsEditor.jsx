@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { db } from '@/components/firebase.jsx'; // Import your Firebase config
+import { db } from '@/data/firebase.jsx'; // Import your Firebase config
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Announcements from '@/landing/components/Announcements.jsx';

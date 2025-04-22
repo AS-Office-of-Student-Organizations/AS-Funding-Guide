@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import DeadlineDatePicker from '@/components/DeadlineDatePicker';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { Draggable, DragDropContext, Droppable } from 'react-beautiful-dnd';
-import { db } from '@/components/firebase';
+import { db } from '@/data/firebase';
 import { parseDate, today } from '@internationalized/date';
 import { v4 as uuidv4 } from 'uuid';
 

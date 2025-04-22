@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from '@firebase/auth';
-import { auth } from '@/components/firebase.jsx';
+import { auth } from '@/data/firebase.jsx';
 
 function RequireAuth({ children }) {
   const navigate = useNavigate();
