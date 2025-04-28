@@ -1,8 +1,9 @@
-import { Routes, Route, Link } from 'react-router-dom';
-import GuideEditor from '@/guide/GuideEditor';
-import AnnouncementsEditor from '@/landing/components/AnnouncementsEditor';
-import DeadlinesEditor from '@/landing/components/DeadlinesEditor';
-import HiddenGuide from '@/guide/HiddenGuide';
+import { Routes, Route, Link } from "react-router-dom"
+import GuideEditor from "@/guide/GuideEditor"
+import AnnouncementsEditor from "@/landing/components/AnnouncementsEditor"
+import DeadlinesEditor from "@/landing/components/DeadlinesEditor"
+import HiddenGuide from "@/guide/HiddenGuide"
+import FundraisingEditor from "@/fundraising/FundraisingEditor"
 
 const AdminHome = () => {
   return (
@@ -14,6 +15,9 @@ const AdminHome = () => {
             <ul>
               <li>
                 <Link to="/admin/guide">Guide</Link>
+              </li>
+              <li>
+                <Link to="/admin/fundraising">Fundraising Guide</Link>
               </li>
               <li>
                 <Link to="/admin/announcements">Announcements</Link>
@@ -28,12 +32,13 @@ const AdminHome = () => {
           }
         />
         <Route path="/guide/*" element={<GuideEditor />} />
+        <Route path="/fundraising" element={<FundraisingEditor />} />
         <Route path="/announcements" element={<AnnouncementsEditor />} />
         <Route path="/deadlines" element={<DeadlinesEditor />} />
         <Route path="/faq/*" element={<HiddenGuide />} />
       </Routes>
     </div>
-  );
-};
+  )
+}
 
-export default AdminHome;
+export default AdminHome

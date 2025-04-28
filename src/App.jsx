@@ -1,40 +1,41 @@
-'use client';
+"use client"
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { MessageCircle, ChevronDown } from 'lucide-react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './data/firebase';
-import AdminLogin from '@/admin/AdminLogin.jsx';
-import RequireAuth from '@/data/RequireAuth.jsx';
-import NavBar from '@/components/NavBar.jsx';
-import Guide from '@/guide/Guide.jsx';
-import AdminHome from '@/admin/AdminHome.jsx';
-import Landing from '@/landing/Landing.jsx';
-import CustomChatbot from './chatbot/CustomChatbot';
-import Footer from './components/Footer';
-import DataProvider from './data/DataProvider.jsx';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { MessageCircle, ChevronDown } from "lucide-react"
+import { onAuthStateChanged } from "firebase/auth"
+import { auth } from "./data/firebase"
+import AdminLogin from "@/admin/AdminLogin.jsx"
+import RequireAuth from "@/data/RequireAuth.jsx"
+import NavBar from "@/components/NavBar.jsx"
+import Guide from "@/guide/Guide.jsx"
+import AdminHome from "@/admin/AdminHome.jsx"
+import Landing from "@/landing/Landing.jsx"
+import FundraisingGuide from "@/fundraising/FundraisingGuide.jsx"
+import CustomChatbot from "./chatbot/CustomChatbot"
+import Footer from "./components/Footer"
+import DataProvider from "./data/DataProvider.jsx"
 
 function App() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const [user, setUser] = useState(null);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false)
+  const [user, setUser] = useState(null)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser);
-    });
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
 
-    return () => unsubscribe();
-  }, []);
+    return () => unsubscribe()
+  }, [])
 
   const toggleChat = () => {
     if (user) {
-      setIsChatOpen(!isChatOpen);
+      setIsChatOpen(!isChatOpen)
     } else {
-      setIsLoginModalOpen(true);
+      setIsLoginModalOpen(true)
     }
-  };
+  }
 
   return (
     <Router>
@@ -53,22 +54,19 @@ function App() {
               }
             />
             <Route path="/guide/*" element={<Guide />} />
+            <Route path="/fundraising" element={<FundraisingGuide />} />
           </Routes>
         </div>
-        <div className={`chat-popup ${isChatOpen ? 'open' : ''}`}>
+        <div className={`chat-popup ${isChatOpen ? "open" : ""}`}>
           {isChatOpen && user && <CustomChatbot user={user} />}
         </div>
         <button className="chat-toggle-button" onClick={toggleChat} aria-label="Toggle chat">
-          {isChatOpen ? (
-            <ChevronDown className="chat-toggle-icon" />
-          ) : (
-            <MessageCircle className="chat-toggle-icon" />
-          )}
+          {isChatOpen ? <ChevronDown className="chat-toggle-icon" /> : <MessageCircle className="chat-toggle-icon" />}
         </button>
         <Footer />
       </DataProvider>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,67 +1,70 @@
-'use client';
+"use client"
 
-import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import DropDownButton from './DropDownButton';
-import { ChevronDown, ExternalLink } from 'lucide-react';
-import Modal from './Modal';
-import LoginForm from './LoginForm';
-import { auth } from '../data/firebase';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useState, useEffect } from "react"
+import { NavLink, useLocation } from "react-router-dom"
+import DropDownButton from "./DropDownButton"
+import { ChevronDown, ExternalLink } from "lucide-react"
+import Modal from "./Modal"
+import LoginForm from "./LoginForm"
+import { auth } from "../data/firebase"
+import { onAuthStateChanged, signOut } from "firebase/auth"
 
 const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
-  const [activeLinkName, setActiveLinkName] = useState('');
-  const [user, setUser] = useState(null);
-  const location = useLocation();
+  const [activeLinkName, setActiveLinkName] = useState("")
+  const [user, setUser] = useState(null)
+  const location = useLocation()
 
   useEffect(() => {
-    const links = [{ to: '/guide', name: 'Guide' }];
-    const activeLink = links.find(link => location.pathname.includes(link.to));
+    const links = [{ to: "/guide", name: "Guide" }]
+    const activeLink = links.find((link) => location.pathname.includes(link.to))
     if (activeLink) {
-      setActiveLinkName(activeLink.name);
+      setActiveLinkName(activeLink.name)
     } else {
-      setActiveLinkName('');
+      setActiveLinkName("")
     }
-  }, [location]);
+  }, [location])
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      setUser(currentUser);
-    });
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser)
+    })
 
-    return () => unsubscribe();
-  }, []);
+    return () => unsubscribe()
+  }, [])
 
-  const handleLoginClick = e => {
-    e.preventDefault();
-    setIsLoginModalOpen(true);
-  };
+  const handleLoginClick = (e) => {
+    e.preventDefault()
+    setIsLoginModalOpen(true)
+  }
 
   const handleLogout = async () => {
     try {
-      await signOut(auth);
+      await signOut(auth)
     } catch (error) {
-      console.error('Error signing out: ', error);
+      console.error("Error signing out: ", error)
     }
-  };
+  }
 
   const navLinks = [
     <NavLink to="/guide" key="0">
       Guide
     </NavLink>,
+    <NavLink to="/fundraising" key="1">
+      Fundraising Guide
+    </NavLink>,
     user ? (
-      <a href="#" onClick={handleLogout} key="1">
+      <a href="#" onClick={handleLogout} key="2">
         Log Out
       </a>
     ) : (
-      <a href="#" onClick={handleLoginClick} key="1">
+      <a href="#" onClick={handleLoginClick} key="2">
         Log In
       </a>
     ),
-    <a href="https://finance.ucsd.edu/" key="2" target="_blank" rel="noopener noreferrer">
+    <a href="https://finance.ucsd.edu/" key="3" target="_blank" rel="noopener noreferrer">
       Funding Portal <ExternalLink />
     </a>,
-  ];
+  ]
 
   return (
     <>
@@ -93,6 +96,9 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
             <NavLink to="/guide">Guide</NavLink>
           </span>
           <span className="link">
+            <NavLink to="/fundraising">Fundraising Guide</NavLink>
+          </span>
+          <span className="link">
             {user ? (
               <a href="#" onClick={handleLogout}>
                 Log Out
@@ -115,7 +121,7 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
         <LoginForm onClose={() => setIsLoginModalOpen(false)} />
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
