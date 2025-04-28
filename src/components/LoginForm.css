@@ -28,22 +28,8 @@
   margin-bottom: 1rem;
 }
 
-.google-sign-in-button.redirect {
-  background-color: #f3f4f6;
-  border-color: #9ca3af;
-}
-
 .google-sign-in-button:hover {
   background-color: #f3f4f6;
-}
-
-.google-sign-in-button.redirect:hover {
-  background-color: #e5e7eb;
-}
-
-.google-sign-in-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
 }
 
 .google-icon {
@@ -52,54 +38,57 @@
   margin-right: 0.5rem;
 }
 
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.separator span {
+  padding: 0 0.5rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #3b82f6;
+}
+
 .error-message {
   color: #ef4444;
   font-size: 0.875rem;
   text-align: center;
   margin-bottom: 1rem;
-  padding: 0.5rem;
-  background-color: #fee2e2;
-  border-radius: 0.25rem;
-  border: 1px solid #fecaca;
-}
-
-.detailed-error {
-  color: #6b7280;
-  font-size: 0.75rem;
-  text-align: left;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  background-color: #f3f4f6;
-  border-radius: 0.25rem;
-  border: 1px solid #e5e7eb;
-  word-break: break-all;
-  max-height: 100px;
-  overflow-y: auto;
-}
-
-.troubleshooting-tips {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: #f3f4f6;
-  border-radius: 0.25rem;
-  border: 1px solid #e5e7eb;
-}
-
-.troubleshooting-tips h3 {
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #374151;
-}
-
-.troubleshooting-tips ul {
-  font-size: 0.75rem;
-  color: #4b5563;
-  padding-left: 1.5rem;
-}
-
-.troubleshooting-tips li {
-  margin-bottom: 0.25rem;
 }
 
 .submit-button {
@@ -117,4 +106,24 @@
 
 .submit-button:hover {
   background-color: #164bb4;
+}
+
+.toggle-form {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 1rem;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: #164bb4;
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.toggle-button:hover {
+  color: #0d2a58;
 }
