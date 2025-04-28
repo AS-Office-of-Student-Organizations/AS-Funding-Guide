@@ -35,16 +35,15 @@ const FundraisingGuide = () => {
           </ul>
           <div className="sidebar-help">
             <h4>Questions?</h4>
-            <p>
-              Visit our{" "}
-              <a href="https://discord.gg/Wv4Et7w7Qy" target="_blank" rel="noopener noreferrer">
-                Discord
-              </a>{" "}
-              for help
-            </p>
-          </div>
-          <div className="qr-container">
-            <img src="/discord-mark-black.png" alt="Discord QR Code" className="qr-code" />
+            <p>Visit our Discord for help</p>
+            <div className="discord-container">
+              <button className="discord-button">
+                <a href="https://discord.gg/Wv4Et7w7Qy" target="_blank" rel="noopener noreferrer">
+                  <img src="/discord-mark-black.png" alt="Discord" className="discord-logo" />
+                  <span>Join our server</span>
+                </a>
+              </button>
+            </div>
           </div>
         </div>
         <button className={`sidebar-toggle ${isSidebarVisible ? "extended" : "contracted"}`} onClick={toggleSidebar}>
@@ -69,7 +68,7 @@ const FundraisingGuide = () => {
               </p>
             </div>
             <div className="image-container">
-              <img src="/placeholder.svg?key=c2dkc" alt="Students fundraising" />
+              <img src="/blue_logo.png" alt="Students fundraising" />
             </div>
           </div>
         </section>

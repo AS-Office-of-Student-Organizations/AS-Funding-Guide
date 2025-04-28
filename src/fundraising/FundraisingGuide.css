@@ -1,237 +1,301 @@
 .fundraising-guide {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.fundraising-left-column {
+  width: 14em; /* Further reduced from 16em to 14em for a more streamlined look */
+  padding: 0;
+  align-self: flex-start;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 1em;
+  margin-top: 2.8em;
+  margin-left: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.fundraising-sidebar {
+  max-height: 70vh;
+  overflow-y: auto;
+  flex-grow: 1;
+  background-color: var(--background-main-light);
+  border-radius: 1em;
+  padding: 1.2em;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--background-main-dark);
+}
+
+.fundraising-sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 1em;
+  color: var(--solid-secondary);
+  font-size: 1.1em;
+  font-weight: 600;
+  border-bottom: 2px solid var(--background-main-dark);
+  padding-bottom: 0.5em;
+  text-align: center; /* Center the heading */
+}
+
+.fundraising-sidebar h4 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: var(--solid-secondary);
+  font-size: 0.95em;
+  font-weight: 600;
+  text-align: center; /* Center the heading */
+}
+
+.fundraising-sidebar ul {
+  padding-left: 0;
+  margin-top: 0.5em;
+}
+
+.fundraising-sidebar li {
+  list-style-type: none;
+  margin-bottom: 0.8em;
+  position: relative;
+  padding-left: 0.8em;
+}
+
+.fundraising-sidebar li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--solid-secondary);
+}
+
+.fundraising-sidebar a {
+  color: var(--solid-main-light);
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 0.3em 0.5em;
+  border-radius: 0.5em;
+  display: block;
+  transition: all 0.2s ease;
+}
+
+.fundraising-sidebar a:hover {
+  background-color: var(--background-main-dark);
+  color: var(--solid-main);
+  transform: translateX(2px);
+}
+
+.sidebar-help {
+  margin-top: 1.5em;
+  padding-top: 1em;
+  border-top: 1px solid var(--background-main-dark);
+  text-align: center; /* Center the help section */
+}
+
+.sidebar-help p {
+  font-size: 0.85em;
+  color: var(--solid-main-light);
+  margin: 0.5em 0;
+}
+
+.discord-container {
+  display: flex;
+  justify-content: center; /* Center the Discord button */
+  margin-top: 0.8em;
+  margin-bottom: 0.5em;
+}
+
+.discord-button {
+  background-color: #5865f2;
+  border-radius: 0.5em;
+  padding: 0.5em 0.8em;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.discord-button:hover {
+  background-color: #4752c4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.discord-button a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  padding: 0;
+  font-weight: 500;
+  font-size: 0.85em;
+}
+
+.discord-button a:hover {
+  background-color: transparent;
+  color: white;
+  transform: none;
+}
+
+.discord-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5em;
+  filter: brightness(0) invert(1);
+  border-radius: 3px; /* Slight rounding of the square */
+}
+
+.sidebar-toggle {
+  display: none;
+}
+
+.fundraising-content {
+  flex: 1;
+  padding: 2em 3em;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.fundraising-content h1 {
+  color: var(--solid-main);
+  font-size: 2.5em;
+  margin-bottom: 1em;
+}
+
+.fundraising-content h2 {
+  color: var(--solid-secondary);
+  font-size: 1.8em;
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+  border-bottom: 2px solid var(--background-main-dark);
+  padding-bottom: 0.3em;
+}
+
+.fundraising-content h3 {
+  color: var(--solid-main);
+  font-size: 1.3em;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+}
+
+.fundraising-content p {
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+
+.fundraising-content ul {
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+.fundraising-content li {
+  margin-bottom: 0.8em;
+  line-height: 1.5;
+}
+
+.content-with-image {
+  display: flex;
+  gap: 2em;
+  margin: 1.5em 0;
+  align-items: flex-start;
+}
+
+.content-with-image > div {
+  flex: 1;
+}
+
+.image-container {
+  flex: 0 0 400px;
+  max-width: 400px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1200px) {
   .fundraising-left-column {
-    width: 19em;
-    padding: 0;
-    align-self: flex-start;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 1em;
-    margin-top: 2.8em;
-    margin-left: 1em;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    width: 12em; /* Even thinner on smaller screens */
   }
-  
-  .fundraising-sidebar {
-    max-height: 70vh;
-    overflow-y: auto;
-    flex-grow: 1;
-    background-color: var(--background-main-light);
-    border-radius: 1em;
-    padding: 1.5em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .content-with-image {
+    flex-direction: column;
   }
-  
-  .fundraising-sidebar h3 {
-    margin-top: 0;
-    margin-bottom: 1em;
-    color: var(--solid-secondary);
-    font-size: 1.2em;
+
+  .image-container {
+    max-width: 100%;
   }
-  
-  .fundraising-sidebar h4 {
-    margin-top: 2em;
-    margin-bottom: 0.5em;
-    color: var(--solid-secondary);
-    font-size: 1em;
+}
+
+@media (max-width: 800px) {
+  .fundraising-guide {
+    flex-direction: column;
   }
-  
-  .fundraising-sidebar ul {
-    padding-left: 0.5em;
-  }
-  
-  .fundraising-sidebar li {
-    list-style-type: none;
-    margin-bottom: 0.8em;
-  }
-  
-  .fundraising-sidebar a {
-    color: var(--solid-main-light);
-    text-decoration: none;
-    font-size: 0.9em;
-    padding: 0.3em 0.5em;
-    border-radius: 0.5em;
-    display: block;
-  }
-  
-  .fundraising-sidebar a:hover {
-    background-color: var(--background-main-dark);
-    color: var(--solid-main);
-  }
-  
-  .sidebar-help {
-    margin-top: 2em;
-    padding-top: 1em;
-    border-top: 1px solid var(--background-main-dark);
-  }
-  
-  .qr-container {
-    display: flex;
-    justify-content: center;
+
+  .fundraising-left-column {
+    position: relative;
+    width: 100%;
+    margin-left: 0;
     margin-top: 1em;
   }
-  
-  .qr-code {
-    width: 80px;
-    height: 80px;
-    filter: brightness(1) invert(0.3) sepia(0.9) hue-rotate(170deg) saturate(400%);
+
+  .fundraising-left-column.hidden {
+    transform: translateX(calc(-100% + 1em)) translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+    background-color: var(--background-main-dark);
   }
-  
+
   .sidebar-toggle {
-    display: none;
-  }
-  
-  .fundraising-content {
-    flex: 1;
-    padding: 2em 3em;
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: left;
-  }
-  
-  .fundraising-content h1 {
-    color: var(--solid-main);
-    font-size: 2.5em;
-    margin-bottom: 1em;
-  }
-  
-  .fundraising-content h2 {
-    color: var(--solid-secondary);
-    font-size: 1.8em;
-    margin-top: 2em;
-    margin-bottom: 0.8em;
-    border-bottom: 2px solid var(--background-main-dark);
-    padding-bottom: 0.3em;
-  }
-  
-  .fundraising-content h3 {
-    color: var(--solid-main);
-    font-size: 1.3em;
-    margin-top: 1.5em;
-    margin-bottom: 0.8em;
-  }
-  
-  .fundraising-content p {
-    margin-bottom: 1em;
-    line-height: 1.6;
-  }
-  
-  .fundraising-content ul {
-    margin-bottom: 1.5em;
-    padding-left: 1.5em;
-  }
-  
-  .fundraising-content li {
-    margin-bottom: 0.8em;
-    line-height: 1.5;
-  }
-  
-  .content-with-image {
     display: flex;
-    gap: 2em;
-    margin: 1.5em 0;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: transparent;
+    border-radius: 0;
+    width: 3em;
+    padding: 0;
   }
-  
-  .content-with-image > div {
-    flex: 1;
+
+  .fundraising-content {
+    padding: 1em 1.5em;
   }
-  
-  .image-container {
-    flex: 0 0 400px;
-    max-width: 400px;
+
+  .fundraising-content h1 {
+    font-size: 2em;
   }
-  
-  .image-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 0.5em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .fundraising-content h2 {
+    font-size: 1.5em;
   }
-  
-  @media (max-width: 1200px) {
-    .fundraising-left-column {
-      width: 16em;
-    }
-  
-    .content-with-image {
-      flex-direction: column;
-    }
-  
-    .image-container {
-      max-width: 100%;
-    }
+}
+
+@media (max-width: 600px) {
+  .fundraising-left-column {
+    top: 3em;
+    max-height: calc(100vh - 2em);
+    transform: translateX(0);
   }
-  
-  @media (max-width: 800px) {
-    .fundraising-guide {
-      flex-direction: column;
-    }
-  
-    .fundraising-left-column {
-      position: relative;
-      width: 100%;
-      margin-left: 0;
-      margin-top: 1em;
-    }
-  
-    .fundraising-left-column.hidden {
-      transform: translateX(calc(-100% + 1em)) translateY(-50%);
-      transition: transform 0.3s ease-in-out;
-      background-color: var(--background-main-dark);
-    }
-  
-    .sidebar-toggle {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-end;
-      background-color: transparent;
-      border-radius: 0;
-      width: 3em;
-      padding: 0;
-    }
-  
-    .fundraising-content {
-      padding: 1em 1.5em;
-    }
-  
-    .fundraising-content h1 {
-      font-size: 2em;
-    }
-  
-    .fundraising-content h2 {
-      font-size: 1.5em;
-    }
+
+  .fundraising-left-column.hidden {
+    transform: translateX(calc(-100% + 1em));
   }
-  
-  @media (max-width: 600px) {
-    .fundraising-left-column {
-      top: 3em;
-      max-height: calc(100vh - 2em);
-      transform: translateX(0);
-    }
-  
-    .fundraising-left-column.hidden {
-      transform: translateX(calc(-100% + 1em));
-    }
-  
-    .fundraising-content {
-      padding: 1em;
-    }
-  
-    .fundraising-content h1 {
-      font-size: 1.8em;
-    }
-  
-    .fundraising-content h2 {
-      font-size: 1.3em;
-    }
+
+  .fundraising-content {
+    padding: 1em;
   }
-  
+
+  .fundraising-content h1 {
+    font-size: 1.8em;
+  }
+
+  .fundraising-content h2 {
+    font-size: 1.3em;
+  }
+}
