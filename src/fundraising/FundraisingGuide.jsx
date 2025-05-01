@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronRight, ChevronLeft } from "lucide-react"
+import ImageSlider from "../components/ImageSlider"
 import "./FundraisingGuide.css"
 
 const FundraisingGuide = () => {
@@ -10,6 +11,8 @@ const FundraisingGuide = () => {
   const toggleSidebar = () => {
     setSidebarVisible(!isSidebarVisible)
   }
+
+  const sliderImages = ["kabir.jfif", "tamer.jfif", "IMG_2777.jpg"]
 
   return (
     <div className="fundraising-guide">
@@ -52,7 +55,10 @@ const FundraisingGuide = () => {
       </div>
 
       <div className="fundraising-content">
-        <h1>Fundraising Guide</h1>
+        <div className="header-section">
+          <ImageSlider images={sliderImages} />
+          <h1 className="animated-title">Fundraising Guide</h1>
+        </div>
 
         <section id="introduction">
           <h2>Introduction</h2>
@@ -68,7 +74,7 @@ const FundraisingGuide = () => {
               </p>
             </div>
             <div className="image-container">
-              <img src="/blue_logo.png" alt="Students fundraising" />
+              <img src="logo_simplified.png" alt="Students fundraising" />
             </div>
           </div>
         </section>

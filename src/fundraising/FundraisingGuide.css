@@ -58,14 +58,11 @@
   list-style-type: none;
   margin-bottom: 0.8em;
   position: relative;
-  padding-left: 0.8em;
+  transition: transform 0.3s ease;
 }
 
 .fundraising-sidebar li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--solid-secondary);
+  content: ""; /* Remove the bullet point */
 }
 
 .fundraising-sidebar a {
@@ -75,13 +72,13 @@
   padding: 0.3em 0.5em;
   border-radius: 0.5em;
   display: block;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .fundraising-sidebar a:hover {
   background-color: var(--background-main-dark);
   color: var(--solid-main);
-  transform: translateX(2px);
+  transform: translateX(5px);
 }
 
 .sidebar-help {
@@ -197,6 +194,37 @@
   line-height: 1.5;
 }
 
+.header-section {
+  position: relative;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2em;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.animated-title {
+  color: white;
+  font-size: 3.5em;
+  text-align: center;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .content-with-image {
   display: flex;
   gap: 2em;
@@ -211,13 +239,55 @@
 .image-container {
   flex: 0 0 400px;
   max-width: 400px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .image-container img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   border-radius: 0.5em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.5s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
+}
+
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: calc(var(--section-index, 0) * 0.2s);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#introduction {
+  --section-index: 1;
+}
+
+#planning {
+  --section-index: 2;
+}
+
+#types {
+  --section-index: 3;
+}
+
+#regulations {
+  --section-index: 4;
+}
+
+#resources {
+  --section-index: 5;
 }
 
 @media (max-width: 1200px) {
@@ -235,6 +305,14 @@
 }
 
 @media (max-width: 800px) {
+  .header-section {
+    height: 200px;
+  }
+
+  .animated-title {
+    font-size: 2.5em;
+  }
+
   .fundraising-guide {
     flex-direction: column;
   }
@@ -277,6 +355,14 @@
 }
 
 @media (max-width: 600px) {
+  .header-section {
+    height: 150px;
+  }
+
+  .animated-title {
+    font-size: 2em;
+  }
+
   .fundraising-left-column {
     top: 3em;
     max-height: calc(100vh - 2em);

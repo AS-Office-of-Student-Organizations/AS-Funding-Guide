@@ -1,17 +1,19 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { NavLink, useLocation } from "react-router-dom"
-import DropDownButton from "./DropDownButton"
 import { ChevronDown, ExternalLink } from "lucide-react"
 import Modal from "./Modal"
 import LoginForm from "./LoginForm"
 import { auth } from "../data/firebase"
 import { onAuthStateChanged, signOut } from "firebase/auth"
+import "./NavBar.css"
 
 const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
   const [activeLinkName, setActiveLinkName] = useState("")
   const [user, setUser] = useState(null)
+  const [resourcesOpen, setResourcesOpen] = useState(false)
+  const resourcesRef = useRef(null)
   const location = useLocation()
 
   useEffect(() => {
@@ -32,6 +34,19 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
     return () => unsubscribe()
   }, [])
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (resourcesRef.current && !resourcesRef.current.contains(event.target)) {
+        setResourcesOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [resourcesRef])
+
   const handleLoginClick = (e) => {
     e.preventDefault()
     setIsLoginModalOpen(true)
@@ -45,25 +60,31 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
     }
   }
 
-  const navLinks = [
+  const toggleResourcesDropdown = (e) => {
+    e.preventDefault()
+    setResourcesOpen(!resourcesOpen)
+  }
+
+  // Mobile dropdown menu items
+  const mobileNavLinks = [
     <NavLink to="/guide" key="0">
       Guide
     </NavLink>,
     <NavLink to="/fundraising" key="1">
       Fundraising Guide
     </NavLink>,
+    <a href="https://finance.ucsd.edu/" key="2" target="_blank" rel="noopener noreferrer">
+      Funding Portal <ExternalLink />
+    </a>,
     user ? (
-      <a href="#" onClick={handleLogout} key="2">
+      <a href="#" onClick={handleLogout} key="3">
         Log Out
       </a>
     ) : (
-      <a href="#" onClick={handleLoginClick} key="2">
+      <a href="#" onClick={handleLoginClick} key="3">
         Log In
       </a>
     ),
-    <a href="https://finance.ucsd.edu/" key="3" target="_blank" rel="noopener noreferrer">
-      Funding Portal <ExternalLink />
-    </a>,
   ]
 
   return (
@@ -82,22 +103,52 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
             </div>
           </header>
         </NavLink>
-        <DropDownButton
-          label={
+
+        {/* Mobile dropdown */}
+        <div className="dropdown mobile-dropdown">
+          <button onClick={(e) => e.preventDefault()}>
             <div className="nav-dropdown-content">
               {activeLinkName}
               <ChevronDown />
             </div>
-          }
-          data={navLinks}
-        />
+          </button>
+          <div className="dropdown-card">
+            <ul>
+              {mobileNavLinks.map((link, index) => (
+                <li key={index}>{link}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Desktop navigation */}
         <div className="nav-list">
           <span className="link">
             <NavLink to="/guide">Guide</NavLink>
           </span>
-          <span className="link">
-            <NavLink to="/fundraising">Fundraising Guide</NavLink>
+
+          {/* Resources dropdown */}
+          <span className="link resources-dropdown" ref={resourcesRef}>
+            <a href="#" onClick={toggleResourcesDropdown} className={resourcesOpen ? "active" : ""}>
+              Resources <ChevronDown className="dropdown-icon" />
+            </a>
+            {resourcesOpen && (
+              <div className="resources-menu">
+                <NavLink to="/fundraising" onClick={() => setResourcesOpen(false)}>
+                  Fundraising Guide
+                </NavLink>
+                <a
+                  href="https://finance.ucsd.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setResourcesOpen(false)}
+                >
+                  Funding Portal <ExternalLink />
+                </a>
+              </div>
+            )}
           </span>
+
           <span className="link">
             {user ? (
               <a href="#" onClick={handleLogout}>
@@ -108,11 +159,6 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
                 Log In
               </a>
             )}
-          </span>
-          <span className="link">
-            <a href="https://finance.ucsd.edu/" target="_blank" rel="noopener noreferrer">
-              Funding Portal <ExternalLink />
-            </a>
           </span>
         </div>
       </div>
