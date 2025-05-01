@@ -1,387 +1,784 @@
-.fundraising-guide {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.fundraising-left-column {
-  width: 14em; /* Further reduced from 16em to 14em for a more streamlined look */
-  padding: 0;
-  align-self: flex-start;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 1em;
-  margin-top: 2.8em;
-  margin-left: 1em;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-.fundraising-sidebar {
-  max-height: 70vh;
-  overflow-y: auto;
-  flex-grow: 1;
-  background-color: var(--background-main-light);
-  border-radius: 1em;
-  padding: 1.2em;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--background-main-dark);
-}
-
-.fundraising-sidebar h3 {
-  margin-top: 0;
-  margin-bottom: 1em;
-  color: var(--solid-secondary);
-  font-size: 1.1em;
-  font-weight: 600;
-  border-bottom: 2px solid var(--background-main-dark);
-  padding-bottom: 0.5em;
-  text-align: center; /* Center the heading */
-}
-
-.fundraising-sidebar h4 {
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-  color: var(--solid-secondary);
-  font-size: 0.95em;
-  font-weight: 600;
-  text-align: center; /* Center the heading */
-}
-
-.fundraising-sidebar ul {
-  padding-left: 0;
-  margin-top: 0.5em;
-}
-
-.fundraising-sidebar li {
-  list-style-type: none;
-  margin-bottom: 0.8em;
-  position: relative;
-  transition: transform 0.3s ease;
-}
-
-.fundraising-sidebar li::before {
-  content: ""; /* Remove the bullet point */
-}
-
-.fundraising-sidebar a {
-  color: var(--solid-main-light);
-  text-decoration: none;
-  font-size: 0.9em;
-  padding: 0.3em 0.5em;
-  border-radius: 0.5em;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.fundraising-sidebar a:hover {
-  background-color: var(--background-main-dark);
-  color: var(--solid-main);
-  transform: translateX(5px);
-}
-
-.sidebar-help {
-  margin-top: 1.5em;
-  padding-top: 1em;
-  border-top: 1px solid var(--background-main-dark);
-  text-align: center; /* Center the help section */
-}
-
-.sidebar-help p {
-  font-size: 0.85em;
-  color: var(--solid-main-light);
-  margin: 0.5em 0;
-}
-
-.discord-container {
-  display: flex;
-  justify-content: center; /* Center the Discord button */
-  margin-top: 0.8em;
-  margin-bottom: 0.5em;
-}
-
-.discord-button {
-  background-color: #5865f2;
-  border-radius: 0.5em;
-  padding: 0.5em 0.8em;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-  width: auto;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.discord-button:hover {
-  background-color: #4752c4;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.discord-button a {
-  display: flex;
-  align-items: center;
-  color: white;
-  text-decoration: none;
-  padding: 0;
-  font-weight: 500;
-  font-size: 0.85em;
-}
-
-.discord-button a:hover {
-  background-color: transparent;
-  color: white;
-  transform: none;
-}
-
-.discord-logo {
-  width: 20px;
-  height: 20px;
-  margin-right: 0.5em;
-  filter: brightness(0) invert(1);
-  border-radius: 3px; /* Slight rounding of the square */
-}
-
-.sidebar-toggle {
-  display: none;
-}
-
-.fundraising-content {
-  flex: 1;
-  padding: 2em 3em;
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.fundraising-content h1 {
-  color: var(--solid-main);
-  font-size: 2.5em;
-  margin-bottom: 1em;
-}
-
-.fundraising-content h2 {
-  color: var(--solid-secondary);
-  font-size: 1.8em;
-  margin-top: 2em;
-  margin-bottom: 0.8em;
-  border-bottom: 2px solid var(--background-main-dark);
-  padding-bottom: 0.3em;
-}
-
-.fundraising-content h3 {
-  color: var(--solid-main);
-  font-size: 1.3em;
-  margin-top: 1.5em;
-  margin-bottom: 0.8em;
-}
-
-.fundraising-content p {
-  margin-bottom: 1em;
-  line-height: 1.6;
-}
-
-.fundraising-content ul {
-  margin-bottom: 1.5em;
-  padding-left: 1.5em;
-}
-
-.fundraising-content li {
-  margin-bottom: 0.8em;
-  line-height: 1.5;
-}
-
-.header-section {
-  position: relative;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2em;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.animated-title {
-  color: white;
-  font-size: 3.5em;
-  text-align: center;
-  z-index: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Main container styles */
+.fundraising-guide-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.content-with-image {
-  display: flex;
-  gap: 2em;
-  margin: 1.5em 0;
-  align-items: flex-start;
-}
-
-.content-with-image > div {
-  flex: 1;
-}
-
-.image-container {
-  flex: 0 0 400px;
-  max-width: 400px;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0.5em;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.5s ease;
-}
-
-.image-container:hover img {
-  transform: scale(1.05);
-}
-
-section {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.8s ease-out forwards;
-  animation-delay: calc(var(--section-index, 0) * 0.2s);
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#introduction {
-  --section-index: 1;
-}
-
-#planning {
-  --section-index: 2;
-}
-
-#types {
-  --section-index: 3;
-}
-
-#regulations {
-  --section-index: 4;
-}
-
-#resources {
-  --section-index: 5;
-}
-
-@media (max-width: 1200px) {
-  .fundraising-left-column {
-    width: 12em; /* Even thinner on smaller screens */
-  }
-
-  .content-with-image {
-    flex-direction: column;
-  }
-
-  .image-container {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 800px) {
-  .header-section {
-    height: 200px;
-  }
-
-  .animated-title {
-    font-size: 2.5em;
-  }
-
-  .fundraising-guide {
-    flex-direction: column;
-  }
-
-  .fundraising-left-column {
+  
+  /* Hero section styles */
+  .fundraising-guide-page .fundraising-hero {
     position: relative;
-    width: 100%;
-    margin-left: 0;
-    margin-top: 1em;
-  }
-
-  .fundraising-left-column.hidden {
-    transform: translateX(calc(-100% + 1em)) translateY(-50%);
-    transition: transform 0.3s ease-in-out;
-    background-color: var(--background-main-dark);
-  }
-
-  .sidebar-toggle {
+    background-color: #f8f9fa;
+    padding: 4rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    overflow: hidden;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
-    background-color: transparent;
-    border-radius: 0;
-    width: 3em;
+    justify-content: space-between;
+  }
+  
+  .fundraising-guide-page .hero-content {
+    max-width: 600px;
+    z-index: 2;
+  }
+  
+  .fundraising-guide-page .hero-title {
+    font-size: 2.8rem;
+    color: var(--solid-main);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  .fundraising-guide-page .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--solid-main-light);
+    margin-bottom: 2rem;
+  }
+  
+  .fundraising-guide-page .hero-cta {
+    display: inline-block;
+    background-color: var(--solid-secondary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .fundraising-guide-page .hero-cta:hover {
+    background-color: var(--solid-main);
+  }
+  
+  .fundraising-guide-page .hero-image {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Navigation tabs */
+  .fundraising-guide-page .fundraising-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0;
+    gap: 0.5rem;
+  }
+  
+  .fundraising-guide-page .fundraising-tab {
+    padding: 0.8rem 1.2rem;
+    color: var(--solid-main-light);
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .fundraising-guide-page .fundraising-tab:hover {
+    color: var(--solid-secondary);
+  }
+  
+  .fundraising-guide-page .fundraising-tab.active {
+    color: var(--solid-secondary);
+    border-bottom: 3px solid var(--solid-secondary);
+    font-weight: 600;
+  }
+  
+  /* Content section styles */
+  .fundraising-guide-page .fundraising-content {
+    padding: 2rem 0;
+  }
+  
+  .fundraising-guide-page .section-header {
+    background-color: var(--solid-secondary);
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .fundraising-guide-page .section-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .fundraising-guide-page .section-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+  
+  .fundraising-guide-page .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .fundraising-guide-page .content-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .fundraising-guide-page .content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  .fundraising-guide-page .card-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .fundraising-guide-page .card-content {
+    padding: 1.5rem;
+  }
+  
+  .fundraising-guide-page .card-content h3 {
+    color: var(--solid-main);
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+  }
+  
+  .fundraising-guide-page .card-content p {
+    color: var(--solid-main-light);
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  .fundraising-guide-page .card-link {
+    color: var(--solid-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  
+  .fundraising-guide-page .card-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Content section with sidebar */
+  .fundraising-guide-page .content-with-sidebar {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .fundraising-guide-page .main-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .fundraising-guide-page .main-content h2 {
+    color: var(--solid-main);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.8rem;
+  }
+  
+  .fundraising-guide-page .main-content h3 {
+    color: var(--solid-secondary);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.4rem;
+  }
+  
+  .fundraising-guide-page .main-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .fundraising-guide-page .main-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .fundraising-guide-page .main-content li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  .fundraising-guide-page .sidebar {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+  
+  .fundraising-guide-page .sidebar h3 {
+    color: var(--solid-main);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.5rem;
+  }
+  
+  .fundraising-guide-page .sidebar ul {
+    list-style: none;
     padding: 0;
   }
-
-  .fundraising-content {
-    padding: 1em 1.5em;
+  
+  .fundraising-guide-page .sidebar li {
+    margin-bottom: 0.8rem;
   }
-
-  .fundraising-content h1 {
-    font-size: 2em;
+  
+  .fundraising-guide-page .sidebar a {
+    color: var(--solid-main-light);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    padding-left: 0.8rem;
   }
-
-  .fundraising-content h2 {
-    font-size: 1.5em;
+  
+  .fundraising-guide-page .sidebar a:hover,
+  .fundraising-guide-page .sidebar a.active {
+    color: var(--solid-thirdary);
+    border-left: 3px solid var(--solid-thirdary);
+    background-color: rgba(22, 75, 180, 0.05);
   }
-}
-
-@media (max-width: 600px) {
-  .header-section {
-    height: 150px;
+  
+  /* Call to action section */
+  .fundraising-guide-page .cta-section {
+    background-color: var(--solid-secondary);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 3rem 0;
   }
-
-  .animated-title {
-    font-size: 2em;
+  
+  .fundraising-guide-page .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
-
-  .fundraising-left-column {
-    top: 3em;
-    max-height: calc(100vh - 2em);
-    transform: translateX(0);
+  
+  .fundraising-guide-page .cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
-
-  .fundraising-left-column.hidden {
-    transform: translateX(calc(-100% + 1em));
+  
+  .fundraising-guide-page .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-
-  .fundraising-content {
-    padding: 1em;
+  
+  .fundraising-guide-page .cta-primary {
+    background-color: white;
+    color: #164bb4;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
   }
-
-  .fundraising-content h1 {
-    font-size: 1.8em;
+  
+  .fundraising-guide-page .cta-secondary {
+    background-color: transparent;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid white;
   }
-
-  .fundraising-content h2 {
-    font-size: 1.3em;
+  
+  .fundraising-guide-page .cta-primary:hover {
+    background-color: #f0f0f0;
   }
-}
+  
+  .fundraising-guide-page .cta-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Feature section */
+  .fundraising-guide-page .feature-section {
+    padding: 3rem 0;
+  }
+  
+  .fundraising-guide-page .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .fundraising-guide-page .feature-item {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .fundraising-guide-page .feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(22, 75, 180, 0.1);
+    border-radius: 50%;
+  }
+  
+  .fundraising-guide-page .feature-icon svg {
+    width: 40px;
+    height: 40px;
+    color: var(--solid-secondary);
+  }
+  
+  .fundraising-guide-page .feature-item h3 {
+    color: var(--solid-main);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+  
+  .fundraising-guide-page .feature-item p {
+    color: var(--solid-main-light);
+  }
+  
+  /* Discord help section */
+  .fundraising-guide-page .discord-help {
+    background-color: #5865f2;
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .fundraising-guide-page .discord-content {
+    max-width: 60%;
+  }
+  
+  .fundraising-guide-page .discord-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .fundraising-guide-page .discord-content p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .fundraising-guide-page .discord-button {
+    background-color: white;
+    color: #5865f2;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .fundraising-guide-page .discord-button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .fundraising-guide-page .discord-logo {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .fundraising-guide-page .discord-image {
+    width: 150px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    .fundraising-guide-page .fundraising-hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+  
+    .fundraising-guide-page .hero-content {
+      margin-bottom: 2rem;
+      max-width: 100%;
+    }
+  
+    .fundraising-guide-page .hero-title {
+      font-size: 2.4rem;
+    }
+  
+    .fundraising-guide-page .hero-image {
+      width: 250px;
+      height: 250px;
+    }
+  
+    .fundraising-guide-page .content-with-sidebar {
+      grid-template-columns: 1fr;
+    }
+  
+    .fundraising-guide-page .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .fundraising-guide-page .hero-title {
+      font-size: 2rem;
+    }
+  
+    .fundraising-guide-page .hero-subtitle {
+      font-size: 1.1rem;
+    }
+  
+    .fundraising-guide-page .content-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .fundraising-guide-page .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .fundraising-guide-page .discord-help {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .fundraising-guide-page .discord-content {
+      max-width: 100%;
+      margin-bottom: 1.5rem;
+    }
+  
+    .fundraising-guide-page .section-header h2 {
+      font-size: 1.8rem;
+    }
+  
+    .fundraising-guide-page .section-header p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .fundraising-guide-page .fundraising-hero {
+      padding: 2rem 1rem;
+    }
+  
+    .fundraising-guide-page .hero-title {
+      font-size: 1.8rem;
+    }
+  
+    .fundraising-guide-page .hero-subtitle {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .fundraising-guide-page .hero-cta {
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+    }
+  
+    .fundraising-guide-page .fundraising-tabs {
+      padding-bottom: 0.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+    }
+  
+    .fundraising-guide-page .fundraising-tabs::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
+  
+    .fundraising-guide-page .fundraising-tab {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+  
+    .fundraising-guide-page .section-header {
+      padding: 1.5rem 1rem;
+    }
+  
+    .fundraising-guide-page .section-header h2 {
+      font-size: 1.5rem;
+    }
+  
+    .fundraising-guide-page .main-content {
+      padding: 1.5rem 1rem;
+    }
+  
+    .fundraising-guide-page .main-content h2 {
+      font-size: 1.5rem;
+    }
+  
+    .fundraising-guide-page .main-content h3 {
+      font-size: 1.2rem;
+    }
+  
+    .fundraising-guide-page .sidebar {
+      padding: 1rem;
+    }
+  }
+  
+  /* Additional mobile-friendly styles */
+  @media (max-width: 480px) {
+    .fundraising-guide-page .fundraising-container {
+      padding: 0 0.5rem;
+    }
+  
+    .fundraising-guide-page .fundraising-hero {
+      padding: 1.5rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .fundraising-guide-page .hero-title {
+      font-size: 1.6rem;
+    }
+  
+    .fundraising-guide-page .hero-subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+  
+    .fundraising-guide-page .hero-image {
+      width: 200px;
+      height: 200px;
+    }
+  
+    .fundraising-guide-page .fundraising-tab {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.8rem;
+    }
+  
+    .fundraising-guide-page .section-header {
+      padding: 1.2rem 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .fundraising-guide-page .section-header h2 {
+      font-size: 1.4rem;
+    }
+  
+    .fundraising-guide-page .section-header p {
+      font-size: 0.9rem;
+    }
+  
+    .fundraising-guide-page .content-card {
+      margin-bottom: 1rem;
+    }
+  
+    .fundraising-guide-page .card-image {
+      height: 150px;
+    }
+  
+    .fundraising-guide-page .card-content {
+      padding: 1rem;
+    }
+  
+    .fundraising-guide-page .card-content h3 {
+      font-size: 1.2rem;
+    }
+  
+    .fundraising-guide-page .feature-item {
+      padding: 1.5rem 1rem;
+    }
+  
+    .fundraising-guide-page .feature-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+  
+    .fundraising-guide-page .feature-icon svg {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .fundraising-guide-page .feature-item h3 {
+      font-size: 1.1rem;
+    }
+  
+    .fundraising-guide-page .cta-section {
+      padding: 2rem 1rem;
+      margin: 2rem 0;
+    }
+  
+    .fundraising-guide-page .cta-section h2 {
+      font-size: 1.4rem;
+    }
+  
+    .fundraising-guide-page .cta-section p {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .fundraising-guide-page .cta-buttons {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  
+    .fundraising-guide-page .discord-help {
+      padding: 1.5rem 1rem;
+      margin: 2rem 0;
+    }
+  
+    .fundraising-guide-page .discord-help h3 {
+      font-size: 1.3rem;
+    }
+  
+    .fundraising-guide-page .discord-help p {
+      font-size: 0.9rem;
+    }
+  
+    .fundraising-guide-page .discord-button {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+  
+    .fundraising-guide-page .discord-image {
+      width: 100px;
+    }
+  
+    /* Touch-friendly improvements */
+    .fundraising-guide-page .sidebar a {
+      padding: 0.7rem 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .fundraising-guide-page .card-link {
+      padding: 0.5rem 0;
+      display: inline-block;
+    }
+  }
+  
+  /* Improve touch targets for mobile */
+  @media (max-width: 768px) {
+    .fundraising-guide-page .fundraising-tab,
+    .fundraising-guide-page .sidebar a,
+    .fundraising-guide-page .card-link,
+    .fundraising-guide-page .hero-cta,
+    .fundraising-guide-page .cta-primary,
+    .fundraising-guide-page .cta-secondary,
+    .fundraising-guide-page .discord-button {
+      min-height: 44px; /* Apple's recommended minimum touch target size */
+      display: flex;
+      align-items: center;
+    }
+  
+    .fundraising-guide-page .sidebar a {
+      justify-content: flex-start;
+    }
+  
+    .fundraising-guide-page .card-link {
+      justify-content: flex-start;
+    }
+  
+    /* Fix for mobile Safari */
+    .fundraising-guide-page .fundraising-tabs {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+  
+  /* Discord help sidebar styling */
+  .fundraising-guide-page .discord-help-sidebar {
+    background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%);
+    color: white;
+    padding: 1.8rem 1.2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(88, 101, 242, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .fundraising-guide-page .discord-help-sidebar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(88, 101, 242, 0.25);
+  }
+  
+  .fundraising-guide-page .discord-help-sidebar h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .fundraising-guide-page .discord-help-sidebar hr {
+    width: 60%;
+    margin: 0.7rem auto 1.2rem;
+    border: none;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+  
+  .fundraising-guide-page .discord-help-sidebar p {
+    margin-bottom: 1.4rem;
+    font-size: 1.05rem;
+    opacity: 0.9;
+    line-height: 1.4;
+  }
+  
+  .fundraising-guide-page .discord-logo-sidebar {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
+  
+  .fundraising-guide-page .discord-button-sidebar {
+    background-color: white;
+    color: #5865f2;
+    padding: 0.8rem 1.5rem; /* Increase horizontal padding from 1rem to 1.5rem */
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 90%; 
+    margin: 0 auto;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  
+  .fundraising-guide-page .discord-logo-sidebar {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
+  
+  .fundraising-guide-page .discord-button-sidebar:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .fundraising-guide-page .discord-button-sidebar:hover .discord-logo-sidebar {
+    transform: rotate(-10deg);
+  }
+  
+  .fundraising-guide-page .discord-button-sidebar:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
