@@ -30,32 +30,32 @@ const FundraisingGuide = () => {
     {
       title: "Bake Sale",
       description: "A classic fundraiser where students sell homemade baked goods on campus.",
-      image: "/bake-sale.png",
+      image: "tamer.jfif",
     },
     {
       title: "Trivia Night",
       description: "Host a fun trivia competition with an entry fee and prizes for winners.",
-      image: "/trivia-night.png",
+      image: "kabir.jfif",
     },
     {
       title: "Percentage Night",
       description: "Partner with local restaurants that donate a percentage of sales.",
-      image: "/restaurant-fundraiser.png",
+      image: "kabir.jfif",
     },
     {
       title: "T-Shirt Sales",
       description: "Design and sell custom t-shirts featuring your organization's logo.",
-      image: "/custom-tshirts.png",
+      image: "kabir.jfif",
     },
     {
       title: "Talent Show",
       description: "Showcase student talents with ticket sales going to your cause.",
-      image: "/talent-show.png",
+      image: "kabir.jfif",
     },
     {
       title: "Online Crowdfunding",
       description: "Use platforms like GoFundMe to reach a wider audience of donors.",
-      image: "/online-crowdfunding-blue.png",
+      image: "kabir.jfif",
     },
   ]
 
@@ -133,7 +133,7 @@ const FundraisingGuide = () => {
             Explore Fundraising Ideas
           </a>
         </div>
-        <img src="/fundraising-piggy-bank.png" alt="Fundraising illustration" className="hero-image" />
+        <img src="kabir.jfif" alt="Fundraising illustration" className="hero-image" />
       </section>
 
       {/* Navigation Tabs */}
