@@ -928,18 +928,18 @@ const FundraisingGuide = () => {
               <h3>Important Resources</h3>
               <ul>
                 <li>
-                  <a href="https://studentlife.ucsd.edu/student-org/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://be.ucsd.edu/student-organization-handbook" target="_blank" rel="noopener noreferrer">
                     Student Organization Handbook
                   </a>
                 </li>
                 <li>
-                  <a href="https://ehs.ucsd.edu/food-safety" target="_blank" rel="noopener noreferrer">
+                  <a href="https://saltaire.ucsd.edu/planning/guidelines.html" target="_blank" rel="noopener noreferrer">
                     Food Safety Guidelines
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://universitycenters.ucsd.edu/event-services/"
+                    href="https://universitycenters.ucsd.edu/events-and-reservations/make-a-reservation.html#:~:text=Reservations%20must%20be%20requested%20at,to%20review%20event%20space%20requests"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -1093,12 +1093,12 @@ const FundraisingGuide = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://as.ucsd.edu/finance" target="_blank" rel="noopener noreferrer">
+                  <a href="https://asfunding.org/guide/introduction" target="_blank" rel="noopener noreferrer">
                     A.S. Funding
                   </a>
                 </li>
                 <li>
-                  <a href="https://ehs.ucsd.edu/food-safety" target="_blank" rel="noopener noreferrer">
+                  <a href="https://saltaire.ucsd.edu/planning/guidelines.html" target="_blank" rel="noopener noreferrer">
                     Food Safety Guidelines
                   </a>
                 </li>
