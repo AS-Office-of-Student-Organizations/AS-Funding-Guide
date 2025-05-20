@@ -241,6 +241,10 @@ body {
       width: 8em;
       border-radius: 0.5em;
       background-color: var(--background-secondary);
+      /* Add these properties to fix the z-index issue */
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      /* Make sure it's not hidden by other elements */
       ul {
         display: flex;
         flex-direction: column;

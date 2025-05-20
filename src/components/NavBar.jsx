@@ -106,16 +106,35 @@ const NavBar = ({ isLoginModalOpen, setIsLoginModalOpen }) => {
 
         {/* Mobile dropdown */}
         <div className="dropdown mobile-dropdown">
-          <button onClick={(e) => e.preventDefault()}>
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              const dropdownCard = e.currentTarget.nextElementSibling
+              if (dropdownCard.style.display === "block") {
+                dropdownCard.style.display = "none"
+              } else {
+                dropdownCard.style.display = "block"
+              }
+            }}
+          >
             <div className="nav-dropdown-content">
-              {activeLinkName}
+              {activeLinkName || "Menu"}
               <ChevronDown />
             </div>
           </button>
-          <div className="dropdown-card">
+          <div className="dropdown-card" style={{ display: "none" }}>
             <ul>
               {mobileNavLinks.map((link, index) => (
-                <li key={index}>{link}</li>
+                <li
+                  key={index}
+                  onClick={(e) => {
+                    // Close dropdown after click
+                    e.currentTarget.parentElement.parentElement.style.display = "none"
+                  }}
+                >
+                  {link}
+                </li>
               ))}
             </ul>
           </div>

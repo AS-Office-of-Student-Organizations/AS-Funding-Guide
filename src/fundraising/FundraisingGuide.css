@@ -9,9 +9,11 @@
 /* Hero section styles */
 .fundraising-guide-page .fundraising-hero {
   position: relative;
-  background-color: #f8f9fa;
+  z-index: 1;
+  background-color: var(--background-main-light);
   padding: 4rem 2rem;
   border-radius: 8px;
+  margin-top: 2.5rem; /* Added more top margin for spacing from nav-bar */
   margin-bottom: 2rem;
   overflow: hidden;
   display: flex;
@@ -29,6 +31,7 @@
   color: var(--solid-main);
   margin-bottom: 1rem;
   line-height: 1.2;
+  text-align: left;
 }
 
 .fundraising-guide-page .hero-subtitle {
@@ -147,6 +150,7 @@
   color: var(--solid-main);
   margin-bottom: 0.8rem;
   font-size: 1.3rem;
+  text-align: left;
 }
 
 .fundraising-guide-page .card-content p {
@@ -205,15 +209,26 @@
   text-align: left;
 }
 
-.fundraising-guide-page .main-content ul {
+.fundraising-guide-page .main-content ul,
+.fundraising-guide-page .idea-detail-section ul:not(.comparison-column ul) {
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: 1.5rem;
   padding-left: 1.5rem;
 }
 
-.fundraising-guide-page .main-content li {
-  margin-bottom: 0.8rem;
-  line-height: 1.5;
-  text-align: left;
+.fundraising-guide-page .main-content ul li,
+.fundraising-guide-page .idea-detail-section ul:not(.comparison-column ul) li {
+  width: 50%;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .fundraising-guide-page .main-content ul li,
+  .fundraising-guide-page .idea-detail-section ul:not(.comparison-column ul) li {
+    width: 100%;
+  }
 }
 
 .fundraising-guide-page .sidebar {
@@ -375,7 +390,7 @@
 }
 
 .fundraising-guide-page .discord-content {
-  max-width: 60%;
+  /* max-width: 60%; - removed */
 }
 
 .fundraising-guide-page .discord-content h3 {
@@ -483,6 +498,7 @@
 @media (max-width: 576px) {
   .fundraising-guide-page .fundraising-hero {
     padding: 2rem 1rem;
+    margin-top: 2rem; /* Adjusted for smaller screens */
   }
 
   .fundraising-guide-page .hero-title {
@@ -548,6 +564,7 @@
 
   .fundraising-guide-page .fundraising-hero {
     padding: 1.5rem 1rem;
+    margin-top: 1.5rem; /* Adjusted for even smaller screens */
     margin-bottom: 1.5rem;
   }
 
@@ -861,6 +878,7 @@
   background-color: #f8f9fa;
   border-radius: 8px;
   padding: 1.5rem;
+  border: 1px solid #000;
 }
 
 .fundraising-guide-page .two-column-list h4 {
@@ -879,6 +897,7 @@
   background-color: #f8f9fa;
   border-radius: 8px;
   padding: 1.5rem;
+  border: 1px solid #000;
 }
 
 .fundraising-guide-page .three-column-list h4 {
@@ -894,6 +913,9 @@
   display: flex;
   gap: 2rem;
   margin: 2rem 0;
+  /* Remove the border from the table container */
+  border: none;
+  border-radius: 8px;
 }
 
 .fundraising-guide-page .comparison-column {
@@ -901,7 +923,9 @@
   background-color: #f8f9fa;
   padding: 1.8rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* Enhance the border on each column */
+  border: 2px solid #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .fundraising-guide-page .comparison-column h4 {
@@ -1131,4 +1155,50 @@
 
 .fundraising-guide-page .example-calculation strong {
   color: var(--solid-secondary);
+}
+
+/* Add styles for the promotion section with image */
+.fundraising-guide-page .promotion-section {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.fundraising-guide-page .promotion-content {
+  flex: 1;
+}
+
+.fundraising-guide-page .promotion-image {
+  flex: 1;
+  max-width: 300px;
+}
+
+.fundraising-guide-page .promotion-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .fundraising-guide-page .promotion-section {
+    flex-direction: column;
+  }
+
+  .fundraising-guide-page .promotion-image {
+    max-width: 100%;
+  }
+}
+
+/* Compact some lists into paragraphs */
+.fundraising-guide-page .compact-text {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.fundraising-guide-page .compact-text strong {
+  color: var(--solid-main);
+  font-weight: 600;
+  margin-right: 0.3rem;
 }

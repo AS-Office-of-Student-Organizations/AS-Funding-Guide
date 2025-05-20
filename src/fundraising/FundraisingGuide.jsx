@@ -128,7 +128,7 @@ const FundraisingGuide = () => {
             Explore Fundraising Ideas
           </a>
         </div>
-        <img src="/AS_Logo_BW.png" alt="Fundraising illustration" className="hero-image" />
+        <img src="public\AS_Logo_BW.png" alt="Fundraising illustration" className="hero-image" />
       </section>
 
       {/* Navigation Tabs */}
@@ -376,31 +376,22 @@ const FundraisingGuide = () => {
             </div>
 
             <h3>Setting Realistic Goals</h3>
-            <p>When planning your fundraiser, calculate your potential earnings:</p>
-            <ul>
-              <li>
-                <strong>Example 1:</strong> If your organization receives 15% of proceeds, each person spends $7 on
-                average, and 25 people attend: ($7 × 25) × 15% = $26.25
-              </li>
-              <li>
-                <strong>Example 2:</strong> If your organization receives 30% of proceeds, each person spends $15 on
-                average, and 15 people attend: ($15 × 15) × 30% = $67.50
-              </li>
-            </ul>
-            <p>Consider these factors when choosing a partner:</p>
-            <ul>
-              <li>Average price of products</li>
-              <li>Percentage you'll receive from proceeds</li>
-              <li>Expected attendance</li>
-            </ul>
+            <p className="compact-text">
+              When planning your fundraiser, calculate your potential earnings. For example, if your organization
+              receives 15% of proceeds, each person spends $7 on average, and 25 people attend: ($7 × 25) × 15% =
+              $26.25. Or if your organization receives 30% of proceeds, each person spends $15 on average, and 15 people
+              attend: ($15 × 15) × 30% = $67.50.
+            </p>
+            <p className="compact-text">
+              Consider these factors when choosing a partner: <strong>Average price of products</strong>,{" "}
+              <strong>Percentage you'll receive</strong> from proceeds, and <strong>Expected attendance</strong>.
+            </p>
 
             <h3>Contacting Businesses</h3>
-            <p>You can reach out to potential partners by:</p>
-            <ul>
-              <li>Calling the business</li>
-              <li>Sending an email</li>
-              <li>Visiting in person</li>
-            </ul>
+            <p className="compact-text">
+              You can reach out to potential partners by calling the business, sending an email, or visiting in person.
+              Each approach has its advantages depending on the business type and your relationship with them.
+            </p>
 
             <div className="template-box">
               <h4>Phone Call Template</h4>
@@ -455,12 +446,19 @@ const FundraisingGuide = () => {
             </div>
 
             <h3>Promoting Your Event</h3>
-            <ul>
-              <li>Create eye-catching flyers</li>
-              <li>Post on social media and messaging apps</li>
-              <li>Advertise transportation if offering it for off-campus events</li>
-              <li>Clearly note if participants need to mention the fundraiser when ordering</li>
-            </ul>
+            <div className="promotion-section">
+              <div className="promotion-content">
+                <ul>
+                  <li>Create eye-catching flyers</li>
+                  <li>Post on social media and messaging apps</li>
+                  <li>Advertise transportation if offering it for off-campus events</li>
+                  <li>Clearly note if participants need to mention the fundraiser when ordering</li>
+                </ul>
+              </div>
+              <div className="promotion-image">
+                <img src="/Red_and_Cream_Illustrative_Weekend_Market_Flyer.png" alt="Promotional flyer example" />
+              </div>
+            </div>
 
             <h3>Running the Event</h3>
             <ul>
@@ -1002,12 +1000,11 @@ const FundraisingGuide = () => {
                 <strong>Location:</strong> Price Center East, Level 3
               </p>
               <p>
-                <strong>Website:</strong>{" "}
+                <strong>Website:</strong>
                 <a href="https://getinvolved.ucsd.edu/" target="_blank" rel="noopener noreferrer">
                   getinvolved.ucsd.edu
                 </a>
               </p>
-
               <h3>Student Life Business Office (SLBO)</h3>
               <p>SLBO provides financial services and guidance for student organizations:</p>
               <ul>
