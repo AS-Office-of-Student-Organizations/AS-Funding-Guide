@@ -177,7 +177,7 @@
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 0.5rem; /* Changed from 1rem to 0.5rem */
 }
 
 .fundraising-guide-page .main-content {
@@ -211,23 +211,35 @@
 
 .fundraising-guide-page .main-content ul,
 .fundraising-guide-page .idea-detail-section ul:not(.comparison-column ul) {
-  display: flex;
-  flex-wrap: wrap;
+  columns: 2;
+  column-gap: 2rem;
   margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
+  padding-left: 0;
+  list-style: none;
 }
 
 .fundraising-guide-page .main-content ul li,
 .fundraising-guide-page .idea-detail-section ul:not(.comparison-column ul) li {
-  width: 50%;
-  padding-right: 1rem;
-  box-sizing: border-box;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.fundraising-guide-page .main-content ul li:before,
+.fundraising-guide-page .idea-detail-section ul:not(.comparison-column ul) li:before {
+  content: "•";
+  color: var(--solid-secondary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
 }
 
 @media (max-width: 768px) {
-  .fundraising-guide-page .main-content ul li,
-  .fundraising-guide-page .idea-detail-section ul:not(.comparison-column ul) li {
-    width: 100%;
+  .fundraising-guide-page .main-content ul,
+  .fundraising-guide-page .idea-detail-section ul:not(.comparison-column ul) {
+    columns: 1;
   }
 }
 
@@ -264,8 +276,7 @@
   display: block;
   padding: 0.5rem 0;
   transition: all 0.3s ease;
-  border-left: 3px solid transparent;
-  padding-left: 0.8rem;
+
 }
 
 .fundraising-guide-page .sidebar a:hover,
@@ -761,29 +772,24 @@
   text-align: left;
 }
 
-.fundraising-guide-page .discord-logo-sidebar {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease;
-}
-
 .fundraising-guide-page .discord-button-sidebar {
   background-color: white;
   color: #5865f2;
-  padding: 0.8rem 1.5rem; /* Increase horizontal padding from 1rem to 1.5rem */
+  padding: 0.8rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem; /* Keep the gap at 1rem */
-  width: 90%; /* Increase width from 85% to 90% */
+  width: 90%;
   margin: 0 auto;
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-size: 1.05rem;
   letter-spacing: 0.01em;
+  text-align: center;
+  /* Remove gap property since we don't have an icon anymore */
 }
 
 .fundraising-guide-page .discord-logo-sidebar {

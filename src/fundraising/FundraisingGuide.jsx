@@ -128,7 +128,7 @@ const FundraisingGuide = () => {
             Explore Fundraising Ideas
           </a>
         </div>
-        <img src="public\AS_Logo_BW.png" alt="Fundraising illustration" className="hero-image" />
+        <img src="/AS_Logo_BW.png" alt="Fundraising illustration" className="hero-image" />
       </section>
 
       {/* Navigation Tabs */}
@@ -288,7 +288,6 @@ const FundraisingGuide = () => {
                   rel="noopener noreferrer"
                   className="discord-button-sidebar"
                 >
-                  <img src="/discord-mark-black.png" alt="Discord" className="discord-logo-sidebar" />
                   <span>Join Server</span>
                 </a>
               </div>
@@ -928,18 +927,18 @@ const FundraisingGuide = () => {
               <h3>Important Resources</h3>
               <ul>
                 <li>
-                  <a href="https://be.ucsd.edu/student-organization-handbook" target="_blank" rel="noopener noreferrer">
+                  <a href="https://studentlife.ucsd.edu/student-org/" target="_blank" rel="noopener noreferrer">
                     Student Organization Handbook
                   </a>
                 </li>
                 <li>
-                  <a href="https://saltaire.ucsd.edu/planning/guidelines.html" target="_blank" rel="noopener noreferrer">
+                  <a href="https://ehs.ucsd.edu/food-safety" target="_blank" rel="noopener noreferrer">
                     Food Safety Guidelines
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://universitycenters.ucsd.edu/events-and-reservations/make-a-reservation.html#:~:text=Reservations%20must%20be%20requested%20at,to%20review%20event%20space%20requests"
+                    href="https://universitycenters.ucsd.edu/event-services/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -968,7 +967,6 @@ const FundraisingGuide = () => {
                   rel="noopener noreferrer"
                   className="discord-button-sidebar"
                 >
-                  <img src="/discord-mark-black.png" alt="Discord" className="discord-logo-sidebar" />
                   <span>Join Server</span>
                 </a>
               </div>
@@ -1093,12 +1091,12 @@ const FundraisingGuide = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://asfunding.org/guide/introduction" target="_blank" rel="noopener noreferrer">
+                  <a href="https://as.ucsd.edu/finance" target="_blank" rel="noopener noreferrer">
                     A.S. Funding
                   </a>
                 </li>
                 <li>
-                  <a href="https://saltaire.ucsd.edu/planning/guidelines.html" target="_blank" rel="noopener noreferrer">
+                  <a href="https://ehs.ucsd.edu/food-safety" target="_blank" rel="noopener noreferrer">
                     Food Safety Guidelines
                   </a>
                 </li>
@@ -1114,7 +1112,6 @@ const FundraisingGuide = () => {
                   rel="noopener noreferrer"
                   className="discord-button-sidebar"
                 >
-                  <img src="/discord-mark-black.png" alt="Discord" className="discord-logo-sidebar" />
                   <span>Join Server</span>
                 </a>
               </div>
@@ -1225,7 +1222,7 @@ const FundraisingGuide = () => {
       )}
 
       {/* Discord Help Section */}
-      <section className="discord-help" style={{ backgroundColor: "#5865f2", marginTop: "3rem" }}>
+      <section className="discord-help" style={{ backgroundColor: "#5865f2", marginTop: "1rem" }}>
         <div className="discord-content">
           <h3>Have Questions About Fundraising?</h3>
           <p>
