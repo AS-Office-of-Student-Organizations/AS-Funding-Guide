@@ -13,3 +13,5 @@ After this, you should be able to use `npm install` then `npm run dev` to host t
 This website addresses a pressing need of student organizations leaders which is a **user friendly funding guide**. The current funding guide ([here](https://finance.ucsd.edu/Home/FundingGuide)) is very frustrating to read.
 
 However, beyond this goal of just hosting the guide, we hope to make it easier to get fast Q&A answers with a RAG-based LLM chatbot on our homepage! I receive hundreds of emails weekly and find it difficult to keep up. I hope this helps future AVPs by lessening the load of repeat questions by making the information easier to reach.
+
+The Chatbot code is [here](https://github.com/AS-Office-of-Student-Organizations/Funding-Guide-ChatBot).
